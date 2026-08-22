@@ -1,0 +1,120 @@
+{
+  "generated_at": "2026-08-21T10:40:15+00:00",
+  "method": {
+    "load": "QueryExecutor.from_processed_dir(data/processed)",
+    "query_runs": 3,
+    "latency": "median of three in-process executions after load",
+    "memory": "maximum resident set size reported by resource.getrusage",
+    "environment": "same Phase 3 uv environment, phase-specific PYTHONPATH"
+  },
+  "results": [
+    {
+      "phase": "phase1",
+      "queries": [
+        "広島市と都市特性が似ている都市は？",
+        "広島市と人の行き来が最も多い都市は？"
+      ],
+      "load_ms": 84.52074998058379,
+      "query_timings": {
+        "広島市と都市特性が似ている都市は？": {
+          "median_ms": 37.29170898441225,
+          "runs": [
+            41.422958951443434,
+            37.29170898441225,
+            36.40970808919519
+          ]
+        },
+        "広島市と人の行き来が最も多い都市は？": {
+          "median_ms": 2.8244589921087027,
+          "runs": [
+            2.8245829744264483,
+            2.8244589921087027,
+            2.4036250542849302
+          ]
+        }
+      },
+      "statuses": {
+        "広島市と都市特性が似ている都市は？": "ok",
+        "広島市と人の行き来が最も多い都市は？": "ok"
+      },
+      "max_rss_mb": 129.125,
+      "analysis_municipality_count": 20,
+      "search_municipality_count": 20,
+      "environmental_metric_rows": 0,
+      "graph_nodes": 113,
+      "graph_edges": 643
+    },
+    {
+      "phase": "phase2",
+      "queries": [
+        "福岡市と都市特性が似ている都市は？",
+        "全国主要都市で人流ハブ性が高い都市は？"
+      ],
+      "load_ms": 4031.0564170358703,
+      "query_timings": {
+        "福岡市と都市特性が似ている都市は？": {
+          "median_ms": 172.3335419083014,
+          "runs": [
+            180.51266705151647,
+            168.60320803243667,
+            172.3335419083014
+          ]
+        },
+        "全国主要都市で人流ハブ性が高い都市は？": {
+          "median_ms": 0.5365420365706086,
+          "runs": [
+            0.7620829856023192,
+            0.5365420365706086,
+            0.5032499320805073
+          ]
+        }
+      },
+      "statuses": {
+        "福岡市と都市特性が似ている都市は？": "ok",
+        "全国主要都市で人流ハブ性が高い都市は？": "ok"
+      },
+      "max_rss_mb": 672.609375,
+      "analysis_municipality_count": 1719,
+      "search_municipality_count": 100,
+      "environmental_metric_rows": 0,
+      "graph_nodes": 1853,
+      "graph_edges": 232774
+    },
+    {
+      "phase": "phase3",
+      "queries": [
+        "福岡市に似ていて冬が比較的暖かい都市は？",
+        "空港と新幹線の両方へのアクセスが良い都市は？"
+      ],
+      "load_ms": 4153.527082991786,
+      "query_timings": {
+        "福岡市に似ていて冬が比較的暖かい都市は？": {
+          "median_ms": 31.742250081151724,
+          "runs": [
+            32.57766691967845,
+            31.742250081151724,
+            30.82979191094637
+          ]
+        },
+        "空港と新幹線の両方へのアクセスが良い都市は？": {
+          "median_ms": 204.2719169985503,
+          "runs": [
+            204.2719169985503,
+            159.41137494519353,
+            204.84224997926503
+          ]
+        }
+      },
+      "statuses": {
+        "福岡市に似ていて冬が比較的暖かい都市は？": "ok",
+        "空港と新幹線の両方へのアクセスが良い都市は？": "ok"
+      },
+      "max_rss_mb": 683.65625,
+      "analysis_municipality_count": 1719,
+      "search_municipality_count": 100,
+      "environmental_metric_rows": 700,
+      "graph_nodes": 1853,
+      "graph_edges": 232774
+    }
+  ]
+}

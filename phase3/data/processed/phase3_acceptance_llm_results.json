@@ -1,0 +1,217 @@
+{
+  "generated_at": "2026-08-21T13:30:57+00:00",
+  "overall_status": "pass",
+  "phase": 3,
+  "analysis_universe_count": 1719,
+  "search_universe_count": 100,
+  "checks": [
+    {
+      "name": "Phase 3 structure, coverage, and provenance",
+      "status": "pass",
+      "evidence": {
+        "quality_checks": 10,
+        "analysis_municipality_count": 1719,
+        "search_city_count": 100,
+        "environmental_metric_rows": 700,
+        "climate_city_count": 100,
+        "shinkansen_city_count": 100,
+        "shinkansen_station_count": 92,
+        "housing_status": "not_adopted_coverage_unverified",
+        "disaster_status": "feasibility_deferred",
+        "nature_status": "feasibility_deferred",
+        "coverage": {
+          "expected_city_count": 100,
+          "climate": {
+            "city_count": 100,
+            "feature_count": 6,
+            "missing_value_count": 0,
+            "features": [
+              {
+                "feature_name": "climate.annual_mean_temperature",
+                "city_count": 100,
+                "missing_value_count": 0,
+                "units": [
+                  "degC"
+                ],
+                "periods": [
+                  "1991-2020"
+                ],
+                "source_datasets": [
+                  "JMA normal_surface"
+                ]
+              },
+              {
+                "feature_name": "climate.annual_precipitation",
+                "city_count": 100,
+                "missing_value_count": 0,
+                "units": [
+                  "mm"
+                ],
+                "periods": [
+                  "1991-2020"
+                ],
+                "source_datasets": [
+                  "JMA normal_surface"
+                ]
+              },
+              {
+                "feature_name": "climate.annual_snowfall",
+                "city_count": 100,
+                "missing_value_count": 0,
+                "units": [
+                  "cm"
+                ],
+                "periods": [
+                  "1991-2020"
+                ],
+                "source_datasets": [
+                  "JMA normal_surface"
+                ]
+              },
+              {
+                "feature_name": "climate.annual_sunshine_hours",
+                "city_count": 100,
+                "missing_value_count": 0,
+                "units": [
+                  "hours"
+                ],
+                "periods": [
+                  "1991-2020"
+                ],
+                "source_datasets": [
+                  "JMA normal_surface"
+                ]
+              },
+              {
+                "feature_name": "climate.august_mean_temperature",
+                "city_count": 100,
+                "missing_value_count": 0,
+                "units": [
+                  "degC"
+                ],
+                "periods": [
+                  "1991-2020"
+                ],
+                "source_datasets": [
+                  "JMA normal_surface"
+                ]
+              },
+              {
+                "feature_name": "climate.january_mean_temperature",
+                "city_count": 100,
+                "missing_value_count": 0,
+                "units": [
+                  "degC"
+                ],
+                "periods": [
+                  "1991-2020"
+                ],
+                "source_datasets": [
+                  "JMA normal_surface"
+                ]
+              }
+            ]
+          },
+          "weather_station_access": {
+            "city_count": 100,
+            "missing_distance_count": 0,
+            "median_km": 4.639202001965005,
+            "p95_km": 32.11084997911823,
+            "max_km": 51.79081908255427,
+            "periods": [
+              "1991-2020"
+            ],
+            "source_datasets": [
+              "JMA 2020 normals, surface station"
+            ]
+          },
+          "shinkansen_access": {
+            "city_count": 100,
+            "missing_distance_count": 0,
+            "median_km": 13.106771023711355,
+            "p95_km": 156.1795584627074,
+            "max_km": 658.9749255568479,
+            "nearest_station_unique_count": 50,
+            "source_station_catalog_count": 92,
+            "station_in_municipality_status": [
+              "not_spatially_joined"
+            ],
+            "source_datasets": [
+              "MLIT National Land Numerical Information N02-20"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "queries": [
+    {
+      "id": "P3-1",
+      "query": "福岡市に似ていて住居費が比較的安い都市は？",
+      "name": "P3-1",
+      "status": "pass",
+      "evidence": {
+        "top_city": "仙台市",
+        "missing_conditions": [
+          "housing_cost",
+          "rent"
+        ]
+      }
+    },
+    {
+      "id": "P3-2",
+      "query": "福岡市に似ていて冬が比較的暖かい都市は？",
+      "name": "P3-2",
+      "status": "pass",
+      "evidence": {
+        "top_city": "鹿児島市",
+        "criterion_count": 1
+      }
+    },
+    {
+      "id": "P3-3",
+      "query": "空港と新幹線の両方へのアクセスが良い都市は？",
+      "name": "P3-3",
+      "status": "pass",
+      "evidence": {
+        "top_city": "東京都区部",
+        "criterion_count": 2
+      }
+    },
+    {
+      "id": "P3-4",
+      "query": "人口規模を抑えつつ、広域交通が便利な都市は？",
+      "name": "P3-4",
+      "status": "pass",
+      "evidence": {
+        "top_city": "川口市",
+        "population_max": 1000000
+      }
+    },
+    {
+      "id": "P3-5",
+      "query": "中国・四国で冬が比較的暖かく、都市機能もある都市は？",
+      "name": "P3-5",
+      "status": "pass",
+      "evidence": {
+        "top_city": "徳島市",
+        "region": "中国・四国"
+      }
+    },
+    {
+      "id": "P3-6",
+      "query": "九州以外で福岡市に似ていて住居費を抑えやすい都市は？",
+      "name": "P3-6",
+      "status": "pass",
+      "evidence": {
+        "top_city": "仙台市",
+        "excluded_region": "九州"
+      }
+    }
+  ],
+  "failed_count": 0,
+  "llm_mode": true,
+  "housing_status": "not_adopted_coverage_unverified",
+  "disaster_status": "feasibility_deferred",
+  "nature_status": "feasibility_deferred"
+}

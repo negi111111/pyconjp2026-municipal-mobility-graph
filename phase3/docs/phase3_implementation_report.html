@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 3 実装報告書｜気候・新幹線データ拡張</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      --ink: #1f2933; --navy: #102a43; --blue: #0b69a3; --line: #d9e2ec;
+      --muted: #52606d; --green: #0b6b3a; --green-bg: #d9f2e6; --yellow-bg: #fff4cc;
+      --purple: #6546a5; --purple-bg: #f0ebff;
+    }
+    * { box-sizing: border-box; }
+    body { background: #eef2f6; color: var(--ink); line-height: 1.7; margin: 0; }
+    main { margin: 0 auto; max-width: 1220px; padding: 1.5rem 1rem 4rem; }
+    header, .slide { background: #fff; border: 1px solid var(--line); border-radius: 14px; margin: 1rem 0; padding: 1.5rem; }
+    header { background: linear-gradient(135deg, #102a43 0%, #6546a5 100%); color: #fff; }
+    header h1, header p { color: #fff; }
+    h1, h2, h3 { color: var(--navy); line-height: 1.35; margin-top: 0; }
+    h1 { font-size: clamp(1.8rem, 4vw, 3.2rem); }
+    h2 { border-bottom: 2px solid var(--line); padding-bottom: .55rem; }
+    h2 .slide-no { color: var(--blue); font-size: .8rem; letter-spacing: .08em; margin-right: .7rem; }
+    .kicker { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .lead { border-left: 5px solid #7b61ff; color: #243b53; font-size: 1.08rem; margin: .8rem 0 1.2rem; padding: .55rem .9rem; }
+    header .lead { border-left-color: #d8caff; color: #fff; }
+    .lead-label { font-size: .75rem; font-weight: 700; letter-spacing: .08em; }
+    .muted { color: var(--muted); }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+    .metric { background: #f6f9fc; border: 1px solid var(--line); border-radius: 10px; padding: .9rem; }
+    .metric strong { color: var(--purple); display: block; font-size: 1.6rem; line-height: 1.2; }
+    .metric span { color: var(--muted); font-size: .9rem; }
+    .status { background: var(--green-bg); border-radius: 999px; color: var(--green); display: inline-block; font-size: .8rem; font-weight: 700; padding: .1rem .55rem; }
+    .blocked { background: var(--yellow-bg); border-radius: 999px; color: #6b4e00; display: inline-block; font-size: .8rem; font-weight: 700; padding: .1rem .55rem; }
+    table { border-collapse: collapse; margin: .7rem 0; width: 100%; }
+    th, td { border-bottom: 1px solid var(--line); padding: .6rem; text-align: left; vertical-align: top; }
+    th { background: #f0f4f8; color: #243b53; }
+    code { background: #f0f4f8; border-radius: 4px; padding: .1rem .3rem; }
+    a { color: var(--blue); }
+    .svg-wrap { background: #f8fbfe; border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; padding: .7rem; }
+    svg { display: block; min-width: 680px; width: 100%; }
+    .source { fill: var(--yellow-bg); stroke: #e0b400; stroke-width: 2; }
+    .adopted { fill: #e8f7ef; stroke: #28a36a; stroke-width: 2; }
+    .query { fill: #e7f3fb; stroke: #2f80ed; stroke-width: 2; }
+    .boundary { fill: var(--purple-bg); stroke: #7b61ff; stroke-width: 2; }
+    .arrow { fill: none; marker-end: url(#arrow); stroke: #52606d; stroke-width: 2.5; }
+    .two-col { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); }
+    .callout { background: #f6f9fc; border-left: 4px solid #7b61ff; padding: .7rem 1rem; }
+    footer { color: var(--muted); font-size: .85rem; padding: .5rem; text-align: center; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="kicker">Mobility Knowledge Graph / Phase 3</p>
+    <h1>スライドタイトル：100都市へ生活環境の証拠を追加する</h1>
+    <p class="lead"><span class="lead-label">リード｜</span>Phase 2の全国分析・100都市検索を維持し、気候と新幹線アクセスを来歴付きFeature Storeとして追加し、未確認条件は推測せず境界化した。</p>
+    <p>対象：承認済み全国100都市　／　状態：<span class="status">実装・受入完了</span></p>
+    <p class="muted">住居費・災害・自然は採用ゲート未達のためランキングへ追加していない。</p>
+  </header>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 01</span>追加データの採用判断</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>100都市を同一定義で覆えること、出典とライセンスを固定できること、欠損を推測で埋めないことを採用ゲートにした。</p>
+    <table>
+      <thead><tr><th>候補</th><th>採否</th><th>採用・保留の理由</th><th>定義</th></tr></thead>
+      <tbody>
+        <tr><td>JMA normal_surface</td><td><span class="status">ADOPTED</span></td><td>100/100都市、アーカイブSHA-256検証</td><td>1991-2020平年値・最近傍観測所</td></tr>
+        <tr><td>MLIT N02-20</td><td><span class="status">ADOPTED</span></td><td>100/100都市、92駅、版固定</td><td>最近傍新幹線駅までの直線距離</td></tr>
+        <tr><td>住宅・土地統計</td><td><span class="blocked">NOT ADOPTED</span></td><td>同一定義・非欠損の100都市coverage未確認</td><td>住居費ランキングは作らない</td></tr>
+        <tr><td>災害・自然</td><td><span class="blocked">DEFERRED</span></td><td>都市全体の集約方法を未確定</td><td>市役所一点値を都市全体へ拡張しない</td></tr>
+      </tbody>
+    </table>
+    <p><a href="phase3_data_sources.md">データソース調査</a> ／ <a href="../data/provenance/phase3_sources.yml">出典・ライセンス・変換定義</a></p>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 02</span>Phase 3 Feature Storeの流れ</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>都市の代表点を共通入力とし、JMA観測所と新幹線駅へ最近傍対応付けし、単位・期間・取得情報を1行ごとに保存した。</p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 1080 245" role="img" aria-label="Phase 3のFeature Store生成フロー">
+        <defs><marker id="arrow" markerHeight="8" markerWidth="8" orient="auto" refX="8" refY="4"><path d="M0,0 L8,4 L0,8 z" fill="#52606d"/></marker></defs>
+        <rect class="source" x="25" y="68" width="200" height="88" rx="13"/><text x="125" y="105" fill="#102a43" font-size="21" text-anchor="middle">100都市</text><text x="125" y="134" fill="#52606d" font-size="15" text-anchor="middle">P05代表点</text>
+        <rect class="adopted" x="310" y="28" width="235" height="80" rx="13"/><text x="427" y="62" fill="#102a43" font-size="20" text-anchor="middle">JMA station</text><text x="427" y="90" fill="#52606d" font-size="15" text-anchor="middle">気候6特徴量</text>
+        <rect class="adopted" x="310" y="140" width="235" height="80" rx="13"/><text x="427" y="174" fill="#102a43" font-size="20" text-anchor="middle">MLIT N02-20</text><text x="427" y="202" fill="#52606d" font-size="15" text-anchor="middle">新幹線距離1特徴量</text>
+        <rect class="query" x="690" y="68" width="350" height="88" rx="13"/><text x="865" y="105" fill="#102a43" font-size="21" text-anchor="middle">environmental_metrics</text><text x="865" y="134" fill="#52606d" font-size="15" text-anchor="middle">700 rows / provenance付き</text>
+        <path class="arrow" d="M230 112 C255 80 275 70 305 68"/><path class="arrow" d="M230 112 C255 165 275 180 305 180"/><path class="arrow" d="M550 68 C610 68 625 100 685 100"/><path class="arrow" d="M550 180 C610 180 625 124 685 124"/>
+      </svg>
+    </div>
+    <div class="grid">
+      <div class="metric"><strong>700</strong><span>100都市 × 7特徴量</span></div>
+      <div class="metric"><strong>100 / 100</strong><span>気候・新幹線 coverage</span></div>
+      <div class="metric"><strong>92駅</strong><span>N02-20から抽出した新幹線駅</span></div>
+      <div class="metric"><strong>0補完</strong><span>平均値・LLMによる欠損補完なし</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 03</span>Feature Storeの列契約</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>値だけでなく、何をいつどこから取得し、どの単位と変換で作ったかを保持し、回答の数字を監査可能にした。</p>
+    <table>
+      <thead><tr><th>列グループ</th><th>例</th><th>役割</th></tr></thead>
+      <tbody>
+        <tr><td>識別</td><td><code>municipality_id</code> / <code>feature_name</code> / <code>category</code></td><td>都市×特徴量の一意なgrain</td></tr>
+        <tr><td>値と単位</td><td><code>value</code> / <code>unit</code></td><td>degC、mm、hours、cm、km</td></tr>
+        <tr><td>時点</td><td><code>year</code> / <code>period</code></td><td>1991-2020平年値、N02-20 (2020)</td></tr>
+        <tr><td>来歴</td><td><code>source_dataset</code> / <code>source_url</code> / <code>retrieved_at</code></td><td>出典版と取得記録</td></tr>
+        <tr><td>利用条件</td><td><code>license</code> / <code>redistribution</code></td><td>再配布時の条件を保持</td></tr>
+        <tr><td>変換・欠損</td><td><code>geographic_granularity</code> / <code>direction</code> / <code>normalization</code> / <code>missing_reason</code></td><td>最近傍・直線距離・方向性・未観測理由</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <thead><tr><th>Access統計</th><th>中央値</th><th>p95</th><th>最大</th></tr></thead>
+      <tbody>
+        <tr><td>JMA観測所までの距離</td><td>4.64 km</td><td>32.11 km</td><td>51.79 km</td></tr>
+        <tr><td>新幹線駅までの距離</td><td>13.11 km</td><td>156.18 km</td><td>658.97 km</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">気候6特徴量は100都市・欠損0。新幹線のsource station catalogは92駅、100都市が実際に最近傍として参照する駅は50駅。</p>
+    <div class="callout"><strong>重要な限定：</strong>新幹線駅の自治体ポリゴン所属は未判定。<code>station_in_municipality_status=not_spatially_joined</code>を保持し、「駅が市内」とは断定しない。</div>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 04</span>Phase 3 Queryの組み合わせ</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>環境条件は既存の類似度・空港・人流と独立に適用し、各条件の基準値と単位をEvidenceへ残して複合検索の説明責任を確保した。</p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 1080 250" role="img" aria-label="Phase 3の複合条件Query">
+        <defs><marker id="arrow2" markerHeight="8" markerWidth="8" orient="auto" refX="8" refY="4"><path d="M0,0 L8,4 L0,8 z" fill="#52606d"/></marker></defs>
+        <rect class="query" x="25" y="78" width="230" height="90" rx="13"/><text x="140" y="115" fill="#102a43" font-size="21" text-anchor="middle">自然言語Query</text><text x="140" y="145" fill="#52606d" font-size="15" text-anchor="middle">都市 / 地域 / 条件</text>
+        <rect class="boundary" x="350" y="28" width="250" height="72" rx="13"/><text x="475" y="60" fill="#102a43" font-size="19" text-anchor="middle">climate</text><text x="475" y="84" fill="#52606d" font-size="14" text-anchor="middle">1月気温 / 降雪</text>
+        <rect class="boundary" x="350" y="125" width="250" height="72" rx="13"/><text x="475" y="157" fill="#102a43" font-size="19" text-anchor="middle">shinkansen_access</text><text x="475" y="181" fill="#52606d" font-size="14" text-anchor="middle">最近傍駅 km</text>
+        <rect class="adopted" x="730" y="78" width="320" height="90" rx="13"/><text x="890" y="115" fill="#102a43" font-size="21" text-anchor="middle">Structured Evidence</text><text x="890" y="145" fill="#52606d" font-size="15" text-anchor="middle">rule / threshold / unit / ranking</text>
+        <path class="arrow" d="M260 123 H345"/><path class="arrow" d="M605 64 C660 64 675 105 725 105"/><path class="arrow" d="M605 161 C660 161 675 140 725 140"/>
+        <text x="305" y="108" fill="#52606d" font-size="14" text-anchor="middle">Planner</text>
+      </svg>
+    </div>
+    <table>
+      <thead><tr><th>参照都市</th><th>基準の決め方</th><th>例</th></tr></thead>
+      <tbody>
+        <tr><td>あり</td><td>対象都市の値</td><td>福岡市に似ていて冬が暖かい → 福岡市の1月平均気温以上</td></tr>
+        <tr><td>なし</td><td>検索集合の中央値</td><td>空港と新幹線の両方 → 各距離がSearch Universe中央値以下</td></tr>
+        <tr><td>未収録</td><td>ランキングから分離</td><td>住居費 → 類似度は返すがrentをHard Factsへ入れない</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 05</span>Acceptance 6問とLLM経路</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>気候・新幹線・地域・未収録条件を含む6問をオフラインとAzure OpenAI経路で実行し、同じHard Factsを確認した。</p>
+    <table>
+      <thead><tr><th>ID</th><th>質問</th><th>確認ポイント</th><th>結果</th></tr></thead>
+      <tbody>
+        <tr><td>P3-1</td><td>福岡市に似ていて住居費が比較的安い？</td><td>rentをpartial / missingへ分離</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P3-2</td><td>福岡市に似ていて冬が比較的暖かい？</td><td>JMA 1月平均気温＋類似度</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P3-3</td><td>空港と新幹線の両方が便利？</td><td>空港距離＋新幹線距離、参照都市なし</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P3-4</td><td>人口を抑えつつ広域交通が便利？</td><td>人口上限＋新幹線＋weighted degree</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P3-5</td><td>中国・四国で冬が暖かく都市機能もある？</td><td>複合地域フィルタ＋気候＋人流代理指標</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P3-6</td><td>九州以外で住居費を抑えやすい？</td><td>九州除外＋類似度、rent未収録</td><td><span class="status">PASS</span></td></tr>
+      </tbody>
+    </table>
+    <p><span class="status">offline 6/6</span>　<span class="status">Azure OpenAI 6/6</span>　pytest 59 passed　lint PASS</p>
+    <p class="muted">Chat Deploymentは<code>AZURE_OPENAI_CHAT_DEPLOYMENT</code>。通常QueryはPlanner=<code>high</code>/4096、Response=<code>medium</code>/4096、比較考察は<code>xhigh</code>/8192。</p>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 06</span>Phase 1〜3横断監査と性能</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>全Phaseの受入・依存・来歴・性能を横断確認し、全国中心性の事前計算値を再利用する最適化を反映した。</p>
+    <table>
+      <thead><tr><th>Phase</th><th>検索空間</th><th>テスト</th><th>代表ロード</th><th>最大RSS</th></tr></thead>
+      <tbody>
+        <tr><td>Phase 1</td><td>20都市</td><td>46 passed / 7問</td><td>約88 ms</td><td>約129 MB</td></tr>
+        <tr><td>Phase 2</td><td>100都市</td><td>54 passed / 10問</td><td>約3,988 ms</td><td>約672 MB</td></tr>
+        <tr><td>Phase 3</td><td>100都市</td><td>59 passed / 6問</td><td>約4,053 ms</td><td>約680 MB</td></tr>
+      </tbody>
+    </table>
+    <div class="two-col">
+      <div class="callout"><strong>最適化：</strong><code>national_flow_metrics.parquet</code>をロード時に検証し、同一自治体集合ならPageRankをQueryごとに再計算しない。中心性4指標は従来計算と値・順位が一致。</div>
+      <div class="callout"><strong>残る観測：</strong>全国NetworkX Graphの約680MB RSSは現行設計の実測値。次の大規模化ではメモリ閾値を先に定義する。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 07</span>Phase 3の結論と次の判断</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>Phase 3は気候・新幹線を100都市へ導入し、住居費・災害・自然を安全に保留するデータ採用ゲートまで完成させた。</p>
+    <div class="two-col">
+      <div>
+        <h3>完了</h3>
+        <ul><li>Feature Store 700行</li><li>気候 / 新幹線 coverage 100/100</li><li>来歴・ライセンス・SHA-256</li><li>offline / LLM 6/6</li><li>Phase 1〜3横断監査</li></ul>
+      </div>
+      <div>
+        <h3>次に進む条件</h3>
+        <ul><li>住居費：同一定義・非欠損100都市</li><li>災害：都市全体の集約分母</li><li>自然：指標カテゴリと面積集約</li><li>大規模化：RSS閾値と代替Graph設計</li></ul>
+      </div>
+    </div>
+    <p><a href="phase3_acceptance.html">Phase 3 Acceptance HTML</a> ／ <a href="phase3_acceptance_llm.html">LLM Acceptance HTML</a> ／ <a href="cross_phase_audit.html">横断監査報告書</a> ／ <a href="../data/processed/cross_phase_benchmark.json">性能JSON</a> ／ <a href="data_gaps.md">データギャップ</a></p>
+  </section>
+
+  <footer>Phase 3 implementation report / Environmental features are explicit, provenance-bearing additions</footer>
+</main>
+</body>
+</html>

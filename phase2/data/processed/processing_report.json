@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-08-21T11:31:59+00:00",
+  "pipeline": "pipeline/06_prepare_phase2.py",
+  "phase": 2,
+  "search_city_count": 100,
+  "analysis_municipality_count": 1719,
+  "outputs": {
+    "municipalities.parquet": {
+      "rows": 1719,
+      "columns": 174
+    },
+    "commute_edges.parquet": {
+      "rows": 159301,
+      "columns": 17
+    },
+    "study_edges.parquet": {
+      "rows": 71654,
+      "columns": 17
+    },
+    "flow_edges.parquet": {
+      "rows": 177274,
+      "columns": 17
+    },
+    "airports.parquet": {
+      "rows": 87,
+      "columns": 12
+    },
+    "airport_access.parquet": {
+      "rows": 100,
+      "columns": 11
+    }
+  },
+  "national_flow_metrics": {
+    "rows": 1719,
+    "columns": 12
+  },
+  "quality_report": "data/processed/quality_report.json",
+  "analysis_snapshot": "data/processed/phase2_analysis.json",
+  "wikipedia_used": false,
+  "graphrag_used": false,
+  "llm_generated_facts": false,
+  "performance_benchmark_status": "deferred",
+  "source_selection_report": "docs/city_selection.md"
+}

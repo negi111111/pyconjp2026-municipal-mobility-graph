@@ -1,0 +1,4790 @@
+{
+  "generated_at": "2026-08-21T10:57:54+00:00",
+  "strongest_flow_from_hiroshima": {
+    "analysis": "bidirectional_flow",
+    "target": {
+      "municipality_id": "R34100",
+      "name": "広島市",
+      "prefecture": "広島県"
+    },
+    "parameters": {
+      "relations": [
+        "COMMUTES_TO",
+        "STUDIES_IN"
+      ],
+      "year": null,
+      "top_n": 1
+    },
+    "formula": "flow(A,B) = sum(A->B) + sum(B->A)",
+    "candidate_count": 19,
+    "ranking": [
+      {
+        "municipality_id": "R34213",
+        "name": "廿日市市",
+        "prefecture": "広島県",
+        "forward_flow": 13331.0,
+        "reverse_flow": 20804.0,
+        "bidirectional_flow": 34135.0,
+        "by_relation": {
+          "COMMUTES_TO": {
+            "forward": 11916.0,
+            "reverse": 18349.0,
+            "bidirectional": 30265.0
+          },
+          "STUDIES_IN": {
+            "forward": 1415.0,
+            "reverse": 2455.0,
+            "bidirectional": 3870.0
+          }
+        },
+        "rank": 1
+      }
+    ],
+    "strongest": {
+      "municipality_id": "R34213",
+      "name": "廿日市市",
+      "prefecture": "広島県",
+      "forward_flow": 13331.0,
+      "reverse_flow": 20804.0,
+      "bidirectional_flow": 34135.0,
+      "by_relation": {
+        "COMMUTES_TO": {
+          "forward": 11916.0,
+          "reverse": 18349.0,
+          "bidirectional": 30265.0
+        },
+        "STUDIES_IN": {
+          "forward": 1415.0,
+          "reverse": 2455.0,
+          "bidirectional": 3870.0
+        }
+      },
+      "rank": 1
+    }
+  },
+  "flow_hubs": {
+    "analysis": "flow_centrality",
+    "parameters": {
+      "relations": [
+        "COMMUTES_TO",
+        "STUDIES_IN"
+      ],
+      "year": null,
+      "include_betweenness": false,
+      "pagerank_damping": 0.85,
+      "pagerank_tolerance": 1e-12,
+      "pagerank_max_iterations": 1000
+    },
+    "edge_scope": "COMMUTES_TO/STUDIES_IN only",
+    "node_count": 20,
+    "flow_edge_count": 351,
+    "pagerank_iterations": 81,
+    "cities": [
+      {
+        "municipality_id": "R32201",
+        "name": "松江市",
+        "prefecture": "島根県",
+        "metrics": {
+          "weighted_in_degree": 374.0,
+          "weighted_out_degree": 334.0,
+          "weighted_degree": 708.0,
+          "weighted_pagerank": 0.011160221411525742
+        },
+        "ranks": {
+          "weighted_in_degree": 19,
+          "weighted_out_degree": 19,
+          "weighted_degree": 19,
+          "weighted_pagerank": 19
+        }
+      },
+      {
+        "municipality_id": "R32202",
+        "name": "浜田市",
+        "prefecture": "島根県",
+        "metrics": {
+          "weighted_in_degree": 281.0,
+          "weighted_out_degree": 158.0,
+          "weighted_degree": 439.0,
+          "weighted_pagerank": 0.010423420017359733
+        },
+        "ranks": {
+          "weighted_in_degree": 20,
+          "weighted_out_degree": 20,
+          "weighted_degree": 20,
+          "weighted_pagerank": 20
+        }
+      },
+      {
+        "municipality_id": "R33100",
+        "name": "岡山市",
+        "prefecture": "岡山県",
+        "metrics": {
+          "weighted_in_degree": 30706.0,
+          "weighted_out_degree": 21762.0,
+          "weighted_degree": 52468.0,
+          "weighted_pagerank": 0.09990229616357255
+        },
+        "ranks": {
+          "weighted_in_degree": 2,
+          "weighted_out_degree": 4,
+          "weighted_degree": 2,
+          "weighted_pagerank": 2
+        }
+      },
+      {
+        "municipality_id": "R33202",
+        "name": "倉敷市",
+        "prefecture": "岡山県",
+        "metrics": {
+          "weighted_in_degree": 22463.0,
+          "weighted_out_degree": 29978.0,
+          "weighted_degree": 52441.0,
+          "weighted_pagerank": 0.09517005428373539
+        },
+        "ranks": {
+          "weighted_in_degree": 3,
+          "weighted_out_degree": 2,
+          "weighted_degree": 3,
+          "weighted_pagerank": 3
+        }
+      },
+      {
+        "municipality_id": "R33205",
+        "name": "笠岡市",
+        "prefecture": "岡山県",
+        "metrics": {
+          "weighted_in_degree": 5252.0,
+          "weighted_out_degree": 6514.0,
+          "weighted_degree": 11766.0,
+          "weighted_pagerank": 0.024707891965743023
+        },
+        "ranks": {
+          "weighted_in_degree": 11,
+          "weighted_out_degree": 11,
+          "weighted_degree": 10,
+          "weighted_pagerank": 15
+        }
+      },
+      {
+        "municipality_id": "R34100",
+        "name": "広島市",
+        "prefecture": "広島県",
+        "metrics": {
+          "weighted_in_degree": 49102.0,
+          "weighted_out_degree": 37523.0,
+          "weighted_degree": 86625.0,
+          "weighted_pagerank": 0.1856637352498446
+        },
+        "ranks": {
+          "weighted_in_degree": 1,
+          "weighted_out_degree": 1,
+          "weighted_degree": 1,
+          "weighted_pagerank": 1
+        }
+      },
+      {
+        "municipality_id": "R34202",
+        "name": "呉市",
+        "prefecture": "広島県",
+        "metrics": {
+          "weighted_in_degree": 11013.0,
+          "weighted_out_degree": 14302.0,
+          "weighted_degree": 25315.0,
+          "weighted_pagerank": 0.051880606258748095
+        },
+        "ranks": {
+          "weighted_in_degree": 8,
+          "weighted_out_degree": 7,
+          "weighted_degree": 7,
+          "weighted_pagerank": 8
+        }
+      },
+      {
+        "municipality_id": "R34204",
+        "name": "三原市",
+        "prefecture": "広島県",
+        "metrics": {
+          "weighted_in_degree": 7604.0,
+          "weighted_out_degree": 8007.0,
+          "weighted_degree": 15611.0,
+          "weighted_pagerank": 0.0360279091666657
+        },
+        "ranks": {
+          "weighted_in_degree": 9,
+          "weighted_out_degree": 9,
+          "weighted_degree": 9,
+          "weighted_pagerank": 9
+        }
+      },
+      {
+        "municipality_id": "R34205",
+        "name": "尾道市",
+        "prefecture": "広島県",
+        "metrics": {
+          "weighted_in_degree": 12876.0,
+          "weighted_out_degree": 11956.0,
+          "weighted_degree": 24832.0,
+          "weighted_pagerank": 0.05441484202161688
+        },
+        "ranks": {
+          "weighted_in_degree": 7,
+          "weighted_out_degree": 8,
+          "weighted_degree": 8,
+          "weighted_pagerank": 7
+        }
+      },
+      {
+        "municipality_id": "R34207",
+        "name": "福山市",
+        "prefecture": "広島県",
+        "metrics": {
+          "weighted_in_degree": 17622.0,
+          "weighted_out_degree": 18363.0,
+          "weighted_degree": 35985.0,
+          "weighted_pagerank": 0.07273548213967729
+        },
+        "ranks": {
+          "weighted_in_degree": 4,
+          "weighted_out_degree": 5,
+          "weighted_degree": 5,
+          "weighted_pagerank": 6
+        }
+      },
+      {
+        "municipality_id": "R34211",
+        "name": "大竹市",
+        "prefecture": "広島県",
+        "metrics": {
+          "weighted_in_degree": 5882.0,
+          "weighted_out_degree": 4751.0,
+          "weighted_degree": 10633.0,
+          "weighted_pagerank": 0.029036483316835778
+        },
+        "ranks": {
+          "weighted_in_degree": 10,
+          "weighted_out_degree": 12,
+          "weighted_degree": 12,
+          "weighted_pagerank": 13
+        }
+      },
+      {
+        "municipality_id": "R34212",
+        "name": "東広島市",
+        "prefecture": "広島県",
+        "metrics": {
+          "weighted_in_degree": 16895.0,
+          "weighted_out_degree": 17295.0,
+          "weighted_degree": 34190.0,
+          "weighted_pagerank": 0.0740755582853347
+        },
+        "ranks": {
+          "weighted_in_degree": 5,
+          "weighted_out_degree": 6,
+          "weighted_degree": 6,
+          "weighted_pagerank": 5
+        }
+      },
+      {
+        "municipality_id": "R34213",
+        "name": "廿日市市",
+        "prefecture": "広島県",
+        "metrics": {
+          "weighted_in_degree": 15754.0,
+          "weighted_out_degree": 24700.0,
+          "weighted_degree": 40454.0,
+          "weighted_pagerank": 0.07545338041303061
+        },
+        "ranks": {
+          "weighted_in_degree": 6,
+          "weighted_out_degree": 3,
+          "weighted_degree": 4,
+          "weighted_pagerank": 4
+        }
+      },
+      {
+        "municipality_id": "R34214",
+        "name": "安芸高田市",
+        "prefecture": "広島県",
+        "metrics": {
+          "weighted_in_degree": 2792.0,
+          "weighted_out_degree": 1492.0,
+          "weighted_degree": 4284.0,
+          "weighted_pagerank": 0.01921088585608146
+        },
+        "ranks": {
+          "weighted_in_degree": 14,
+          "weighted_out_degree": 17,
+          "weighted_degree": 16,
+          "weighted_pagerank": 17
+        }
+      },
+      {
+        "municipality_id": "R35203",
+        "name": "山口市",
+        "prefecture": "山口県",
+        "metrics": {
+          "weighted_in_degree": 1756.0,
+          "weighted_out_degree": 2108.0,
+          "weighted_degree": 3864.0,
+          "weighted_pagerank": 0.02105351241871965
+        },
+        "ranks": {
+          "weighted_in_degree": 17,
+          "weighted_out_degree": 15,
+          "weighted_degree": 17,
+          "weighted_pagerank": 16
+        }
+      },
+      {
+        "municipality_id": "R35208",
+        "name": "岩国市",
+        "prefecture": "山口県",
+        "metrics": {
+          "weighted_in_degree": 4763.0,
+          "weighted_out_degree": 6657.0,
+          "weighted_degree": 11420.0,
+          "weighted_pagerank": 0.0327975304595622
+        },
+        "ranks": {
+          "weighted_in_degree": 12,
+          "weighted_out_degree": 10,
+          "weighted_degree": 11,
+          "weighted_pagerank": 11
+        }
+      },
+      {
+        "municipality_id": "R35215",
+        "name": "周南市",
+        "prefecture": "山口県",
+        "metrics": {
+          "weighted_in_degree": 2993.0,
+          "weighted_out_degree": 2323.0,
+          "weighted_degree": 5316.0,
+          "weighted_pagerank": 0.026655094625588516
+        },
+        "ranks": {
+          "weighted_in_degree": 13,
+          "weighted_out_degree": 14,
+          "weighted_degree": 13,
+          "weighted_pagerank": 14
+        }
+      },
+      {
+        "municipality_id": "R37201",
+        "name": "高松市",
+        "prefecture": "香川県",
+        "metrics": {
+          "weighted_in_degree": 1276.0,
+          "weighted_out_degree": 1134.0,
+          "weighted_degree": 2410.0,
+          "weighted_pagerank": 0.014330689924299995
+        },
+        "ranks": {
+          "weighted_in_degree": 18,
+          "weighted_out_degree": 18,
+          "weighted_degree": 18,
+          "weighted_pagerank": 18
+        }
+      },
+      {
+        "municipality_id": "R38201",
+        "name": "松山市",
+        "prefecture": "愛媛県",
+        "metrics": {
+          "weighted_in_degree": 2290.0,
+          "weighted_out_degree": 2659.0,
+          "weighted_degree": 4949.0,
+          "weighted_pagerank": 0.03402286366982758
+        },
+        "ranks": {
+          "weighted_in_degree": 16,
+          "weighted_out_degree": 13,
+          "weighted_degree": 14,
+          "weighted_pagerank": 10
+        }
+      },
+      {
+        "municipality_id": "R38202",
+        "name": "今治市",
+        "prefecture": "愛媛県",
+        "metrics": {
+          "weighted_in_degree": 2333.0,
+          "weighted_out_degree": 2011.0,
+          "weighted_degree": 4344.0,
+          "weighted_pagerank": 0.031277542352230805
+        },
+        "ranks": {
+          "weighted_in_degree": 15,
+          "weighted_out_degree": 16,
+          "weighted_degree": 15,
+          "weighted_pagerank": 12
+        }
+      }
+    ],
+    "rankings": {
+      "weighted_in_degree": [
+        {
+          "rank": 1,
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "value": 49102.0
+        },
+        {
+          "rank": 2,
+          "municipality_id": "R33100",
+          "name": "岡山市",
+          "prefecture": "岡山県",
+          "value": 30706.0
+        },
+        {
+          "rank": 3,
+          "municipality_id": "R33202",
+          "name": "倉敷市",
+          "prefecture": "岡山県",
+          "value": 22463.0
+        },
+        {
+          "rank": 4,
+          "municipality_id": "R34207",
+          "name": "福山市",
+          "prefecture": "広島県",
+          "value": 17622.0
+        },
+        {
+          "rank": 5,
+          "municipality_id": "R34212",
+          "name": "東広島市",
+          "prefecture": "広島県",
+          "value": 16895.0
+        },
+        {
+          "rank": 6,
+          "municipality_id": "R34213",
+          "name": "廿日市市",
+          "prefecture": "広島県",
+          "value": 15754.0
+        },
+        {
+          "rank": 7,
+          "municipality_id": "R34205",
+          "name": "尾道市",
+          "prefecture": "広島県",
+          "value": 12876.0
+        },
+        {
+          "rank": 8,
+          "municipality_id": "R34202",
+          "name": "呉市",
+          "prefecture": "広島県",
+          "value": 11013.0
+        },
+        {
+          "rank": 9,
+          "municipality_id": "R34204",
+          "name": "三原市",
+          "prefecture": "広島県",
+          "value": 7604.0
+        },
+        {
+          "rank": 10,
+          "municipality_id": "R34211",
+          "name": "大竹市",
+          "prefecture": "広島県",
+          "value": 5882.0
+        },
+        {
+          "rank": 11,
+          "municipality_id": "R33205",
+          "name": "笠岡市",
+          "prefecture": "岡山県",
+          "value": 5252.0
+        },
+        {
+          "rank": 12,
+          "municipality_id": "R35208",
+          "name": "岩国市",
+          "prefecture": "山口県",
+          "value": 4763.0
+        },
+        {
+          "rank": 13,
+          "municipality_id": "R35215",
+          "name": "周南市",
+          "prefecture": "山口県",
+          "value": 2993.0
+        },
+        {
+          "rank": 14,
+          "municipality_id": "R34214",
+          "name": "安芸高田市",
+          "prefecture": "広島県",
+          "value": 2792.0
+        },
+        {
+          "rank": 15,
+          "municipality_id": "R38202",
+          "name": "今治市",
+          "prefecture": "愛媛県",
+          "value": 2333.0
+        },
+        {
+          "rank": 16,
+          "municipality_id": "R38201",
+          "name": "松山市",
+          "prefecture": "愛媛県",
+          "value": 2290.0
+        },
+        {
+          "rank": 17,
+          "municipality_id": "R35203",
+          "name": "山口市",
+          "prefecture": "山口県",
+          "value": 1756.0
+        },
+        {
+          "rank": 18,
+          "municipality_id": "R37201",
+          "name": "高松市",
+          "prefecture": "香川県",
+          "value": 1276.0
+        },
+        {
+          "rank": 19,
+          "municipality_id": "R32201",
+          "name": "松江市",
+          "prefecture": "島根県",
+          "value": 374.0
+        },
+        {
+          "rank": 20,
+          "municipality_id": "R32202",
+          "name": "浜田市",
+          "prefecture": "島根県",
+          "value": 281.0
+        }
+      ],
+      "weighted_out_degree": [
+        {
+          "rank": 1,
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "value": 37523.0
+        },
+        {
+          "rank": 2,
+          "municipality_id": "R33202",
+          "name": "倉敷市",
+          "prefecture": "岡山県",
+          "value": 29978.0
+        },
+        {
+          "rank": 3,
+          "municipality_id": "R34213",
+          "name": "廿日市市",
+          "prefecture": "広島県",
+          "value": 24700.0
+        },
+        {
+          "rank": 4,
+          "municipality_id": "R33100",
+          "name": "岡山市",
+          "prefecture": "岡山県",
+          "value": 21762.0
+        },
+        {
+          "rank": 5,
+          "municipality_id": "R34207",
+          "name": "福山市",
+          "prefecture": "広島県",
+          "value": 18363.0
+        },
+        {
+          "rank": 6,
+          "municipality_id": "R34212",
+          "name": "東広島市",
+          "prefecture": "広島県",
+          "value": 17295.0
+        },
+        {
+          "rank": 7,
+          "municipality_id": "R34202",
+          "name": "呉市",
+          "prefecture": "広島県",
+          "value": 14302.0
+        },
+        {
+          "rank": 8,
+          "municipality_id": "R34205",
+          "name": "尾道市",
+          "prefecture": "広島県",
+          "value": 11956.0
+        },
+        {
+          "rank": 9,
+          "municipality_id": "R34204",
+          "name": "三原市",
+          "prefecture": "広島県",
+          "value": 8007.0
+        },
+        {
+          "rank": 10,
+          "municipality_id": "R35208",
+          "name": "岩国市",
+          "prefecture": "山口県",
+          "value": 6657.0
+        },
+        {
+          "rank": 11,
+          "municipality_id": "R33205",
+          "name": "笠岡市",
+          "prefecture": "岡山県",
+          "value": 6514.0
+        },
+        {
+          "rank": 12,
+          "municipality_id": "R34211",
+          "name": "大竹市",
+          "prefecture": "広島県",
+          "value": 4751.0
+        },
+        {
+          "rank": 13,
+          "municipality_id": "R38201",
+          "name": "松山市",
+          "prefecture": "愛媛県",
+          "value": 2659.0
+        },
+        {
+          "rank": 14,
+          "municipality_id": "R35215",
+          "name": "周南市",
+          "prefecture": "山口県",
+          "value": 2323.0
+        },
+        {
+          "rank": 15,
+          "municipality_id": "R35203",
+          "name": "山口市",
+          "prefecture": "山口県",
+          "value": 2108.0
+        },
+        {
+          "rank": 16,
+          "municipality_id": "R38202",
+          "name": "今治市",
+          "prefecture": "愛媛県",
+          "value": 2011.0
+        },
+        {
+          "rank": 17,
+          "municipality_id": "R34214",
+          "name": "安芸高田市",
+          "prefecture": "広島県",
+          "value": 1492.0
+        },
+        {
+          "rank": 18,
+          "municipality_id": "R37201",
+          "name": "高松市",
+          "prefecture": "香川県",
+          "value": 1134.0
+        },
+        {
+          "rank": 19,
+          "municipality_id": "R32201",
+          "name": "松江市",
+          "prefecture": "島根県",
+          "value": 334.0
+        },
+        {
+          "rank": 20,
+          "municipality_id": "R32202",
+          "name": "浜田市",
+          "prefecture": "島根県",
+          "value": 158.0
+        }
+      ],
+      "weighted_degree": [
+        {
+          "rank": 1,
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "value": 86625.0
+        },
+        {
+          "rank": 2,
+          "municipality_id": "R33100",
+          "name": "岡山市",
+          "prefecture": "岡山県",
+          "value": 52468.0
+        },
+        {
+          "rank": 3,
+          "municipality_id": "R33202",
+          "name": "倉敷市",
+          "prefecture": "岡山県",
+          "value": 52441.0
+        },
+        {
+          "rank": 4,
+          "municipality_id": "R34213",
+          "name": "廿日市市",
+          "prefecture": "広島県",
+          "value": 40454.0
+        },
+        {
+          "rank": 5,
+          "municipality_id": "R34207",
+          "name": "福山市",
+          "prefecture": "広島県",
+          "value": 35985.0
+        },
+        {
+          "rank": 6,
+          "municipality_id": "R34212",
+          "name": "東広島市",
+          "prefecture": "広島県",
+          "value": 34190.0
+        },
+        {
+          "rank": 7,
+          "municipality_id": "R34202",
+          "name": "呉市",
+          "prefecture": "広島県",
+          "value": 25315.0
+        },
+        {
+          "rank": 8,
+          "municipality_id": "R34205",
+          "name": "尾道市",
+          "prefecture": "広島県",
+          "value": 24832.0
+        },
+        {
+          "rank": 9,
+          "municipality_id": "R34204",
+          "name": "三原市",
+          "prefecture": "広島県",
+          "value": 15611.0
+        },
+        {
+          "rank": 10,
+          "municipality_id": "R33205",
+          "name": "笠岡市",
+          "prefecture": "岡山県",
+          "value": 11766.0
+        },
+        {
+          "rank": 11,
+          "municipality_id": "R35208",
+          "name": "岩国市",
+          "prefecture": "山口県",
+          "value": 11420.0
+        },
+        {
+          "rank": 12,
+          "municipality_id": "R34211",
+          "name": "大竹市",
+          "prefecture": "広島県",
+          "value": 10633.0
+        },
+        {
+          "rank": 13,
+          "municipality_id": "R35215",
+          "name": "周南市",
+          "prefecture": "山口県",
+          "value": 5316.0
+        },
+        {
+          "rank": 14,
+          "municipality_id": "R38201",
+          "name": "松山市",
+          "prefecture": "愛媛県",
+          "value": 4949.0
+        },
+        {
+          "rank": 15,
+          "municipality_id": "R38202",
+          "name": "今治市",
+          "prefecture": "愛媛県",
+          "value": 4344.0
+        },
+        {
+          "rank": 16,
+          "municipality_id": "R34214",
+          "name": "安芸高田市",
+          "prefecture": "広島県",
+          "value": 4284.0
+        },
+        {
+          "rank": 17,
+          "municipality_id": "R35203",
+          "name": "山口市",
+          "prefecture": "山口県",
+          "value": 3864.0
+        },
+        {
+          "rank": 18,
+          "municipality_id": "R37201",
+          "name": "高松市",
+          "prefecture": "香川県",
+          "value": 2410.0
+        },
+        {
+          "rank": 19,
+          "municipality_id": "R32201",
+          "name": "松江市",
+          "prefecture": "島根県",
+          "value": 708.0
+        },
+        {
+          "rank": 20,
+          "municipality_id": "R32202",
+          "name": "浜田市",
+          "prefecture": "島根県",
+          "value": 439.0
+        }
+      ],
+      "weighted_pagerank": [
+        {
+          "rank": 1,
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "value": 0.1856637352498446
+        },
+        {
+          "rank": 2,
+          "municipality_id": "R33100",
+          "name": "岡山市",
+          "prefecture": "岡山県",
+          "value": 0.09990229616357255
+        },
+        {
+          "rank": 3,
+          "municipality_id": "R33202",
+          "name": "倉敷市",
+          "prefecture": "岡山県",
+          "value": 0.09517005428373539
+        },
+        {
+          "rank": 4,
+          "municipality_id": "R34213",
+          "name": "廿日市市",
+          "prefecture": "広島県",
+          "value": 0.07545338041303061
+        },
+        {
+          "rank": 5,
+          "municipality_id": "R34212",
+          "name": "東広島市",
+          "prefecture": "広島県",
+          "value": 0.0740755582853347
+        },
+        {
+          "rank": 6,
+          "municipality_id": "R34207",
+          "name": "福山市",
+          "prefecture": "広島県",
+          "value": 0.07273548213967729
+        },
+        {
+          "rank": 7,
+          "municipality_id": "R34205",
+          "name": "尾道市",
+          "prefecture": "広島県",
+          "value": 0.05441484202161688
+        },
+        {
+          "rank": 8,
+          "municipality_id": "R34202",
+          "name": "呉市",
+          "prefecture": "広島県",
+          "value": 0.051880606258748095
+        },
+        {
+          "rank": 9,
+          "municipality_id": "R34204",
+          "name": "三原市",
+          "prefecture": "広島県",
+          "value": 0.0360279091666657
+        },
+        {
+          "rank": 10,
+          "municipality_id": "R38201",
+          "name": "松山市",
+          "prefecture": "愛媛県",
+          "value": 0.03402286366982758
+        },
+        {
+          "rank": 11,
+          "municipality_id": "R35208",
+          "name": "岩国市",
+          "prefecture": "山口県",
+          "value": 0.0327975304595622
+        },
+        {
+          "rank": 12,
+          "municipality_id": "R38202",
+          "name": "今治市",
+          "prefecture": "愛媛県",
+          "value": 0.031277542352230805
+        },
+        {
+          "rank": 13,
+          "municipality_id": "R34211",
+          "name": "大竹市",
+          "prefecture": "広島県",
+          "value": 0.029036483316835778
+        },
+        {
+          "rank": 14,
+          "municipality_id": "R35215",
+          "name": "周南市",
+          "prefecture": "山口県",
+          "value": 0.026655094625588516
+        },
+        {
+          "rank": 15,
+          "municipality_id": "R33205",
+          "name": "笠岡市",
+          "prefecture": "岡山県",
+          "value": 0.024707891965743023
+        },
+        {
+          "rank": 16,
+          "municipality_id": "R35203",
+          "name": "山口市",
+          "prefecture": "山口県",
+          "value": 0.02105351241871965
+        },
+        {
+          "rank": 17,
+          "municipality_id": "R34214",
+          "name": "安芸高田市",
+          "prefecture": "広島県",
+          "value": 0.01921088585608146
+        },
+        {
+          "rank": 18,
+          "municipality_id": "R37201",
+          "name": "高松市",
+          "prefecture": "香川県",
+          "value": 0.014330689924299995
+        },
+        {
+          "rank": 19,
+          "municipality_id": "R32201",
+          "name": "松江市",
+          "prefecture": "島根県",
+          "value": 0.011160221411525742
+        },
+        {
+          "rank": 20,
+          "municipality_id": "R32202",
+          "name": "浜田市",
+          "prefecture": "島根県",
+          "value": 0.010423420017359733
+        }
+      ]
+    }
+  },
+  "flow_communities_total": {
+    "analysis": "flow_communities",
+    "algorithm": "Louvain",
+    "parameters": {
+      "relations": [
+        "COMMUTES_TO",
+        "STUDIES_IN"
+      ],
+      "year": null,
+      "normalization": "total",
+      "resolution": 1.0,
+      "seed": 42
+    },
+    "weight_formula": "w(u,v) = flow(u->v) + flow(v->u)",
+    "modularity": 0.5108386489905427,
+    "community_count": 5,
+    "assignment": {
+      "R32201": "community_001",
+      "R32202": "community_001",
+      "R34100": "community_001",
+      "R34202": "community_001",
+      "R34212": "community_001",
+      "R34213": "community_001",
+      "R34214": "community_001",
+      "R33205": "community_002",
+      "R34204": "community_002",
+      "R34205": "community_002",
+      "R34207": "community_002",
+      "R34211": "community_003",
+      "R35203": "community_003",
+      "R35208": "community_003",
+      "R35215": "community_003",
+      "R33100": "community_004",
+      "R33202": "community_004",
+      "R37201": "community_004",
+      "R38201": "community_005",
+      "R38202": "community_005"
+    },
+    "communities": [
+      {
+        "community_id": "community_001",
+        "size": 7,
+        "municipalities": [
+          {
+            "municipality_id": "R32201",
+            "name": "松江市",
+            "prefecture": "島根県"
+          },
+          {
+            "municipality_id": "R32202",
+            "name": "浜田市",
+            "prefecture": "島根県"
+          },
+          {
+            "municipality_id": "R34100",
+            "name": "広島市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34202",
+            "name": "呉市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34212",
+            "name": "東広島市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34213",
+            "name": "廿日市市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34214",
+            "name": "安芸高田市",
+            "prefecture": "広島県"
+          }
+        ],
+        "prefectures": [
+          "島根県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 82613.0
+      },
+      {
+        "community_id": "community_002",
+        "size": 4,
+        "municipalities": [
+          {
+            "municipality_id": "R33205",
+            "name": "笠岡市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R34204",
+            "name": "三原市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34205",
+            "name": "尾道市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34207",
+            "name": "福山市",
+            "prefecture": "広島県"
+          }
+        ],
+        "prefectures": [
+          "岡山県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 33668.0
+      },
+      {
+        "community_id": "community_003",
+        "size": 4,
+        "municipalities": [
+          {
+            "municipality_id": "R34211",
+            "name": "大竹市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R35203",
+            "name": "山口市",
+            "prefecture": "山口県"
+          },
+          {
+            "municipality_id": "R35208",
+            "name": "岩国市",
+            "prefecture": "山口県"
+          },
+          {
+            "municipality_id": "R35215",
+            "name": "周南市",
+            "prefecture": "山口県"
+          }
+        ],
+        "prefectures": [
+          "山口県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 8895.0
+      },
+      {
+        "community_id": "community_004",
+        "size": 3,
+        "municipalities": [
+          {
+            "municipality_id": "R33100",
+            "name": "岡山市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R33202",
+            "name": "倉敷市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R37201",
+            "name": "高松市",
+            "prefecture": "香川県"
+          }
+        ],
+        "prefectures": [
+          "岡山県",
+          "香川県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 47229.0
+      },
+      {
+        "community_id": "community_005",
+        "size": 2,
+        "municipalities": [
+          {
+            "municipality_id": "R38201",
+            "name": "松山市",
+            "prefecture": "愛媛県"
+          },
+          {
+            "municipality_id": "R38202",
+            "name": "今治市",
+            "prefecture": "愛媛県"
+          }
+        ],
+        "prefectures": [
+          "愛媛県"
+        ],
+        "cross_prefecture": false,
+        "internal_symmetric_weight": 3774.0
+      }
+    ],
+    "cross_prefecture_communities": [
+      {
+        "community_id": "community_001",
+        "size": 7,
+        "municipalities": [
+          {
+            "municipality_id": "R32201",
+            "name": "松江市",
+            "prefecture": "島根県"
+          },
+          {
+            "municipality_id": "R32202",
+            "name": "浜田市",
+            "prefecture": "島根県"
+          },
+          {
+            "municipality_id": "R34100",
+            "name": "広島市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34202",
+            "name": "呉市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34212",
+            "name": "東広島市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34213",
+            "name": "廿日市市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34214",
+            "name": "安芸高田市",
+            "prefecture": "広島県"
+          }
+        ],
+        "prefectures": [
+          "島根県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 82613.0
+      },
+      {
+        "community_id": "community_002",
+        "size": 4,
+        "municipalities": [
+          {
+            "municipality_id": "R33205",
+            "name": "笠岡市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R34204",
+            "name": "三原市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34205",
+            "name": "尾道市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34207",
+            "name": "福山市",
+            "prefecture": "広島県"
+          }
+        ],
+        "prefectures": [
+          "岡山県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 33668.0
+      },
+      {
+        "community_id": "community_003",
+        "size": 4,
+        "municipalities": [
+          {
+            "municipality_id": "R34211",
+            "name": "大竹市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R35203",
+            "name": "山口市",
+            "prefecture": "山口県"
+          },
+          {
+            "municipality_id": "R35208",
+            "name": "岩国市",
+            "prefecture": "山口県"
+          },
+          {
+            "municipality_id": "R35215",
+            "name": "周南市",
+            "prefecture": "山口県"
+          }
+        ],
+        "prefectures": [
+          "山口県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 8895.0
+      },
+      {
+        "community_id": "community_004",
+        "size": 3,
+        "municipalities": [
+          {
+            "municipality_id": "R33100",
+            "name": "岡山市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R33202",
+            "name": "倉敷市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R37201",
+            "name": "高松市",
+            "prefecture": "香川県"
+          }
+        ],
+        "prefectures": [
+          "岡山県",
+          "香川県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 47229.0
+      }
+    ],
+    "cross_prefecture_links": [
+      {
+        "community_id": "community_002",
+        "source": {
+          "municipality_id": "R33205",
+          "name": "笠岡市",
+          "prefecture": "岡山県"
+        },
+        "target": {
+          "municipality_id": "R34207",
+          "name": "福山市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 8020.0,
+        "community_weight": 8020.0
+      },
+      {
+        "community_id": "community_003",
+        "source": {
+          "municipality_id": "R34211",
+          "name": "大竹市",
+          "prefecture": "広島県"
+        },
+        "target": {
+          "municipality_id": "R35208",
+          "name": "岩国市",
+          "prefecture": "山口県"
+        },
+        "bidirectional_total_flow": 4213.0,
+        "community_weight": 4213.0
+      },
+      {
+        "community_id": "community_004",
+        "source": {
+          "municipality_id": "R33100",
+          "name": "岡山市",
+          "prefecture": "岡山県"
+        },
+        "target": {
+          "municipality_id": "R37201",
+          "name": "高松市",
+          "prefecture": "香川県"
+        },
+        "bidirectional_total_flow": 1139.0,
+        "community_weight": 1139.0
+      },
+      {
+        "community_id": "community_004",
+        "source": {
+          "municipality_id": "R33202",
+          "name": "倉敷市",
+          "prefecture": "岡山県"
+        },
+        "target": {
+          "municipality_id": "R37201",
+          "name": "高松市",
+          "prefecture": "香川県"
+        },
+        "bidirectional_total_flow": 528.0,
+        "community_weight": 528.0
+      },
+      {
+        "community_id": "community_001",
+        "source": {
+          "municipality_id": "R32201",
+          "name": "松江市",
+          "prefecture": "島根県"
+        },
+        "target": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 322.0,
+        "community_weight": 322.0
+      },
+      {
+        "community_id": "community_001",
+        "source": {
+          "municipality_id": "R32202",
+          "name": "浜田市",
+          "prefecture": "島根県"
+        },
+        "target": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 185.0,
+        "community_weight": 185.0
+      },
+      {
+        "community_id": "community_002",
+        "source": {
+          "municipality_id": "R33205",
+          "name": "笠岡市",
+          "prefecture": "岡山県"
+        },
+        "target": {
+          "municipality_id": "R34205",
+          "name": "尾道市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 125.0,
+        "community_weight": 125.0
+      },
+      {
+        "community_id": "community_003",
+        "source": {
+          "municipality_id": "R34211",
+          "name": "大竹市",
+          "prefecture": "広島県"
+        },
+        "target": {
+          "municipality_id": "R35215",
+          "name": "周南市",
+          "prefecture": "山口県"
+        },
+        "bidirectional_total_flow": 60.0,
+        "community_weight": 60.0
+      },
+      {
+        "community_id": "community_002",
+        "source": {
+          "municipality_id": "R33205",
+          "name": "笠岡市",
+          "prefecture": "岡山県"
+        },
+        "target": {
+          "municipality_id": "R34204",
+          "name": "三原市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 32.0,
+        "community_weight": 32.0
+      },
+      {
+        "community_id": "community_001",
+        "source": {
+          "municipality_id": "R32201",
+          "name": "松江市",
+          "prefecture": "島根県"
+        },
+        "target": {
+          "municipality_id": "R34202",
+          "name": "呉市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 22.0,
+        "community_weight": 22.0
+      }
+    ]
+  },
+  "flow_communities_share": {
+    "analysis": "flow_communities",
+    "algorithm": "Louvain",
+    "parameters": {
+      "relations": [
+        "COMMUTES_TO",
+        "STUDIES_IN"
+      ],
+      "year": null,
+      "normalization": "flow_share",
+      "resolution": 1.0,
+      "seed": 42
+    },
+    "weight_formula": "w(u,v) = flow(u->v)/outflow(u) + flow(v->u)/outflow(v)",
+    "modularity": 0.5318963546339932,
+    "community_count": 5,
+    "assignment": {
+      "R32201": "community_001",
+      "R32202": "community_001",
+      "R34100": "community_001",
+      "R34202": "community_001",
+      "R34212": "community_001",
+      "R34213": "community_001",
+      "R34214": "community_001",
+      "R33205": "community_002",
+      "R34204": "community_002",
+      "R34205": "community_002",
+      "R34207": "community_002",
+      "R34211": "community_003",
+      "R35203": "community_003",
+      "R35208": "community_003",
+      "R35215": "community_003",
+      "R33100": "community_004",
+      "R33202": "community_004",
+      "R37201": "community_004",
+      "R38201": "community_005",
+      "R38202": "community_005"
+    },
+    "communities": [
+      {
+        "community_id": "community_001",
+        "size": 7,
+        "municipalities": [
+          {
+            "municipality_id": "R32201",
+            "name": "松江市",
+            "prefecture": "島根県"
+          },
+          {
+            "municipality_id": "R32202",
+            "name": "浜田市",
+            "prefecture": "島根県"
+          },
+          {
+            "municipality_id": "R34100",
+            "name": "広島市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34202",
+            "name": "呉市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34212",
+            "name": "東広島市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34213",
+            "name": "廿日市市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34214",
+            "name": "安芸高田市",
+            "prefecture": "広島県"
+          }
+        ],
+        "prefectures": [
+          "島根県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 6.000651386671104
+      },
+      {
+        "community_id": "community_002",
+        "size": 4,
+        "municipalities": [
+          {
+            "municipality_id": "R33205",
+            "name": "笠岡市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R34204",
+            "name": "三原市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34205",
+            "name": "尾道市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34207",
+            "name": "福山市",
+            "prefecture": "広島県"
+          }
+        ],
+        "prefectures": [
+          "岡山県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 2.944594029520377
+      },
+      {
+        "community_id": "community_003",
+        "size": 4,
+        "municipalities": [
+          {
+            "municipality_id": "R34211",
+            "name": "大竹市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R35203",
+            "name": "山口市",
+            "prefecture": "山口県"
+          },
+          {
+            "municipality_id": "R35208",
+            "name": "岩国市",
+            "prefecture": "山口県"
+          },
+          {
+            "municipality_id": "R35215",
+            "name": "周南市",
+            "prefecture": "山口県"
+          }
+        ],
+        "prefectures": [
+          "山口県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 2.4859739620708186
+      },
+      {
+        "community_id": "community_004",
+        "size": 3,
+        "municipalities": [
+          {
+            "municipality_id": "R33100",
+            "name": "岡山市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R33202",
+            "name": "倉敷市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R37201",
+            "name": "高松市",
+            "prefecture": "香川県"
+          }
+        ],
+        "prefectures": [
+          "岡山県",
+          "香川県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 2.4875257519924543
+      },
+      {
+        "community_id": "community_005",
+        "size": 2,
+        "municipalities": [
+          {
+            "municipality_id": "R38201",
+            "name": "松山市",
+            "prefecture": "愛媛県"
+          },
+          {
+            "municipality_id": "R38202",
+            "name": "今治市",
+            "prefecture": "愛媛県"
+          }
+        ],
+        "prefectures": [
+          "愛媛県"
+        ],
+        "cross_prefecture": false,
+        "internal_symmetric_weight": 1.6263125206998963
+      }
+    ],
+    "cross_prefecture_communities": [
+      {
+        "community_id": "community_001",
+        "size": 7,
+        "municipalities": [
+          {
+            "municipality_id": "R32201",
+            "name": "松江市",
+            "prefecture": "島根県"
+          },
+          {
+            "municipality_id": "R32202",
+            "name": "浜田市",
+            "prefecture": "島根県"
+          },
+          {
+            "municipality_id": "R34100",
+            "name": "広島市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34202",
+            "name": "呉市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34212",
+            "name": "東広島市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34213",
+            "name": "廿日市市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34214",
+            "name": "安芸高田市",
+            "prefecture": "広島県"
+          }
+        ],
+        "prefectures": [
+          "島根県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 6.000651386671104
+      },
+      {
+        "community_id": "community_002",
+        "size": 4,
+        "municipalities": [
+          {
+            "municipality_id": "R33205",
+            "name": "笠岡市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R34204",
+            "name": "三原市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34205",
+            "name": "尾道市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R34207",
+            "name": "福山市",
+            "prefecture": "広島県"
+          }
+        ],
+        "prefectures": [
+          "岡山県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 2.944594029520377
+      },
+      {
+        "community_id": "community_003",
+        "size": 4,
+        "municipalities": [
+          {
+            "municipality_id": "R34211",
+            "name": "大竹市",
+            "prefecture": "広島県"
+          },
+          {
+            "municipality_id": "R35203",
+            "name": "山口市",
+            "prefecture": "山口県"
+          },
+          {
+            "municipality_id": "R35208",
+            "name": "岩国市",
+            "prefecture": "山口県"
+          },
+          {
+            "municipality_id": "R35215",
+            "name": "周南市",
+            "prefecture": "山口県"
+          }
+        ],
+        "prefectures": [
+          "山口県",
+          "広島県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 2.4859739620708186
+      },
+      {
+        "community_id": "community_004",
+        "size": 3,
+        "municipalities": [
+          {
+            "municipality_id": "R33100",
+            "name": "岡山市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R33202",
+            "name": "倉敷市",
+            "prefecture": "岡山県"
+          },
+          {
+            "municipality_id": "R37201",
+            "name": "高松市",
+            "prefecture": "香川県"
+          }
+        ],
+        "prefectures": [
+          "岡山県",
+          "香川県"
+        ],
+        "cross_prefecture": true,
+        "internal_symmetric_weight": 2.4875257519924543
+      }
+    ],
+    "cross_prefecture_links": [
+      {
+        "community_id": "community_002",
+        "source": {
+          "municipality_id": "R33205",
+          "name": "笠岡市",
+          "prefecture": "岡山県"
+        },
+        "target": {
+          "municipality_id": "R34207",
+          "name": "福山市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 8020.0,
+        "community_weight": 0.8602214950432207
+      },
+      {
+        "community_id": "community_003",
+        "source": {
+          "municipality_id": "R34211",
+          "name": "大竹市",
+          "prefecture": "広島県"
+        },
+        "target": {
+          "municipality_id": "R35208",
+          "name": "岩国市",
+          "prefecture": "山口県"
+        },
+        "bidirectional_total_flow": 4213.0,
+        "community_weight": 0.7352565134410165
+      },
+      {
+        "community_id": "community_004",
+        "source": {
+          "municipality_id": "R33100",
+          "name": "岡山市",
+          "prefecture": "岡山県"
+        },
+        "target": {
+          "municipality_id": "R37201",
+          "name": "高松市",
+          "prefecture": "香川県"
+        },
+        "bidirectional_total_flow": 1139.0,
+        "community_weight": 0.5664067115680019
+      },
+      {
+        "community_id": "community_004",
+        "source": {
+          "municipality_id": "R33202",
+          "name": "倉敷市",
+          "prefecture": "岡山県"
+        },
+        "target": {
+          "municipality_id": "R37201",
+          "name": "高松市",
+          "prefecture": "香川県"
+        },
+        "bidirectional_total_flow": 528.0,
+        "community_weight": 0.16100543102566808
+      },
+      {
+        "community_id": "community_001",
+        "source": {
+          "municipality_id": "R32201",
+          "name": "松江市",
+          "prefecture": "島根県"
+        },
+        "target": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 322.0,
+        "community_weight": 0.44181620502299507
+      },
+      {
+        "community_id": "community_001",
+        "source": {
+          "municipality_id": "R32202",
+          "name": "浜田市",
+          "prefecture": "島根県"
+        },
+        "target": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 185.0,
+        "community_weight": 0.42719537080548403
+      },
+      {
+        "community_id": "community_002",
+        "source": {
+          "municipality_id": "R33205",
+          "name": "笠岡市",
+          "prefecture": "岡山県"
+        },
+        "target": {
+          "municipality_id": "R34205",
+          "name": "尾道市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 125.0,
+        "community_weight": 0.014996908632234887
+      },
+      {
+        "community_id": "community_003",
+        "source": {
+          "municipality_id": "R34211",
+          "name": "大竹市",
+          "prefecture": "広島県"
+        },
+        "target": {
+          "municipality_id": "R35215",
+          "name": "周南市",
+          "prefecture": "山口県"
+        },
+        "bidirectional_total_flow": 60.0,
+        "community_weight": 0.017908820065793973
+      },
+      {
+        "community_id": "community_002",
+        "source": {
+          "municipality_id": "R33205",
+          "name": "笠岡市",
+          "prefecture": "岡山県"
+        },
+        "target": {
+          "municipality_id": "R34204",
+          "name": "三原市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 32.0,
+        "community_weight": 0.0043400004731813
+      },
+      {
+        "community_id": "community_001",
+        "source": {
+          "municipality_id": "R32201",
+          "name": "松江市",
+          "prefecture": "島根県"
+        },
+        "target": {
+          "municipality_id": "R34202",
+          "name": "呉市",
+          "prefecture": "広島県"
+        },
+        "bidirectional_total_flow": 22.0,
+        "community_weight": 0.02785507156572047
+      }
+    ]
+  },
+  "overall_similarity_to_hiroshima": {
+    "analysis": "city_similarity",
+    "target": {
+      "municipality_id": "R34100",
+      "name": "広島市",
+      "prefecture": "広島県"
+    },
+    "method": "cosine_similarity_on_transformed_ssdse_features",
+    "transform_pipeline": [
+      "per_capita_as_configured",
+      "signed_log1p_as_configured",
+      "median_impute",
+      "z_score_ddof_0",
+      "cosine_similarity"
+    ],
+    "feature_selection": "explicit",
+    "population_column": "2020_総人口",
+    "feature_count": 28,
+    "features": [
+      {
+        "feature": "2020_総人口",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 12.052462743559197
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 12.04675176595546,
+            "std": 1.0200177693334627
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_childcare_facilities_per_1k_children",
+        "category": "welfare",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 0.9274748187296948
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.9744105795544599,
+            "std": 0.2423533610969018
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_clinics_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 2.285450837370255
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.2740764473472233,
+            "std": 0.1288988856219301
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_dental_clinics_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 1.7595176859738961
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 1.7823058526544469,
+            "std": 0.10979365381777093
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_dentists_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 2.142626792466608
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.167446344281964,
+            "std": 0.18422876708454175
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_doctors_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.3652943719218107
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.3737739392254538,
+            "std": 0.21301273666815979
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_elderly_single_household_share",
+        "category": "welfare",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.13609545340188564
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.13723422856895973,
+            "std": 0.028992219432102614
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_elementary_students_per_teacher",
+        "category": "education",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 13.63914074544116
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 13.24319925357094,
+            "std": 2.1819925441827275
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_employment_rate",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.8589820840106237
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.8587688647406881,
+            "std": 0.06293971505263175
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_high_school_students_per_1k",
+        "category": "education",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.1661182384473756
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.145912632851189,
+            "std": 0.23928236361626756
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_hospitals_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 0.5354121426316489
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.5683434472292943,
+            "std": 0.15170601123701183
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_household_size",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 2.2553861617833686
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.2775815163826323,
+            "std": 0.09543099064009161
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_junior_students_per_teacher",
+        "category": "education",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 11.739439962031323
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 11.917055256856438,
+            "std": 2.3510715737010153
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_libraries_per_10k",
+        "category": "education",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 0.2581916540593399
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.3123244710544247,
+            "std": 0.24940482495984695
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_municipal_welfare_spending_per_capita",
+        "category": "welfare",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 5.242575489423386
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 5.2388513491414805,
+            "std": 0.07814205370007724
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_over65_share",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.315731537249479
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.31707123930371706,
+            "std": 0.049340301852974056
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_pharmacists_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.3041140328399985
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.253785994677716,
+            "std": 0.1651634546510572
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_population_density_per_km2",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 2.4820313924273356
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.4826800447830886,
+            "std": 0.5592811352304297
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_private_establishments_per_1k",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.8043818320175706
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.7975495205949876,
+            "std": 0.11388709521771617
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_private_workers_per_1k",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 6.13500833808555
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 6.117551306465147,
+            "std": 0.07983588779252837
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_retail_stores_per_1k",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 2.176204905796796
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.1759125838209363,
+            "std": 0.11254441295503931
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_schools_per_10k_children",
+        "category": "education",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.176180906977924
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.2317680814043124,
+            "std": 0.40608408052442585
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_single_household_share",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.35850945738511164
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.36393827427926295,
+            "std": 0.037107765041326346
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_tertiary_sector_share",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.6608881673270182
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.6766796259590208,
+            "std": 0.06426951430187537
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_under15_share",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.1179516112624579
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.1179530324998237,
+            "std": 0.011164594060248332
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_unemployment_rate",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.03435270458930986
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.034841115119672486,
+            "std": 0.006033909820379751
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_welfare_establishments_per_1k",
+        "category": "welfare",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 1.6069040361026357
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 1.596590544213089,
+            "std": 0.09210828492413269
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_working_age_share",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.5316838006263161
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.542403548747328,
+            "std": 0.030113924566122673
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      }
+    ],
+    "candidate_count": 19,
+    "ranking": [
+      {
+        "municipality_id": "R33100",
+        "name": "岡山市",
+        "prefecture": "岡山県",
+        "similarity": 0.8570230136100343,
+        "category_scores": {
+          "economy": 0.8193933473115707,
+          "education": 0.9688933493487324,
+          "medical": 0.8376394931238209,
+          "population": 0.9263285726382002,
+          "welfare": 0.9386173202259451
+        },
+        "rank": 1
+      },
+      {
+        "municipality_id": "R37201",
+        "name": "高松市",
+        "prefecture": "香川県",
+        "similarity": 0.7751188878127632,
+        "category_scores": {
+          "economy": 0.535835648447215,
+          "education": 0.9632896360998903,
+          "medical": 0.811151698118087,
+          "population": 0.9846135208384913,
+          "welfare": 0.5946743123524253
+        },
+        "rank": 2
+      },
+      {
+        "municipality_id": "R38201",
+        "name": "松山市",
+        "prefecture": "愛媛県",
+        "similarity": 0.7375843263909538,
+        "category_scores": {
+          "economy": 0.6654019185041683,
+          "education": 0.9459919104270015,
+          "medical": 0.24678425953492625,
+          "population": 0.865036530204833,
+          "welfare": 0.852442185589039
+        },
+        "rank": 3
+      },
+      {
+        "municipality_id": "R34207",
+        "name": "福山市",
+        "prefecture": "広島県",
+        "similarity": 0.4138108509121654,
+        "category_scores": {
+          "economy": 0.4349067435003932,
+          "education": 0.9388449926388515,
+          "medical": -0.49704947883331896,
+          "population": 0.5030572566072001,
+          "welfare": 0.6706073193492883
+        },
+        "rank": 4
+      },
+      {
+        "municipality_id": "R33202",
+        "name": "倉敷市",
+        "prefecture": "岡山県",
+        "similarity": 0.3014641912304871,
+        "category_scores": {
+          "economy": 0.1754344914917795,
+          "education": 0.9921670681602316,
+          "medical": -0.19627293170924384,
+          "population": 0.3455622844813159,
+          "welfare": 0.4616572236324555
+        },
+        "rank": 5
+      },
+      {
+        "municipality_id": "R35203",
+        "name": "山口市",
+        "prefecture": "山口県",
+        "similarity": 0.22782498432254325,
+        "category_scores": {
+          "economy": 0.6361975266454529,
+          "education": 0.7311519347281451,
+          "medical": -0.5562881568952709,
+          "population": 0.4905693368748114,
+          "welfare": -0.1745062265075422
+        },
+        "rank": 6
+      },
+      {
+        "municipality_id": "R34212",
+        "name": "東広島市",
+        "prefecture": "広島県",
+        "similarity": 0.2000245804508453,
+        "category_scores": {
+          "economy": 0.4794565855287545,
+          "education": 0.7517943774162977,
+          "medical": -0.9163847558636247,
+          "population": 0.6366954262854886,
+          "welfare": 0.19840369745147787
+        },
+        "rank": 7
+      },
+      {
+        "municipality_id": "R32201",
+        "name": "松江市",
+        "prefecture": "島根県",
+        "similarity": 0.187425171764979,
+        "category_scores": {
+          "economy": 0.40456782335063174,
+          "education": 0.6245752000970599,
+          "medical": -0.10653498918661365,
+          "population": 0.3409087116303187,
+          "welfare": 0.06224066428604736
+        },
+        "rank": 8
+      },
+      {
+        "municipality_id": "R34213",
+        "name": "廿日市市",
+        "prefecture": "広島県",
+        "similarity": 0.034176317037532586,
+        "category_scores": {
+          "economy": -0.1092553301053913,
+          "education": 0.9222531775801116,
+          "medical": -0.16732491232011718,
+          "population": -0.029089286633368287,
+          "welfare": -0.3112348778755598
+        },
+        "rank": 9
+      },
+      {
+        "municipality_id": "R34202",
+        "name": "呉市",
+        "prefecture": "広島県",
+        "similarity": -0.0952958356789792,
+        "category_scores": {
+          "economy": -0.5504198806465277,
+          "education": -0.6713204014157501,
+          "medical": 0.7681198098247575,
+          "population": -0.25238968176188264,
+          "welfare": -0.7313076888182827
+        },
+        "rank": 10
+      }
+    ]
+  },
+  "medical_similarity_to_hiroshima": {
+    "analysis": "city_similarity",
+    "target": {
+      "municipality_id": "R34100",
+      "name": "広島市",
+      "prefecture": "広島県"
+    },
+    "method": "cosine_similarity_on_transformed_ssdse_features",
+    "transform_pipeline": [
+      "per_capita_as_configured",
+      "signed_log1p_as_configured",
+      "median_impute",
+      "z_score_ddof_0",
+      "cosine_similarity"
+    ],
+    "feature_selection": "explicit",
+    "population_column": "2020_総人口",
+    "feature_count": 6,
+    "features": [
+      {
+        "feature": "feature_clinics_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 2.285450837370255
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.2740764473472233,
+            "std": 0.1288988856219301
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_dental_clinics_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 1.7595176859738961
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 1.7823058526544469,
+            "std": 0.10979365381777093
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_dentists_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 2.142626792466608
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.167446344281964,
+            "std": 0.18422876708454175
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_doctors_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.3652943719218107
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.3737739392254538,
+            "std": 0.21301273666815979
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_hospitals_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 0.5354121426316489
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.5683434472292943,
+            "std": 0.15170601123701183
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_pharmacists_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.3041140328399985
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.253785994677716,
+            "std": 0.1651634546510572
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      }
+    ],
+    "candidate_count": 19,
+    "ranking": [
+      {
+        "municipality_id": "R33100",
+        "name": "岡山市",
+        "prefecture": "岡山県",
+        "similarity": 0.8376394931238209,
+        "category_scores": {
+          "medical": 0.8376394931238209
+        },
+        "rank": 1
+      },
+      {
+        "municipality_id": "R37201",
+        "name": "高松市",
+        "prefecture": "香川県",
+        "similarity": 0.811151698118087,
+        "category_scores": {
+          "medical": 0.811151698118087
+        },
+        "rank": 2
+      },
+      {
+        "municipality_id": "R34202",
+        "name": "呉市",
+        "prefecture": "広島県",
+        "similarity": 0.7681198098247575,
+        "category_scores": {
+          "medical": 0.7681198098247575
+        },
+        "rank": 3
+      },
+      {
+        "municipality_id": "R34214",
+        "name": "安芸高田市",
+        "prefecture": "広島県",
+        "similarity": 0.6744080980299096,
+        "category_scores": {
+          "medical": 0.6744080980299096
+        },
+        "rank": 4
+      },
+      {
+        "municipality_id": "R34211",
+        "name": "大竹市",
+        "prefecture": "広島県",
+        "similarity": 0.6683133090986048,
+        "category_scores": {
+          "medical": 0.6683133090986048
+        },
+        "rank": 5
+      },
+      {
+        "municipality_id": "R38201",
+        "name": "松山市",
+        "prefecture": "愛媛県",
+        "similarity": 0.24678425953492625,
+        "category_scores": {
+          "medical": 0.24678425953492625
+        },
+        "rank": 6
+      },
+      {
+        "municipality_id": "R34205",
+        "name": "尾道市",
+        "prefecture": "広島県",
+        "similarity": 0.11112708168636075,
+        "category_scores": {
+          "medical": 0.11112708168636075
+        },
+        "rank": 7
+      },
+      {
+        "municipality_id": "R32201",
+        "name": "松江市",
+        "prefecture": "島根県",
+        "similarity": -0.10653498918661365,
+        "category_scores": {
+          "medical": -0.10653498918661365
+        },
+        "rank": 8
+      },
+      {
+        "municipality_id": "R34213",
+        "name": "廿日市市",
+        "prefecture": "広島県",
+        "similarity": -0.16732491232011718,
+        "category_scores": {
+          "medical": -0.16732491232011718
+        },
+        "rank": 9
+      },
+      {
+        "municipality_id": "R33202",
+        "name": "倉敷市",
+        "prefecture": "岡山県",
+        "similarity": -0.19627293170924384,
+        "category_scores": {
+          "medical": -0.19627293170924384
+        },
+        "rank": 10
+      }
+    ]
+  },
+  "airport_access": {
+    "analysis": "airport_access",
+    "method": "distance_decay_with_airport_scale",
+    "score_formula": "airport_scale_score / (1 + distance_km / distance_decay_km)",
+    "parameters": {
+      "distance_decay_km": 50.0,
+      "max_access_rank": 1,
+      "top_n": null,
+      "custom_airport_scale_scores": null
+    },
+    "ranked_city_count": 20,
+    "missing_access_city_ids": [],
+    "ranking": [
+      {
+        "municipality_id": "R38201",
+        "name": "松山市",
+        "prefecture": "愛媛県",
+        "access_score": 2.6677429044270813,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00053",
+          "name": "松山空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 3.0,
+          "airport_scale_score": 3.0,
+          "scheduled_service": true,
+          "distance_km": 6.227307268281793,
+          "source_rank": 1,
+          "access_score": 2.6677429044270813
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00053",
+          "name": "松山空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 3.0,
+          "airport_scale_score": 3.0,
+          "scheduled_service": true,
+          "distance_km": 6.227307268281793,
+          "source_rank": 1,
+          "access_score": 2.6677429044270813
+        },
+        "airports_considered": 1,
+        "rank": 1
+      },
+      {
+        "municipality_id": "R38202",
+        "name": "今治市",
+        "prefecture": "愛媛県",
+        "access_score": 1.7000178296242194,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00053",
+          "name": "松山空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 3.0,
+          "airport_scale_score": 3.0,
+          "scheduled_service": true,
+          "distance_km": 38.234368714330934,
+          "source_rank": 1,
+          "access_score": 1.7000178296242194
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00053",
+          "name": "松山空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 3.0,
+          "airport_scale_score": 3.0,
+          "scheduled_service": true,
+          "distance_km": 38.234368714330934,
+          "source_rank": 1,
+          "access_score": 1.7000178296242194
+        },
+        "airports_considered": 1,
+        "rank": 2
+      },
+      {
+        "municipality_id": "R33100",
+        "name": "岡山市",
+        "prefecture": "岡山県",
+        "access_score": 1.5936213286835839,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00075",
+          "name": "岡山空港",
+          "airport_type": "地方管理空港",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 12.750164170182966,
+          "source_rank": 1,
+          "access_score": 1.5936213286835839
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00075",
+          "name": "岡山空港",
+          "airport_type": "地方管理空港",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 12.750164170182966,
+          "source_rank": 1,
+          "access_score": 1.5936213286835839
+        },
+        "airports_considered": 1,
+        "rank": 3
+      },
+      {
+        "municipality_id": "R37201",
+        "name": "高松市",
+        "prefecture": "香川県",
+        "access_score": 1.5488968831485563,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00054",
+          "name": "高松空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 14.562077106593861,
+          "source_rank": 1,
+          "access_score": 1.5488968831485563
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00054",
+          "name": "高松空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 14.562077106593861,
+          "source_rank": 1,
+          "access_score": 1.5488968831485563
+        },
+        "airports_considered": 1,
+        "rank": 4
+      },
+      {
+        "municipality_id": "R34204",
+        "name": "三原市",
+        "prefecture": "広島県",
+        "access_score": 1.534613351459696,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00079",
+          "name": "広島空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 15.162993600232813,
+          "source_rank": 1,
+          "access_score": 1.534613351459696
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00079",
+          "name": "広島空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 15.162993600232813,
+          "source_rank": 1,
+          "access_score": 1.534613351459696
+        },
+        "airports_considered": 1,
+        "rank": 5
+      },
+      {
+        "municipality_id": "R32201",
+        "name": "松江市",
+        "prefecture": "島根県",
+        "access_score": 1.5247511919011367,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00078",
+          "name": "出雲空港",
+          "airport_type": "地方管理空港",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 15.584470785240025,
+          "source_rank": 1,
+          "access_score": 1.5247511919011367
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00078",
+          "name": "出雲空港",
+          "airport_type": "地方管理空港",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 15.584470785240025,
+          "source_rank": 1,
+          "access_score": 1.5247511919011367
+        },
+        "airports_considered": 1,
+        "rank": 6
+      },
+      {
+        "municipality_id": "R34212",
+        "name": "東広島市",
+        "prefecture": "広島県",
+        "access_score": 1.5106156369033097,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00079",
+          "name": "広島空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 16.198176132345118,
+          "source_rank": 1,
+          "access_score": 1.5106156369033097
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00079",
+          "name": "広島空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 16.198176132345118,
+          "source_rank": 1,
+          "access_score": 1.5106156369033097
+        },
+        "airports_considered": 1,
+        "rank": 7
+      },
+      {
+        "municipality_id": "R33202",
+        "name": "倉敷市",
+        "prefecture": "岡山県",
+        "access_score": 1.416307543815755,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00075",
+          "name": "岡山空港",
+          "airport_type": "地方管理空港",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 20.606133841936828,
+          "source_rank": 1,
+          "access_score": 1.416307543815755
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00075",
+          "name": "岡山空港",
+          "airport_type": "地方管理空港",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 20.606133841936828,
+          "source_rank": 1,
+          "access_score": 1.416307543815755
+        },
+        "airports_considered": 1,
+        "rank": 8
+      },
+      {
+        "municipality_id": "R34205",
+        "name": "尾道市",
+        "prefecture": "広島県",
+        "access_score": 1.3103957064147636,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00079",
+          "name": "広島空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 26.31282635502488,
+          "source_rank": 1,
+          "access_score": 1.3103957064147636
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00079",
+          "name": "広島空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 26.31282635502488,
+          "source_rank": 1,
+          "access_score": 1.3103957064147636
+        },
+        "airports_considered": 1,
+        "rank": 9
+      },
+      {
+        "municipality_id": "R34214",
+        "name": "安芸高田市",
+        "prefecture": "広島県",
+        "access_score": 1.2142854261207419,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00079",
+          "name": "広島空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 32.3529607198436,
+          "source_rank": 1,
+          "access_score": 1.2142854261207419
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00079",
+          "name": "広島空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 32.3529607198436,
+          "source_rank": 1,
+          "access_score": 1.2142854261207419
+        },
+        "airports_considered": 1,
+        "rank": 10
+      },
+      {
+        "municipality_id": "R34207",
+        "name": "福山市",
+        "prefecture": "広島県",
+        "access_score": 1.099735240197363,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00079",
+          "name": "広島空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 40.930977152331316,
+          "source_rank": 1,
+          "access_score": 1.099735240197363
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00079",
+          "name": "広島空港",
+          "airport_type": "拠点空港（国管理）",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 40.930977152331316,
+          "source_rank": 1,
+          "access_score": 1.099735240197363
+        },
+        "airports_considered": 1,
+        "rank": 11
+      },
+      {
+        "municipality_id": "R33205",
+        "name": "笠岡市",
+        "prefecture": "岡山県",
+        "access_score": 1.0841422681211141,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00075",
+          "name": "岡山空港",
+          "airport_type": "地方管理空港",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 42.238816749859055,
+          "source_rank": 1,
+          "access_score": 1.0841422681211141
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00075",
+          "name": "岡山空港",
+          "airport_type": "地方管理空港",
+          "airport_scale": 2.0,
+          "airport_scale_score": 2.0,
+          "scheduled_service": true,
+          "distance_km": 42.238816749859055,
+          "source_rank": 1,
+          "access_score": 1.0841422681211141
+        },
+        "airports_considered": 1,
+        "rank": 12
+      },
+      {
+        "municipality_id": "R35208",
+        "name": "岩国市",
+        "prefecture": "山口県",
+        "access_score": 0.9339058446331993,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 3.538587735938197,
+          "source_rank": 1,
+          "access_score": 0.9339058446331993
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 3.538587735938197,
+          "source_rank": 1,
+          "access_score": 0.9339058446331993
+        },
+        "airports_considered": 1,
+        "rank": 13
+      },
+      {
+        "municipality_id": "R34211",
+        "name": "大竹市",
+        "prefecture": "広島県",
+        "access_score": 0.8253714685317167,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 10.57878410668449,
+          "source_rank": 1,
+          "access_score": 0.8253714685317167
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 10.57878410668449,
+          "source_rank": 1,
+          "access_score": 0.8253714685317167
+        },
+        "airports_considered": 1,
+        "rank": 14
+      },
+      {
+        "municipality_id": "R34213",
+        "name": "廿日市市",
+        "prefecture": "広島県",
+        "access_score": 0.6764094412102939,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 23.919725174940496,
+          "source_rank": 1,
+          "access_score": 0.6764094412102939
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 23.919725174940496,
+          "source_rank": 1,
+          "access_score": 0.6764094412102939
+        },
+        "airports_considered": 1,
+        "rank": 15
+      },
+      {
+        "municipality_id": "R34202",
+        "name": "呉市",
+        "prefecture": "広島県",
+        "access_score": 0.6135275387398664,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 31.495934318931727,
+          "source_rank": 1,
+          "access_score": 0.6135275387398664
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 31.495934318931727,
+          "source_rank": 1,
+          "access_score": 0.6135275387398664
+        },
+        "airports_considered": 1,
+        "rank": 16
+      },
+      {
+        "municipality_id": "R34100",
+        "name": "広島市",
+        "prefecture": "広島県",
+        "access_score": 0.6032122660594414,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 32.88956112685037,
+          "source_rank": 1,
+          "access_score": 0.6032122660594414
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 32.88956112685037,
+          "source_rank": 1,
+          "access_score": 0.6032122660594414
+        },
+        "airports_considered": 1,
+        "rank": 17
+      },
+      {
+        "municipality_id": "R35203",
+        "name": "山口市",
+        "prefecture": "山口県",
+        "access_score": 0.6029668667455144,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00082",
+          "name": "山口宇部空港",
+          "airport_type": "拠点空港（特定地方管理）",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 32.92329605086374,
+          "source_rank": 1,
+          "access_score": 0.6029668667455144
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00082",
+          "name": "山口宇部空港",
+          "airport_type": "拠点空港（特定地方管理）",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 32.92329605086374,
+          "source_rank": 1,
+          "access_score": 0.6029668667455144
+        },
+        "airports_considered": 1,
+        "rank": 18
+      },
+      {
+        "municipality_id": "R32202",
+        "name": "浜田市",
+        "prefecture": "島根県",
+        "access_score": 0.5798000633934159,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00080",
+          "name": "石見空港",
+          "airport_type": "地方管理空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 36.236623893007646,
+          "source_rank": 1,
+          "access_score": 0.5798000633934159
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00080",
+          "name": "石見空港",
+          "airport_type": "地方管理空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 36.236623893007646,
+          "source_rank": 1,
+          "access_score": 0.5798000633934159
+        },
+        "airports_considered": 1,
+        "rank": 19
+      },
+      {
+        "municipality_id": "R35215",
+        "name": "周南市",
+        "prefecture": "山口県",
+        "access_score": 0.5455024881695152,
+        "nearest_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 41.65861033517865,
+          "source_rank": 1,
+          "access_score": 0.5455024881695152
+        },
+        "best_scored_airport": {
+          "airport_id": "AP_cf03_00101",
+          "name": "岩国飛行場",
+          "airport_type": "共用空港",
+          "airport_scale": 1.0,
+          "airport_scale_score": 1.0,
+          "scheduled_service": true,
+          "distance_km": 41.65861033517865,
+          "source_rank": 1,
+          "access_score": 0.5455024881695152
+        },
+        "airports_considered": 1,
+        "rank": 20
+      }
+    ]
+  },
+  "similar_with_better_airport": {
+    "analysis": "similar_cities_with_better_airport",
+    "target": {
+      "municipality_id": "R34100",
+      "name": "広島市",
+      "prefecture": "広島県"
+    },
+    "target_airport_access": {
+      "municipality_id": "R34100",
+      "name": "広島市",
+      "prefecture": "広島県",
+      "access_score": 0.6032122660594414,
+      "nearest_airport": {
+        "airport_id": "AP_cf03_00101",
+        "name": "岩国飛行場",
+        "airport_type": "共用空港",
+        "airport_scale": 1.0,
+        "airport_scale_score": 1.0,
+        "scheduled_service": true,
+        "distance_km": 32.88956112685037,
+        "source_rank": 1,
+        "access_score": 0.6032122660594414
+      },
+      "best_scored_airport": {
+        "airport_id": "AP_cf03_00101",
+        "name": "岩国飛行場",
+        "airport_type": "共用空港",
+        "airport_scale": 1.0,
+        "airport_scale_score": 1.0,
+        "scheduled_service": true,
+        "distance_km": 32.88956112685037,
+        "source_rank": 1,
+        "access_score": 0.6032122660594414
+      },
+      "airports_considered": 1,
+      "rank": 17
+    },
+    "criteria": {
+      "min_similarity": 0.0,
+      "min_access_score_gain": 0.0,
+      "require_nearer": true,
+      "similarity_weight": 0.75
+    },
+    "score_formula": "similarity_weight * ((cosine + 1) / 2) + (1 - similarity_weight) * bounded_relative_access_gain",
+    "similarity_method": "cosine_similarity_on_transformed_ssdse_features",
+    "similarity_features": [
+      {
+        "feature": "2020_総人口",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 12.052462743559197
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 12.04675176595546,
+            "std": 1.0200177693334627
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_childcare_facilities_per_1k_children",
+        "category": "welfare",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 0.9274748187296948
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.9744105795544599,
+            "std": 0.2423533610969018
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_clinics_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 2.285450837370255
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.2740764473472233,
+            "std": 0.1288988856219301
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_dental_clinics_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 1.7595176859738961
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 1.7823058526544469,
+            "std": 0.10979365381777093
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_dentists_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 2.142626792466608
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.167446344281964,
+            "std": 0.18422876708454175
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_doctors_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.3652943719218107
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.3737739392254538,
+            "std": 0.21301273666815979
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_elderly_single_household_share",
+        "category": "welfare",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.13609545340188564
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.13723422856895973,
+            "std": 0.028992219432102614
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_elementary_students_per_teacher",
+        "category": "education",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 13.63914074544116
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 13.24319925357094,
+            "std": 2.1819925441827275
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_employment_rate",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.8589820840106237
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.8587688647406881,
+            "std": 0.06293971505263175
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_high_school_students_per_1k",
+        "category": "education",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.1661182384473756
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.145912632851189,
+            "std": 0.23928236361626756
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_hospitals_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 0.5354121426316489
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.5683434472292943,
+            "std": 0.15170601123701183
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_household_size",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 2.2553861617833686
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.2775815163826323,
+            "std": 0.09543099064009161
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_junior_students_per_teacher",
+        "category": "education",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 11.739439962031323
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 11.917055256856438,
+            "std": 2.3510715737010153
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_libraries_per_10k",
+        "category": "education",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 0.2581916540593399
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.3123244710544247,
+            "std": 0.24940482495984695
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_municipal_welfare_spending_per_capita",
+        "category": "welfare",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 5.242575489423386
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 5.2388513491414805,
+            "std": 0.07814205370007724
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_over65_share",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.315731537249479
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.31707123930371706,
+            "std": 0.049340301852974056
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_pharmacists_per_10k",
+        "category": "medical",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.3041140328399985
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.253785994677716,
+            "std": 0.1651634546510572
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_population_density_per_km2",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 2.4820313924273356
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.4826800447830886,
+            "std": 0.5592811352304297
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_private_establishments_per_1k",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.8043818320175706
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.7975495205949876,
+            "std": 0.11388709521771617
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_private_workers_per_1k",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 6.13500833808555
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 6.117551306465147,
+            "std": 0.07983588779252837
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_retail_stores_per_1k",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 2.176204905796796
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 2.1759125838209363,
+            "std": 0.11254441295503931
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_schools_per_10k_children",
+        "category": "education",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 3.176180906977924
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 3.2317680814043124,
+            "std": 0.40608408052442585
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_single_household_share",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.35850945738511164
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.36393827427926295,
+            "std": 0.037107765041326346
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_tertiary_sector_share",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.6608881673270182
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.6766796259590208,
+            "std": 0.06426951430187537
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_under15_share",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.1179516112624579
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.1179530324998237,
+            "std": 0.011164594060248332
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_unemployment_rate",
+        "category": "economy",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.03435270458930986
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.034841115119672486,
+            "std": 0.006033909820379751
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_welfare_establishments_per_1k",
+        "category": "welfare",
+        "steps": [
+          {
+            "operation": "signed_log1p"
+          },
+          {
+            "operation": "median_impute",
+            "median": 1.6069040361026357
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 1.596590544213089,
+            "std": 0.09210828492413269
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      },
+      {
+        "feature": "feature_working_age_share",
+        "category": "population",
+        "steps": [
+          {
+            "operation": "median_impute",
+            "median": 0.5316838006263161
+          },
+          {
+            "operation": "z_score",
+            "ddof": 0,
+            "mean": 0.542403548747328,
+            "std": 0.030113924566122673
+          }
+        ],
+        "missing_values_imputed": 0,
+        "all_values_missing": false,
+        "zero_variance": false
+      }
+    ],
+    "airport_access_method": {
+      "method": "distance_decay_with_airport_scale",
+      "score_formula": "airport_scale_score / (1 + distance_km / distance_decay_km)",
+      "distance_decay_km": 50.0
+    },
+    "evaluated_candidate_count": 19,
+    "qualified_candidate_count": 7,
+    "ranking": [
+      {
+        "municipality_id": "R33100",
+        "name": "岡山市",
+        "prefecture": "岡山県",
+        "similarity": 0.8570230136100343,
+        "category_scores": {
+          "economy": 0.8193933473115707,
+          "education": 0.9688933493487324,
+          "medical": 0.8376394931238209,
+          "population": 0.9263285726382002,
+          "welfare": 0.9386173202259451
+        },
+        "candidate_airport_access": {
+          "municipality_id": "R33100",
+          "name": "岡山市",
+          "prefecture": "岡山県",
+          "access_score": 1.5936213286835839,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00075",
+            "name": "岡山空港",
+            "airport_type": "地方管理空港",
+            "airport_scale": 2.0,
+            "airport_scale_score": 2.0,
+            "scheduled_service": true,
+            "distance_km": 12.750164170182966,
+            "source_rank": 1,
+            "access_score": 1.5936213286835839
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00075",
+            "name": "岡山空港",
+            "airport_type": "地方管理空港",
+            "airport_scale": 2.0,
+            "airport_scale_score": 2.0,
+            "scheduled_service": true,
+            "distance_km": 12.750164170182966,
+            "source_rank": 1,
+            "access_score": 1.5936213286835839
+          },
+          "airports_considered": 1,
+          "rank": 3
+        },
+        "target_airport_access": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "access_score": 0.6032122660594414,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "airports_considered": 1,
+          "rank": 17
+        },
+        "access_score_gain": 0.9904090626241424,
+        "access_score_gain_ratio": 1.6418914507394085,
+        "nearest_distance_improvement_km": 20.1393969566674,
+        "is_nearer": true,
+        "composite_score": 0.8517544582920178,
+        "rank": 1
+      },
+      {
+        "municipality_id": "R38201",
+        "name": "松山市",
+        "prefecture": "愛媛県",
+        "similarity": 0.7375843263909538,
+        "category_scores": {
+          "economy": 0.6654019185041683,
+          "education": 0.9459919104270015,
+          "medical": 0.24678425953492625,
+          "population": 0.865036530204833,
+          "welfare": 0.852442185589039
+        },
+        "candidate_airport_access": {
+          "municipality_id": "R38201",
+          "name": "松山市",
+          "prefecture": "愛媛県",
+          "access_score": 2.6677429044270813,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00053",
+            "name": "松山空港",
+            "airport_type": "拠点空港（国管理）",
+            "airport_scale": 3.0,
+            "airport_scale_score": 3.0,
+            "scheduled_service": true,
+            "distance_km": 6.227307268281793,
+            "source_rank": 1,
+            "access_score": 2.6677429044270813
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00053",
+            "name": "松山空港",
+            "airport_type": "拠点空港（国管理）",
+            "airport_scale": 3.0,
+            "airport_scale_score": 3.0,
+            "scheduled_service": true,
+            "distance_km": 6.227307268281793,
+            "source_rank": 1,
+            "access_score": 2.6677429044270813
+          },
+          "airports_considered": 1,
+          "rank": 1
+        },
+        "target_airport_access": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "access_score": 0.6032122660594414,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "airports_considered": 1,
+          "rank": 17
+        },
+        "access_score_gain": 2.06453063836764,
+        "access_score_gain_ratio": 3.422560770944598,
+        "nearest_distance_improvement_km": 26.662253858568576,
+        "is_nearer": true,
+        "composite_score": 0.8450657866770732,
+        "rank": 2
+      },
+      {
+        "municipality_id": "R37201",
+        "name": "高松市",
+        "prefecture": "香川県",
+        "similarity": 0.7751188878127632,
+        "category_scores": {
+          "economy": 0.535835648447215,
+          "education": 0.9632896360998903,
+          "medical": 0.811151698118087,
+          "population": 0.9846135208384913,
+          "welfare": 0.5946743123524253
+        },
+        "candidate_airport_access": {
+          "municipality_id": "R37201",
+          "name": "高松市",
+          "prefecture": "香川県",
+          "access_score": 1.5488968831485563,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00054",
+            "name": "高松空港",
+            "airport_type": "拠点空港（国管理）",
+            "airport_scale": 2.0,
+            "airport_scale_score": 2.0,
+            "scheduled_service": true,
+            "distance_km": 14.562077106593861,
+            "source_rank": 1,
+            "access_score": 1.5488968831485563
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00054",
+            "name": "高松空港",
+            "airport_type": "拠点空港（国管理）",
+            "airport_scale": 2.0,
+            "airport_scale_score": 2.0,
+            "scheduled_service": true,
+            "distance_km": 14.562077106593861,
+            "source_rank": 1,
+            "access_score": 1.5488968831485563
+          },
+          "airports_considered": 1,
+          "rank": 4
+        },
+        "target_airport_access": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "access_score": 0.6032122660594414,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "airports_considered": 1,
+          "rank": 17
+        },
+        "access_score_gain": 0.9456846170891149,
+        "access_score_gain_ratio": 1.5677476574986056,
+        "nearest_distance_improvement_km": 18.327484020256506,
+        "is_nearer": true,
+        "composite_score": 0.8183079908473541,
+        "rank": 3
+      },
+      {
+        "municipality_id": "R33202",
+        "name": "倉敷市",
+        "prefecture": "岡山県",
+        "similarity": 0.3014641912304871,
+        "category_scores": {
+          "economy": 0.1754344914917795,
+          "education": 0.9921670681602316,
+          "medical": -0.19627293170924384,
+          "population": 0.3455622844813159,
+          "welfare": 0.4616572236324555
+        },
+        "candidate_airport_access": {
+          "municipality_id": "R33202",
+          "name": "倉敷市",
+          "prefecture": "岡山県",
+          "access_score": 1.416307543815755,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00075",
+            "name": "岡山空港",
+            "airport_type": "地方管理空港",
+            "airport_scale": 2.0,
+            "airport_scale_score": 2.0,
+            "scheduled_service": true,
+            "distance_km": 20.606133841936828,
+            "source_rank": 1,
+            "access_score": 1.416307543815755
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00075",
+            "name": "岡山空港",
+            "airport_type": "地方管理空港",
+            "airport_scale": 2.0,
+            "airport_scale_score": 2.0,
+            "scheduled_service": true,
+            "distance_km": 20.606133841936828,
+            "source_rank": 1,
+            "access_score": 1.416307543815755
+          },
+          "airports_considered": 1,
+          "rank": 8
+        },
+        "target_airport_access": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "access_score": 0.6032122660594414,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "airports_considered": 1,
+          "rank": 17
+        },
+        "access_score_gain": 0.8130952777563136,
+        "access_score_gain_ratio": 1.3479422145507067,
+        "nearest_distance_improvement_km": 12.28342728491354,
+        "is_nearer": true,
+        "composite_score": 0.6315728567302054,
+        "rank": 4
+      },
+      {
+        "municipality_id": "R34212",
+        "name": "東広島市",
+        "prefecture": "広島県",
+        "similarity": 0.2000245804508453,
+        "category_scores": {
+          "economy": 0.4794565855287545,
+          "education": 0.7517943774162977,
+          "medical": -0.9163847558636247,
+          "population": 0.6366954262854886,
+          "welfare": 0.19840369745147787
+        },
+        "candidate_airport_access": {
+          "municipality_id": "R34212",
+          "name": "東広島市",
+          "prefecture": "広島県",
+          "access_score": 1.5106156369033097,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00079",
+            "name": "広島空港",
+            "airport_type": "拠点空港（国管理）",
+            "airport_scale": 2.0,
+            "airport_scale_score": 2.0,
+            "scheduled_service": true,
+            "distance_km": 16.198176132345118,
+            "source_rank": 1,
+            "access_score": 1.5106156369033097
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00079",
+            "name": "広島空港",
+            "airport_type": "拠点空港（国管理）",
+            "airport_scale": 2.0,
+            "airport_scale_score": 2.0,
+            "scheduled_service": true,
+            "distance_km": 16.198176132345118,
+            "source_rank": 1,
+            "access_score": 1.5106156369033097
+          },
+          "airports_considered": 1,
+          "rank": 7
+        },
+        "target_airport_access": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "access_score": 0.6032122660594414,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "airports_considered": 1,
+          "rank": 17
+        },
+        "access_score_gain": 0.9074033708438682,
+        "access_score_gain_ratio": 1.5042853434854577,
+        "nearest_distance_improvement_km": 16.69138499450525,
+        "is_nearer": true,
+        "composite_score": 0.6001803380845822,
+        "rank": 5
+      },
+      {
+        "municipality_id": "R32201",
+        "name": "松江市",
+        "prefecture": "島根県",
+        "similarity": 0.187425171764979,
+        "category_scores": {
+          "economy": 0.40456782335063174,
+          "education": 0.6245752000970599,
+          "medical": -0.10653498918661365,
+          "population": 0.3409087116303187,
+          "welfare": 0.06224066428604736
+        },
+        "candidate_airport_access": {
+          "municipality_id": "R32201",
+          "name": "松江市",
+          "prefecture": "島根県",
+          "access_score": 1.5247511919011367,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00078",
+            "name": "出雲空港",
+            "airport_type": "地方管理空港",
+            "airport_scale": 2.0,
+            "airport_scale_score": 2.0,
+            "scheduled_service": true,
+            "distance_km": 15.584470785240025,
+            "source_rank": 1,
+            "access_score": 1.5247511919011367
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00078",
+            "name": "出雲空港",
+            "airport_type": "地方管理空港",
+            "airport_scale": 2.0,
+            "airport_scale_score": 2.0,
+            "scheduled_service": true,
+            "distance_km": 15.584470785240025,
+            "source_rank": 1,
+            "access_score": 1.5247511919011367
+          },
+          "airports_considered": 1,
+          "rank": 6
+        },
+        "target_airport_access": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "access_score": 0.6032122660594414,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "airports_considered": 1,
+          "rank": 17
+        },
+        "access_score_gain": 0.9215389258416953,
+        "access_score_gain_ratio": 1.5277191424865446,
+        "nearest_distance_improvement_km": 17.30509034161034,
+        "is_nearer": true,
+        "composite_score": 0.5963810463101824,
+        "rank": 6
+      },
+      {
+        "municipality_id": "R34213",
+        "name": "廿日市市",
+        "prefecture": "広島県",
+        "similarity": 0.034176317037532586,
+        "category_scores": {
+          "economy": -0.1092553301053913,
+          "education": 0.9222531775801116,
+          "medical": -0.16732491232011718,
+          "population": -0.029089286633368287,
+          "welfare": -0.3112348778755598
+        },
+        "candidate_airport_access": {
+          "municipality_id": "R34213",
+          "name": "廿日市市",
+          "prefecture": "広島県",
+          "access_score": 0.6764094412102939,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 23.919725174940496,
+            "source_rank": 1,
+            "access_score": 0.6764094412102939
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 23.919725174940496,
+            "source_rank": 1,
+            "access_score": 0.6764094412102939
+          },
+          "airports_considered": 1,
+          "rank": 15
+        },
+        "target_airport_access": {
+          "municipality_id": "R34100",
+          "name": "広島市",
+          "prefecture": "広島県",
+          "access_score": 0.6032122660594414,
+          "nearest_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "best_scored_airport": {
+            "airport_id": "AP_cf03_00101",
+            "name": "岩国飛行場",
+            "airport_type": "共用空港",
+            "airport_scale": 1.0,
+            "airport_scale_score": 1.0,
+            "scheduled_service": true,
+            "distance_km": 32.88956112685037,
+            "source_rank": 1,
+            "access_score": 0.6032122660594414
+          },
+          "airports_considered": 1,
+          "rank": 17
+        },
+        "access_score_gain": 0.07319717515085244,
+        "access_score_gain_ratio": 0.12134563447958713,
+        "nearest_distance_improvement_km": 8.969835951909872,
+        "is_nearer": true,
+        "composite_score": 0.41486969424273973,
+        "rank": 7
+      }
+    ]
+  }
+}

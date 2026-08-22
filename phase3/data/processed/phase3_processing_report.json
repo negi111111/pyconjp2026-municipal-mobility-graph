@@ -1,0 +1,146 @@
+{
+  "generated_at": "2026-08-21T12:22:34+00:00",
+  "phase": 3,
+  "pipeline": "pipeline/07_prepare_phase3.py",
+  "search_city_count": 100,
+  "outputs": {
+    "environmental_metrics.parquet": 700,
+    "weather_station_access.parquet": 100,
+    "shinkansen_access.parquet": 100,
+    "shinkansen_stations.parquet": 92
+  },
+  "coverage": {
+    "expected_city_count": 100,
+    "climate": {
+      "city_count": 100,
+      "feature_count": 6,
+      "missing_value_count": 0,
+      "features": [
+        {
+          "feature_name": "climate.annual_mean_temperature",
+          "city_count": 100,
+          "missing_value_count": 0,
+          "units": [
+            "degC"
+          ],
+          "periods": [
+            "1991-2020"
+          ],
+          "source_datasets": [
+            "JMA normal_surface"
+          ]
+        },
+        {
+          "feature_name": "climate.annual_precipitation",
+          "city_count": 100,
+          "missing_value_count": 0,
+          "units": [
+            "mm"
+          ],
+          "periods": [
+            "1991-2020"
+          ],
+          "source_datasets": [
+            "JMA normal_surface"
+          ]
+        },
+        {
+          "feature_name": "climate.annual_snowfall",
+          "city_count": 100,
+          "missing_value_count": 0,
+          "units": [
+            "cm"
+          ],
+          "periods": [
+            "1991-2020"
+          ],
+          "source_datasets": [
+            "JMA normal_surface"
+          ]
+        },
+        {
+          "feature_name": "climate.annual_sunshine_hours",
+          "city_count": 100,
+          "missing_value_count": 0,
+          "units": [
+            "hours"
+          ],
+          "periods": [
+            "1991-2020"
+          ],
+          "source_datasets": [
+            "JMA normal_surface"
+          ]
+        },
+        {
+          "feature_name": "climate.august_mean_temperature",
+          "city_count": 100,
+          "missing_value_count": 0,
+          "units": [
+            "degC"
+          ],
+          "periods": [
+            "1991-2020"
+          ],
+          "source_datasets": [
+            "JMA normal_surface"
+          ]
+        },
+        {
+          "feature_name": "climate.january_mean_temperature",
+          "city_count": 100,
+          "missing_value_count": 0,
+          "units": [
+            "degC"
+          ],
+          "periods": [
+            "1991-2020"
+          ],
+          "source_datasets": [
+            "JMA normal_surface"
+          ]
+        }
+      ]
+    },
+    "weather_station_access": {
+      "city_count": 100,
+      "missing_distance_count": 0,
+      "median_km": 4.639202001965005,
+      "p95_km": 32.11084997911823,
+      "max_km": 51.79081908255427,
+      "periods": [
+        "1991-2020"
+      ],
+      "source_datasets": [
+        "JMA 2020 normals, surface station"
+      ]
+    },
+    "shinkansen_access": {
+      "city_count": 100,
+      "missing_distance_count": 0,
+      "median_km": 13.106771023711355,
+      "p95_km": 156.1795584627074,
+      "max_km": 658.9749255568479,
+      "nearest_station_unique_count": 50,
+      "source_station_catalog_count": 92,
+      "station_in_municipality_status": [
+        "not_spatially_joined"
+      ],
+      "source_datasets": [
+        "MLIT National Land Numerical Information N02-20"
+      ]
+    }
+  },
+  "checks": {
+    "climate_coverage": true,
+    "shinkansen_coverage": true,
+    "housing_adopted": false,
+    "disaster_adopted": false,
+    "nature_adopted": false
+  },
+  "limitations": [
+    "Housing cost is not included because a complete same-definition 100-city table was not verified.",
+    "Shinkansen station-in-municipality is not polygon-joined; nearest station distance is the adopted feature.",
+    "Disaster and nature data remain feasibility gaps."
+  ]
+}

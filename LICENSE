@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 negi111111
+Copyright (c) 2026 Ryosuke Tanno
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+データについては data/README.md を参照してください。
+SSDSE: 独立行政法人統計センター / Wikipedia: CC BY-SA 4.0 /
+住民基本台帳人口移動報告: 総務省統計局

@@ -1,0 +1,148 @@
+{
+  "generated_at": "2026-08-22T00:42:33+00:00",
+  "overall_status": "pass",
+  "phase": 2,
+  "analysis_universe_count": 1719,
+  "search_universe_count": 100,
+  "checks": [
+    {
+      "name": "Phase 2 structure and quality",
+      "status": "pass",
+      "evidence": {
+        "quality_checks": 10,
+        "analysis_municipality_count": 1719,
+        "search_city_count": 100,
+        "graph_facts": {
+          "graph_type": "MultiDiGraph",
+          "directed": true,
+          "multigraph": true,
+          "node_count": 1853,
+          "edge_count": 232774,
+          "node_counts": {
+            "Airport": 87,
+            "Municipality": 1719,
+            "Prefecture": 47
+          },
+          "relation_counts": {
+            "ACCESS_TO": 100,
+            "COMMUTES_TO": 159301,
+            "IS_IN": 1719,
+            "STUDIES_IN": 71654
+          }
+        }
+      }
+    }
+  ],
+  "queries": [
+    {
+      "id": "P2-1",
+      "query": "福岡市に都市特性が似ている都市は？",
+      "name": "P2-1",
+      "status": "pass",
+      "evidence": {
+        "target": "福岡市",
+        "top_city": "仙台市",
+        "similarity": 0.8553767329753149
+      }
+    },
+    {
+      "id": "P2-2",
+      "query": "福岡市のように空港アクセスが良く、都市機能もある都市は？",
+      "name": "P2-2",
+      "status": "pass",
+      "evidence": {
+        "target": "福岡市",
+        "top_city": "那覇市",
+        "qualified": 4
+      }
+    },
+    {
+      "id": "P2-3",
+      "query": "広島市に似ている都市を全国から探して",
+      "name": "P2-3",
+      "status": "pass",
+      "evidence": {
+        "target": "広島市",
+        "top_city": "名古屋市",
+        "similarity": 0.8364899423624929
+      }
+    },
+    {
+      "id": "P2-4",
+      "query": "医療面で仙台市と似ている都市は？",
+      "name": "P2-4",
+      "status": "pass",
+      "evidence": {
+        "target": "仙台市",
+        "category": "medical",
+        "top_city": "吹田市"
+      }
+    },
+    {
+      "id": "P2-5",
+      "query": "全国主要都市で人流ハブ性が高い都市は？",
+      "name": "P2-5",
+      "status": "pass",
+      "evidence": {
+        "analysis_universe": 1719,
+        "search_top_pagerank": "東京都区部"
+      }
+    },
+    {
+      "id": "P2-6",
+      "query": "九州で福岡市に似ている都市は？",
+      "name": "P2-6",
+      "status": "pass",
+      "evidence": {
+        "region": "九州",
+        "top_city": "熊本市",
+        "candidate_count": 5
+      }
+    },
+    {
+      "id": "P2-7",
+      "query": "九州以外で福岡市に似ていて空港アクセスが良い都市は？",
+      "name": "P2-7",
+      "status": "pass",
+      "evidence": {
+        "excluded_region": "九州",
+        "candidate_count": 3
+      }
+    },
+    {
+      "id": "P2-8",
+      "query": "人口規模を抑えながら、都市機能が比較的充実した都市は？",
+      "name": "P2-8",
+      "status": "pass",
+      "evidence": {
+        "top_city": "千葉市",
+        "population_max": 1000000
+      }
+    },
+    {
+      "id": "P2-9",
+      "query": "福岡市に似ていて空港アクセスも良い都市の根拠を示して",
+      "name": "P2-9",
+      "status": "pass",
+      "evidence": {
+        "top_city": "那覇市",
+        "dataset_count": 3
+      }
+    },
+    {
+      "id": "P2-10",
+      "query": "家賃が安く自然が豊かな都市は？",
+      "name": "P2-10",
+      "status": "pass",
+      "evidence": {
+        "missing_conditions": [
+          "nature",
+          "rent"
+        ]
+      }
+    }
+  ],
+  "failed_count": 0,
+  "llm_mode": false,
+  "performance_benchmark_status": "deferred"
+}

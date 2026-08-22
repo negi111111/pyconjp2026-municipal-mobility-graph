@@ -1,0 +1,83 @@
+version: 1
+description: >-
+  Audited Phase 1 SSDSE feature set. Derived rates are calculated in
+  pipeline/06_prepare_phase1.py before imputation and standardisation.
+population_column: 2020_総人口
+features:
+  - name: 2020_総人口
+    category: population
+    log1p: true
+  - name: feature_population_density_per_km2
+    category: population
+    log1p: true
+  - name: feature_under15_share
+    category: population
+  - name: feature_working_age_share
+    category: population
+  - name: feature_over65_share
+    category: population
+  - name: feature_single_household_share
+    category: population
+  - name: feature_household_size
+    category: population
+
+  - name: feature_hospitals_per_10k
+    category: medical
+    log1p: true
+  - name: feature_clinics_per_10k
+    category: medical
+    log1p: true
+  - name: feature_dental_clinics_per_10k
+    category: medical
+    log1p: true
+  - name: feature_doctors_per_10k
+    category: medical
+    log1p: true
+  - name: feature_dentists_per_10k
+    category: medical
+    log1p: true
+  - name: feature_pharmacists_per_10k
+    category: medical
+    log1p: true
+
+  - name: feature_elementary_students_per_teacher
+    category: education
+  - name: feature_junior_students_per_teacher
+    category: education
+  - name: feature_schools_per_10k_children
+    category: education
+    log1p: true
+  - name: feature_high_school_students_per_1k
+    category: education
+    log1p: true
+  - name: feature_libraries_per_10k
+    category: education
+    log1p: true
+
+  - name: feature_employment_rate
+    category: economy
+  - name: feature_unemployment_rate
+    category: economy
+  - name: feature_private_establishments_per_1k
+    category: economy
+    log1p: true
+  - name: feature_private_workers_per_1k
+    category: economy
+    log1p: true
+  - name: feature_tertiary_sector_share
+    category: economy
+  - name: feature_retail_stores_per_1k
+    category: economy
+    log1p: true
+
+  - name: feature_elderly_single_household_share
+    category: welfare
+  - name: feature_childcare_facilities_per_1k_children
+    category: welfare
+    log1p: true
+  - name: feature_welfare_establishments_per_1k
+    category: welfare
+    log1p: true
+  - name: feature_municipal_welfare_spending_per_capita
+    category: welfare
+    log1p: true

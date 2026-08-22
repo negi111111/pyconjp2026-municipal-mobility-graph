@@ -1,0 +1,40 @@
+version: 1
+description: >-
+  Explicit Phase 3 environmental features. These are not automatically added
+  to Phase 2 core_similarity.
+features:
+  - name: climate.annual_mean_temperature
+    category: climate
+    unit: degC
+    period: 1991-2020
+    direction: neutral
+  - name: climate.january_mean_temperature
+    category: climate
+    unit: degC
+    period: 1991-2020
+    direction: neutral
+  - name: climate.august_mean_temperature
+    category: climate
+    unit: degC
+    period: 1991-2020
+    direction: neutral
+  - name: climate.annual_precipitation
+    category: climate
+    unit: mm
+    period: 1991-2020
+    direction: neutral
+  - name: climate.annual_sunshine_hours
+    category: climate
+    unit: hours
+    period: 1991-2020
+    direction: neutral
+  - name: climate.annual_snowfall
+    category: climate
+    unit: cm
+    period: 1991-2020
+    direction: neutral
+  - name: transport.nearest_shinkansen_distance
+    category: transport
+    unit: km
+    period: "2020"
+    direction: lower_is_better_for_distance_only

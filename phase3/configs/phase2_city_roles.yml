@@ -1,0 +1,239 @@
+schema_version: 1
+phase: 2
+status: approved_selection_input
+description: >-
+  Official-role and regional metadata used only to produce the provisional
+  national-city selection report. This file is not the final national100
+  production city set.
+sources:
+  prefectural_capitals:
+    provider: project_reviewed_public_role_metadata
+    source_url: https://www.stat.go.jp/data/handbook/2024/pdf/2024all.pdf
+    note: >-
+      Prefectural-capital labels are reviewed against the municipality master
+      and retained as explicit project metadata.
+  designated_cities:
+    provider: Ministry of Internal Affairs and Communications, Japan
+    source_url: https://www.soumu.go.jp/main_sosiki/jichi_gyousei/bunken/shitei_toshi-01.html
+  core_cities:
+    provider: Ministry of Internal Affairs and Communications, Japan
+    source_url: https://www.soumu.go.jp/main_content/000885088.pdf
+    edition: 2023-04-01
+  census_od:
+    provider: Statistics Bureau of Japan / e-Stat
+    source_url: https://www.e-stat.go.jp/stat-search/database?statdisp_id=0003454524
+    edition: 2020 Population Census Table 3
+regions:
+  北海道: 北海道
+  青森県: 東北
+  岩手県: 東北
+  宮城県: 東北
+  秋田県: 東北
+  山形県: 東北
+  福島県: 東北
+  茨城県: 関東
+  栃木県: 関東
+  群馬県: 関東
+  埼玉県: 関東
+  千葉県: 関東
+  東京都: 関東
+  神奈川県: 関東
+  新潟県: 甲信越
+  山梨県: 甲信越
+  長野県: 甲信越
+  富山県: 北陸
+  石川県: 北陸
+  福井県: 北陸
+  岐阜県: 東海
+  静岡県: 東海
+  愛知県: 東海
+  三重県: 東海
+  滋賀県: 関西
+  京都府: 関西
+  大阪府: 関西
+  兵庫県: 関西
+  奈良県: 関西
+  和歌山県: 関西
+  鳥取県: 中国
+  島根県: 中国
+  岡山県: 中国
+  広島県: 中国
+  山口県: 中国
+  徳島県: 四国
+  香川県: 四国
+  愛媛県: 四国
+  高知県: 四国
+  福岡県: 九州
+  佐賀県: 九州
+  長崎県: 九州
+  熊本県: 九州
+  大分県: 九州
+  宮崎県: 九州
+  鹿児島県: 九州
+  沖縄県: 沖縄
+region_targets:
+  北海道: 6
+  東北: 10
+  関東: 15
+  甲信越: 7
+  北陸: 5
+  東海: 12
+  関西: 14
+  中国: 9
+  四国: 7
+  九州: 12
+  沖縄: 3
+prefectural_capitals:
+  北海道: 札幌市
+  青森県: 青森市
+  岩手県: 盛岡市
+  宮城県: 仙台市
+  秋田県: 秋田市
+  山形県: 山形市
+  福島県: 福島市
+  茨城県: 水戸市
+  栃木県: 宇都宮市
+  群馬県: 前橋市
+  埼玉県: さいたま市
+  千葉県: 千葉市
+  東京都: 東京都区部
+  神奈川県: 横浜市
+  新潟県: 新潟市
+  山梨県: 甲府市
+  長野県: 長野市
+  富山県: 富山市
+  石川県: 金沢市
+  福井県: 福井市
+  岐阜県: 岐阜市
+  静岡県: 静岡市
+  愛知県: 名古屋市
+  三重県: 津市
+  滋賀県: 大津市
+  京都府: 京都市
+  大阪府: 大阪市
+  兵庫県: 神戸市
+  奈良県: 奈良市
+  和歌山県: 和歌山市
+  鳥取県: 鳥取市
+  島根県: 松江市
+  岡山県: 岡山市
+  広島県: 広島市
+  山口県: 山口市
+  徳島県: 徳島市
+  香川県: 高松市
+  愛媛県: 松山市
+  高知県: 高知市
+  福岡県: 福岡市
+  佐賀県: 佐賀市
+  長崎県: 長崎市
+  熊本県: 熊本市
+  大分県: 大分市
+  宮崎県: 宮崎市
+  鹿児島県: 鹿児島市
+  沖縄県: 那覇市
+designated_cities:
+  - 札幌市
+  - 仙台市
+  - さいたま市
+  - 千葉市
+  - 横浜市
+  - 川崎市
+  - 相模原市
+  - 新潟市
+  - 静岡市
+  - 浜松市
+  - 名古屋市
+  - 京都市
+  - 大阪市
+  - 堺市
+  - 神戸市
+  - 岡山市
+  - 広島市
+  - 北九州市
+  - 福岡市
+  - 熊本市
+core_cities:
+  - 宇都宮市
+  - 富山市
+  - 金沢市
+  - 岐阜市
+  - 姫路市
+  - 鹿児島市
+  - 秋田市
+  - 郡山市
+  - 和歌山市
+  - 大分市
+  - 豊田市
+  - 福山市
+  - 高知市
+  - 宮崎市
+  - いわき市
+  - 長野市
+  - 豊橋市
+  - 高松市
+  - 旭川市
+  - 松山市
+  - 横須賀市
+  - 奈良市
+  - 倉敷市
+  - 川越市
+  - 船橋市
+  - 岡崎市
+  - 高槻市
+  - 東大阪市
+  - 函館市
+  - 下関市
+  - 青森市
+  - 盛岡市
+  - 柏市
+  - 西宮市
+  - 久留米市
+  - 前橋市
+  - 大津市
+  - 尼崎市
+  - 高崎市
+  - 豊中市
+  - 那覇市
+  - 枚方市
+  - 八王子市
+  - 越谷市
+  - 呉市
+  - 佐世保市
+  - 八戸市
+  - 福島市
+  - 川口市
+  - 八尾市
+  - 明石市
+  - 鳥取市
+  - 松江市
+  - 山形市
+  - 福井市
+  - 甲府市
+  - 寝屋川市
+  - 水戸市
+  - 吹田市
+  - 松本市
+  - 一宮市
+synthetic_cities:
+  東京都区部:
+    municipality_id: R13000
+    municipality_code: "13000"
+    prefecture: 東京都
+    latitude: 35.6894875
+    longitude: 139.6917064
+    aggregation_rule: >-
+      Aggregate SSDSE and Census rows whose municipality code is 13101-13123.
+    representative_point: >-
+      Use a reviewed Tokyo metropolitan representative point in the national
+      pipeline; do not silently substitute a ward office.
+representative_point_overrides:
+  "01204":
+    prefecture: 北海道
+    name: 旭川市
+    representative_point_name: 旭川市役所（明示的レビュー済み代表点）
+    latitude: 43.770799
+    longitude: 142.364847
+    coordinate_role: reviewed_municipal_office_override
+    coordinate_reference_year: 2022
+    coordinate_source_url: https://www.city.asahikawa.hokkaido.jp/
+    reason: P05-22に施設分類1の旭川市役所レコードがないため、明示的に固定する。

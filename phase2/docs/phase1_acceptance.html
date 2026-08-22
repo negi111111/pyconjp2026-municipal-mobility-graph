@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 1受入検証レポート</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+    }
+    body { background: #f4f6f8; color: #1f2933; margin: 0; line-height: 1.6; }
+    main { max-width: 1180px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    header, section {
+      background: #fff;
+      border: 1px solid #d9e2ec;
+      border-radius: 10px;
+      margin: 1rem 0;
+      padding: 1.25rem;
+    }
+    h1, h2 { color: #102a43; margin-top: 0; }
+    .summary { align-items: center; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .overall { border-radius: 999px; font-weight: 700; padding: .25rem .8rem; }
+    .overall.pass, .status.pass { background: #d9f2e6; color: #0b6b3a; }
+    .overall.fail, .status.fail { background: #ffe3e3; color: #a61b1b; }
+    .status {
+      border-radius: 999px;
+      display: inline-block;
+      font-size: .8rem;
+      font-weight: 700;
+      padding: .1rem .5rem;
+    }
+    table { border-collapse: collapse; margin: .75rem 0; width: 100%; }
+    th, td {
+      border-bottom: 1px solid #d9e2ec;
+      padding: .6rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f0f4f8; color: #243b53; }
+    code { background: #f0f4f8; border-radius: 4px; padding: .1rem .3rem; }
+    a { color: #0b69a3; }
+    ul { padding-left: 1.4rem; }
+    .muted { color: #52606d; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="summary">
+      <h1>Phase 1受入検証レポート</h1>
+      <span class="overall pass">PASS</span>
+    </div>
+    <p class="muted">生成日時: 2026-08-21T08:56:23+00:00 / scripts/verify_phase1.py</p>
+    <p>決定的なオフラインPlanner/Responseを使用。LLMはランキング・数値計算には使用していません。</p>
+  </header>
+
+  <section>
+    <h2>受入条件</h2>
+    <table>
+      <thead><tr><th>ID</th><th>自然言語質問</th><th>状態</th><th>定量的根拠</th></tr></thead>
+      <tbody><tr><th scope="row">AC-1</th><td>広島市と人の行き来が最も多い都市は？</td><td><span class="status pass">PASS</span></td><td>廿日市市: 34,135人 (13,331 + 20,804)</td></tr><tr><th scope="row">AC-2</th><td>広島周辺で人流のハブになっている都市は？</td><td><span class="status pass">PASS</span></td><td>重み付きPageRank 1位: 広島市: 0.185664</td></tr><tr><th scope="row">AC-3</th><td>県境をまたぐ実質的な生活圏はある？</td><td><span class="status pass">PASS</span></td><td>県境をまたぐコミュニティ: 4件</td></tr><tr><th scope="row">AC-4</th><td>広島市と都市特性が似ている都市は？</td><td><span class="status pass">PASS</span></td><td>岡山市: cosine類似度 0.8570</td></tr><tr><th scope="row">AC-5</th><td>広島市より空港アクセスが良い都市は？</td><td><span class="status pass">PASS</span></td><td>岩国市 → 岩国飛行場: 3.5 km; 広島市 32.9 km</td></tr><tr><th scope="row">AC-6</th><td>広島市と似ていて空港アクセスも良い都市は？</td><td><span class="status pass">PASS</span></td><td>岡山市: cosine類似度 0.8570、空港 12.8 km</td></tr><tr><th scope="row">AC-7</th><td>医療面で広島市と似ている都市は？</td><td><span class="status pass">PASS</span></td><td>岡山市: 医療cosine類似度 0.8376</td></tr></tbody>
+    </table>
+    <p class="muted">空港アクセスは、定期便のある空港へのHaversine直線距離です。
+      旅客規模は明示的に要求した場合だけ使用します。</p>
+  </section>
+
+  <section>
+    <h2>独立チェック</h2>
+    <table>
+      <thead><tr><th>チェック</th><th>状態</th><th>詳細</th></tr></thead>
+      <tbody><tr><td>10 pinned source SHA-256 digests</td><td><span class="status pass">PASS</span></td><td></td></tr><tr><td>processed data quality report</td><td><span class="status pass">PASS</span></td><td></td></tr><tr><td>raw Census OD spot check</td><td><span class="status pass">PASS</span></td><td></td></tr><tr><td>independent Hiroshima airport-distance recomputation</td><td><span class="status pass">PASS</span></td><td></td></tr><tr><td>unsupported-condition evidence boundary</td><td><span class="status pass">PASS</span></td><td></td></tr></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Seedレビュー（提案用の根拠）</h2>
+    <p>Phase 1の20都市seedは変更していません。以下は将来レビュー用の候補です。</p>
+    <table>
+      <thead><tr><th>順位</th><th>候補</th><th>seed全体との双方向人流</th><th>最強のseed接続</th></tr></thead>
+      <tbody><tr><td>1</td><td>広島県府中町</td><td>31,980人</td><td>広島市 (26,711人)</td></tr><tr><td>2</td><td>岡山県総社市</td><td>22,654人</td><td>倉敷市 (12,904人)</td></tr><tr><td>3</td><td>山口県防府市</td><td>18,902人</td><td>山口市 (13,958人)</td></tr><tr><td>4</td><td>広島県海田町</td><td>16,391人</td><td>広島市 (13,352人)</td></tr><tr><td>5</td><td>岡山県玉野市</td><td>16,197人</td><td>岡山市 (11,321人)</td></tr></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>範囲と制約</h2>
+    <ul>
+      <li>人流ランキング、PageRank、communityは固定20都市の誘導グラフ内の結果であり、全国ランキングではありません。</li>
+      <li>国勢調査ODの自都市ループは都市間edgeから除外しています。</li>
+      <li>空港距離は市役所代表点からC28参照点までの直線距離であり、道路・鉄道・ターミナル所要時間ではありません。</li>
+      <li>C28空港情報は2021年、SSDSE各項目は異なる参照年のスナップショットです。</li>
+      <li>自然、温泉、家賃、気候、観光、災害リスクはPhase 1の構造化事実には含まれません。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>証跡</h2>
+    <ul>
+      <li><a href="../data/processed/acceptance_results.json">機械可読な受入結果（JSON）</a></li>
+      <li><a href="../data/provenance">
+        データ出典・ライセンス・変換・チェックサム</a></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

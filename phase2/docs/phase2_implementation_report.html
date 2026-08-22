@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 2 実装報告書｜全国1,719自治体分析と100都市検索</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      --ink: #1f2933; --navy: #102a43; --blue: #0b69a3; --line: #d9e2ec;
+      --muted: #52606d; --green: #0b6b3a; --green-bg: #d9f2e6; --yellow-bg: #fff4cc;
+    }
+    * { box-sizing: border-box; }
+    body { background: #eef2f6; color: var(--ink); line-height: 1.7; margin: 0; }
+    main { margin: 0 auto; max-width: 1220px; padding: 1.5rem 1rem 4rem; }
+    header, .slide { background: #fff; border: 1px solid var(--line); border-radius: 14px; margin: 1rem 0; padding: 1.5rem; }
+    header { background: linear-gradient(135deg, #102a43 0%, #2563a6 100%); color: #fff; }
+    header h1, header p { color: #fff; }
+    h1, h2, h3 { color: var(--navy); line-height: 1.35; margin-top: 0; }
+    h1 { font-size: clamp(1.8rem, 4vw, 3.2rem); }
+    h2 { border-bottom: 2px solid var(--line); padding-bottom: .55rem; }
+    h2 .slide-no { color: var(--blue); font-size: .8rem; letter-spacing: .08em; margin-right: .7rem; }
+    .kicker { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .lead { border-left: 5px solid #2f80ed; color: #243b53; font-size: 1.08rem; margin: .8rem 0 1.2rem; padding: .55rem .9rem; }
+    header .lead { border-left-color: #8bd3ff; color: #fff; }
+    .lead-label { font-size: .75rem; font-weight: 700; letter-spacing: .08em; }
+    .muted { color: var(--muted); }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+    .metric { background: #f6f9fc; border: 1px solid var(--line); border-radius: 10px; padding: .9rem; }
+    .metric strong { color: var(--blue); display: block; font-size: 1.6rem; line-height: 1.2; }
+    .metric span { color: var(--muted); font-size: .9rem; }
+    .status { background: var(--green-bg); border-radius: 999px; color: var(--green); display: inline-block; font-size: .8rem; font-weight: 700; padding: .1rem .55rem; }
+    table { border-collapse: collapse; margin: .7rem 0; width: 100%; }
+    th, td { border-bottom: 1px solid var(--line); padding: .6rem; text-align: left; vertical-align: top; }
+    th { background: #f0f4f8; color: #243b53; }
+    code { background: #f0f4f8; border-radius: 4px; padding: .1rem .3rem; }
+    a { color: var(--blue); }
+    .svg-wrap { background: #f8fbfe; border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; padding: .7rem; }
+    svg { display: block; min-width: 680px; width: 100%; }
+    .box-analysis { fill: #e7f3fb; stroke: #2f80ed; stroke-width: 2; }
+    .box-search { fill: #e8f7ef; stroke: #28a36a; stroke-width: 2; }
+    .box-source { fill: var(--yellow-bg); stroke: #e0b400; stroke-width: 2; }
+    .arrow { fill: none; marker-end: url(#arrow); stroke: #52606d; stroke-width: 2.5; }
+    .two-col { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); }
+    .callout { background: #f6f9fc; border-left: 4px solid #7b61ff; padding: .7rem 1rem; }
+    .formula { background: #102a43; border-radius: 9px; color: #fff; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; padding: .85rem 1rem; }
+    footer { color: var(--muted); font-size: .85rem; padding: .5rem; text-align: center; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="kicker">Mobility Knowledge Graph / Phase 2</p>
+    <h1>スライドタイトル：全国を分析し、100都市へ検索を投影する</h1>
+    <p class="lead"><span class="lead-label">リード｜</span>Phase 1の20都市基準を壊さず、全国1,719自治体でOD中心性を計算してから、承認済み100都市へ結果を投影する全国化を実装した。</p>
+    <p>対象：全国1,719自治体の分析空間 ／ 承認済み主要100都市の検索空間　／　状態：<span class="status">実装・受入完了</span></p>
+    <p class="muted">Phase 1との比較は<a href="../../phase1/docs/phase1_implementation_report.html">Phase 1実装報告書</a>、受入の詳細は<a href="phase2_acceptance.html">Phase 2 Acceptance</a>を参照。</p>
+  </header>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 01</span>全国化の設計判断</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>100都市だけでグラフを切ると全国ハブ性を過小評価するため、分析集合と検索集合を分離し、計算と表示の責務を分けた。</p>
+    <div class="grid">
+      <div class="metric"><strong>1,719</strong><span>全国分析自治体。東京都23区はR13000へ集約</span></div>
+      <div class="metric"><strong>100</strong><span>ユーザー承認済みSearch Universe</span></div>
+      <div class="metric"><strong>177,274</strong><span>集約済み全国OD flow edges</span></div>
+      <div class="metric"><strong>1,853 / 232,774</strong><span>Graph nodes / edges</span></div>
+    </div>
+    <div class="callout"><strong>中心性のルール：</strong>全国1,719自治体で計算 → 結果を100都市へ投影。100都市誘導グラフの中心性とは区別してEvidenceへ記録。</div>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 02</span>793候補から承認済み100都市へ</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>人口だけで上位100を選ばず、公式役割、人流、空港、地域代表性を組み合わせ、候補根拠を残したうえでユーザー承認を得た。</p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 1080 230" role="img" aria-label="Phase 2の都市選定フロー">
+        <defs><marker id="arrow" markerHeight="8" markerWidth="8" orient="auto" refX="8" refY="4"><path d="M0,0 L8,4 L0,8 z" fill="#52606d"/></marker></defs>
+        <rect class="box-source" x="30" y="65" width="210" height="78" rx="12"/><text x="135" y="100" fill="#102a43" font-size="22" text-anchor="middle">候補 793都市</text><text x="135" y="128" fill="#52606d" font-size="15" text-anchor="middle">SSDSE + 行政コード</text>
+        <rect class="box-analysis" x="340" y="65" width="210" height="78" rx="12"/><text x="445" y="100" fill="#102a43" font-size="22" text-anchor="middle">必須anchor 52</text><text x="445" y="128" fill="#52606d" font-size="15" text-anchor="middle">役割・地域の下限</text>
+        <rect class="box-search" x="650" y="65" width="210" height="78" rx="12"/><text x="755" y="100" fill="#102a43" font-size="22" text-anchor="middle">承認100都市</text><text x="755" y="128" fill="#52606d" font-size="15" text-anchor="middle">Phase 2 Search Universe</text>
+        <rect class="box-source" x="910" y="65" width="140" height="78" rx="12"/><text x="980" y="100" fill="#102a43" font-size="20" text-anchor="middle">Production</text><text x="980" y="128" fill="#52606d" font-size="15" text-anchor="middle">固定config</text>
+        <path class="arrow" d="M240 104 H335"/><path class="arrow" d="M550 104 H645"/><path class="arrow" d="M860 104 H905"/>
+        <text x="290" y="87" fill="#52606d" font-size="14" text-anchor="middle">役割・OD・地域</text><text x="600" y="87" fill="#52606d" font-size="14" text-anchor="middle">ユーザー確認</text>
+      </svg>
+    </div>
+    <div class="formula">selection aid = 0.4 × population percentile + 0.3 × OD percentile + 0.2 × core-city + 0.1 × airport access within 50 km</div>
+    <p class="muted small">選定結果は<code>configs/phase2_cities.yml</code>へ固定し、変更時は選定資料とAcceptanceを再生成する。</p>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 03</span>全国分析空間と検索空間</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>全国ODの全体構造を保持したまま、検索結果だけを100都市へ絞り、表示対象を変えても分析の母集団を壊さない。</p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 1080 245" role="img" aria-label="Phase 2の分析空間と検索空間の分離">
+        <defs><marker id="arrow2" markerHeight="8" markerWidth="8" orient="auto" refX="8" refY="4"><path d="M0,0 L8,4 L0,8 z" fill="#52606d"/></marker></defs>
+        <rect class="box-analysis" x="40" y="45" width="340" height="125" rx="14"/><text x="210" y="84" fill="#102a43" font-size="24" text-anchor="middle">Analysis Universe</text><text x="210" y="119" fill="#102a43" font-size="28" text-anchor="middle">1,719自治体</text><text x="210" y="149" fill="#52606d" font-size="15" text-anchor="middle">OD / PageRank / weighted degree</text>
+        <rect class="box-search" x="700" y="45" width="340" height="125" rx="14"/><text x="870" y="84" fill="#102a43" font-size="24" text-anchor="middle">Search Universe</text><text x="870" y="119" fill="#102a43" font-size="28" text-anchor="middle">承認100都市</text><text x="870" y="149" fill="#52606d" font-size="15" text-anchor="middle">地域 / 人口 / 複合条件検索</text>
+        <path class="arrow" d="M390 107 H690"/><text x="540" y="91" fill="#0b69a3" font-size="18" text-anchor="middle">投影・フィルタ</text>
+        <text x="540" y="205" fill="#52606d" font-size="15" text-anchor="middle">全国の中心性を計算してから、100都市へ表示</text>
+      </svg>
+    </div>
+    <table>
+      <thead><tr><th>生成物</th><th>件数</th><th>意味</th></tr></thead>
+      <tbody>
+        <tr><td><code>municipalities.parquet</code></td><td>1,719</td><td>全国属性、代表点、検索フラグ</td></tr>
+        <tr><td><code>flow_edges.parquet</code></td><td>177,274</td><td>47都道府県ODを集約した有向flow</td></tr>
+        <tr><td><code>national_flow_metrics.parquet</code></td><td>1,719</td><td>weighted degree / PageRankの事前計算値</td></tr>
+        <tr><td>Knowledge Graph</td><td>1,853 nodes / 232,774 edges</td><td>Municipality / Prefecture / Airportの多層グラフ</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Chat Deploymentは<code>AZURE_OPENAI_CHAT_DEPLOYMENT</code>で指定。通常QueryはPlanner=<code>high</code>/4096、Response=<code>medium</code>/4096、比較考察は<code>xhigh</code>/8192。</p>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 04</span>全国Queryと10問Acceptance</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>全国類似度、地域・除外地域、人口上限、人流ハブ、空港、未収録条件を一つのQuery境界で検証した。</p>
+    <table>
+      <thead><tr><th>ID</th><th>質問の型</th><th>確認内容</th><th>結果</th></tr></thead>
+      <tbody>
+        <tr><td>P2-1 / P2-3</td><td>全国類似度</td><td>福岡市・広島市を基準に100都市で再標準化</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P2-2 / P2-9</td><td>類似度＋空港</td><td>類似候補と最寄り定期便空港距離を独立計算</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P2-4</td><td>カテゴリ類似度</td><td>医療カテゴリの特徴量だけで比較</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P2-5</td><td>全国人流ハブ</td><td>全国1,719自治体のPageRankを100都市へ投影</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P2-6 / P2-7</td><td>地域・除外地域</td><td>九州、九州以外の候補漏れを確認</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P2-8</td><td>人口＋都市機能</td><td>人口上限＋weighted degree代理指標</td><td><span class="status">PASS</span></td></tr>
+        <tr><td>P2-10</td><td>未収録条件</td><td>家賃・自然をunsupportedとして分離</td><td><span class="status">PASS</span></td></tr>
+      </tbody>
+    </table>
+    <p><span class="status">offline 10/10</span>　<span class="status">Azure OpenAI 10/10</span>　pytest 54 passed　lint PASS</p>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 05</span>LLMとHard Factsの境界</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>LLMは日本語の意図・都市名・条件の解釈と説明に限定し、ランキングへ影響する数値はローカル計算からのみ供給する。</p>
+    <div class="two-col">
+      <div class="callout"><strong>LLMが担当</strong><ul><li>intent</li><li>city / region / criteria</li><li>Evidenceの説明文</li><li>Soft Knowledge（明示ラベル付き）</li></ul></div>
+      <div class="callout"><strong>pandas / NetworkXが担当</strong><ul><li>OD集計とPageRank</li><li>SSDSE類似度</li><li>空港距離と順位</li><li>人口・地域フィルタ</li></ul></div>
+    </div>
+    <table>
+      <thead><tr><th>Evidence項目</th><th>必須情報</th></tr></thead>
+      <tbody>
+        <tr><td>universe</td><td>全国分析1,719 / Search 100、関係範囲</td></tr>
+        <tr><td>datasets</td><td>データセット名、版、提供者、URL、provenance path</td></tr>
+        <tr><td>metrics</td><td>指標名、単位、定義、計算式</td></tr>
+        <tr><td>limitations</td><td>自己ループ、直線距離、参照年、未収録条件</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 06</span>全国化後の性能最適化</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>全国GraphのPageRankをQueryごとに再計算せず、パイプラインの検証済み中心性スナップショットを再利用して応答時間を短縮した。</p>
+    <table>
+      <thead><tr><th>測定対象</th><th>実測値</th><th>意味</th></tr></thead>
+      <tbody>
+        <tr><td>ロード</td><td>約3,988 ms</td><td>全国GraphとParquetを読み込む時間</td></tr>
+        <tr><td>類似度Query</td><td>中央値 約161 ms</td><td>100都市のSSDSE類似度</td></tr>
+        <tr><td>人流ハブQuery</td><td>中央値 約0.5 ms</td><td>事前計算スナップショットを投影</td></tr>
+        <tr><td>最大RSS</td><td>約672 MB</td><td>NetworkX全国MultiDiGraph保持時</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">中心性4指標は従来のNetworkX再計算と値の最大絶対差0、順位全件一致。全国Graphのメモリは観測値として次の大規模化ゲートへ引き継ぐ。</div>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 07</span>Phase 2の結論とPhase 3への受け渡し</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>Phase 2は全国分析と100都市検索の境界、都市選定の承認、全国Acceptanceを確定し、追加データを安全に導入できる土台を作った。</p>
+    <div class="two-col">
+      <div>
+        <h3>完了</h3>
+        <ul><li>候補793、必須anchor52、承認100</li><li>全国OD 47都道府県</li><li>地域・人口・複合Query</li><li>offline / LLM 10/10</li></ul>
+      </div>
+      <div>
+        <h3>Phase 3で追加したもの</h3>
+        <ul><li>JMA 1991-2020気候</li><li>MLIT N02-20新幹線距離</li><li>Feature provenance</li><li>未採用条件の明示的境界</li></ul>
+      </div>
+    </div>
+    <p><a href="phase2_acceptance.html">Phase 2 Acceptance HTML</a> ／ <a href="phase2_acceptance_llm.html">LLM Acceptance HTML</a> ／ <a href="city_selection.md">都市選定資料</a> ／ <a href="../../phase3/docs/phase3_implementation_report.html">Phase 3実装報告書</a> ／ <a href="../../phase3/docs/cross_phase_audit.html">横断監査</a></p>
+  </section>
+
+  <footer>Phase 2 implementation report / Analysis Universe and Search Universe are explicit contracts</footer>
+</main>
+</body>
+</html>

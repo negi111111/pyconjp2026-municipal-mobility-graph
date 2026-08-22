@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 3 Acceptance Report</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background:#f4f6f8; color:#1f2933; line-height:1.6; }
+main { max-width:1240px; margin:auto; padding:2rem 1rem; } section,header { background:#fff; border:1px solid #d9e2ec; border-radius:10px; margin:1rem 0; padding:1.25rem; }
+h1,h2 { color:#102a43; } table { border-collapse:collapse; width:100%; } th,td { border-bottom:1px solid #d9e2ec; padding:.55rem; text-align:left; vertical-align:top; }
+th { background:#f0f4f8; } .status { border-radius:999px; padding:.1rem .5rem; font-weight:700; } .status.pass { background:#d9f2e6; color:#0b6b3a; } .status.fail { background:#ffe3e3; color:#a61b1b; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; margin:0; } a { color:#0b69a3; } code { background:#f0f4f8; padding:.1rem .3rem; }
+</style></head><body><main>
+<header><h1>Phase 3 Acceptance Report</h1>
+<p><strong>総合結果: PASS</strong></p>
+<p>全国分析空間: 1,719自治体 / 検索空間: 承認済み100都市 / LLM mode: True</p>
+<p>生成日時: 2026-08-21T13:30:57+00:00</p></header>
+<section><h2>Acceptance Queries</h2><table><thead><tr><th>ID</th><th>質問</th><th>状態</th><th>検証証拠</th></tr></thead><tbody><tr><td>P3-1</td><td>福岡市に似ていて住居費が比較的安い都市は？</td><td><span class="status pass">PASS</span></td><td><pre>{
+  &quot;top_city&quot;: &quot;仙台市&quot;,
+  &quot;missing_conditions&quot;: [
+    &quot;housing_cost&quot;,
+    &quot;rent&quot;
+  ]
+}</pre></td></tr><tr><td>P3-2</td><td>福岡市に似ていて冬が比較的暖かい都市は？</td><td><span class="status pass">PASS</span></td><td><pre>{
+  &quot;top_city&quot;: &quot;鹿児島市&quot;,
+  &quot;criterion_count&quot;: 1
+}</pre></td></tr><tr><td>P3-3</td><td>空港と新幹線の両方へのアクセスが良い都市は？</td><td><span class="status pass">PASS</span></td><td><pre>{
+  &quot;top_city&quot;: &quot;東京都区部&quot;,
+  &quot;criterion_count&quot;: 2
+}</pre></td></tr><tr><td>P3-4</td><td>人口規模を抑えつつ、広域交通が便利な都市は？</td><td><span class="status pass">PASS</span></td><td><pre>{
+  &quot;top_city&quot;: &quot;川口市&quot;,
+  &quot;population_max&quot;: 1000000
+}</pre></td></tr><tr><td>P3-5</td><td>中国・四国で冬が比較的暖かく、都市機能もある都市は？</td><td><span class="status pass">PASS</span></td><td><pre>{
+  &quot;top_city&quot;: &quot;徳島市&quot;,
+  &quot;region&quot;: &quot;中国・四国&quot;
+}</pre></td></tr><tr><td>P3-6</td><td>九州以外で福岡市に似ていて住居費を抑えやすい都市は？</td><td><span class="status pass">PASS</span></td><td><pre>{
+  &quot;top_city&quot;: &quot;仙台市&quot;,
+  &quot;excluded_region&quot;: &quot;九州&quot;
+}</pre></td></tr></tbody></table></section>
+<section><h2>Independent Checks</h2><table><thead><tr><th>Check</th><th>状態</th><th>詳細</th></tr></thead><tbody><tr><td>Phase 3 structure, coverage, and provenance</td><td><span class="status pass">PASS</span></td><td><pre>{
+  &quot;quality_checks&quot;: 10,
+  &quot;analysis_municipality_count&quot;: 1719,
+  &quot;search_city_count&quot;: 100,
+  &quot;environmental_metric_rows&quot;: 700,
+  &quot;climate_city_count&quot;: 100,
+  &quot;shinkansen_city_count&quot;: 100,
+  &quot;shinkansen_station_count&quot;: 92,
+  &quot;housing_status&quot;: &quot;not_adopted_coverage_unverified&quot;,
+  &quot;disaster_status&quot;: &quot;feasibility_deferred&quot;,
+  &quot;nature_status&quot;: &quot;feasibility_deferred&quot;,
+  &quot;coverage&quot;: {
+    &quot;expected_city_count&quot;: 100,
+    &quot;climate&quot;: {
+      &quot;city_count&quot;: 100,
+      &quot;feature_count&quot;: 6,
+      &quot;missing_value_count&quot;: 0,
+      &quot;features&quot;: [
+        {
+          &quot;feature_name&quot;: &quot;climate.annual_mean_temperature&quot;,
+          &quot;city_count&quot;: 100,
+          &quot;missing_value_count&quot;: 0,
+          &quot;units&quot;: [
+            &quot;degC&quot;
+          ],
+          &quot;periods&quot;: [
+            &quot;1991-2020&quot;
+          ],
+          &quot;source_datasets&quot;: [
+            &quot;JMA normal_surface&quot;
+          ]
+        },
+        {
+          &quot;feature_name&quot;: &quot;climate.annual_precipitation&quot;,
+          &quot;city_count&quot;: 100,
+          &quot;missing_value_count&quot;: 0,
+          &quot;units&quot;: [
+            &quot;mm&quot;
+          ],
+          &quot;periods&quot;: [
+            &quot;1991-2020&quot;
+          ],
+          &quot;source_datasets&quot;: [
+            &quot;JMA normal_surface&quot;
+          ]
+        },
+        {
+          &quot;feature_name&quot;: &quot;climate.annual_snowfall&quot;,
+          &quot;city_count&quot;: 100,
+          &quot;missing_value_count&quot;: 0,
+          &quot;units&quot;: [
+            &quot;cm&quot;
+          ],
+          &quot;periods&quot;: [
+            &quot;1991-2020&quot;
+          ],
+          &quot;source_datasets&quot;: [
+            &quot;JMA normal_surface&quot;
+          ]
+        },
+        {
+          &quot;feature_name&quot;: &quot;climate.annual_sunshine_hours&quot;,
+          &quot;city_count&quot;: 100,
+          &quot;missing_value_count&quot;: 0,
+          &quot;units&quot;: [
+            &quot;hours&quot;
+          ],
+          &quot;periods&quot;: [
+            &quot;1991-2020&quot;
+          ],
+          &quot;source_datasets&quot;: [
+            &quot;JMA normal_surface&quot;
+          ]
+        },
+        {
+          &quot;feature_name&quot;: &quot;climate.august_mean_temperature&quot;,
+          &quot;city_count&quot;: 100,
+          &quot;missing_value_count&quot;: 0,
+          &quot;units&quot;: [
+            &quot;degC&quot;
+          ],
+          &quot;periods&quot;: [
+            &quot;1991-2020&quot;
+          ],
+          &quot;source_datasets&quot;: [
+            &quot;JMA normal_surface&quot;
+          ]
+        },
+        {
+          &quot;feature_name&quot;: &quot;climate.january_mean_temperature&quot;,
+          &quot;city_count&quot;: 100,
+          &quot;missing_value_count&quot;: 0,
+          &quot;units&quot;: [
+            &quot;degC&quot;
+          ],
+          &quot;periods&quot;: [
+            &quot;1991-2020&quot;
+          ],
+          &quot;source_datasets&quot;: [
+            &quot;JMA normal_surface&quot;
+          ]
+        }
+      ]
+    },
+    &quot;weather_station_access&quot;: {
+      &quot;city_count&quot;: 100,
+      &quot;missing_distance_count&quot;: 0,
+      &quot;median_km&quot;: 4.639202001965005,
+      &quot;p95_km&quot;: 32.11084997911823,
+      &quot;max_km&quot;: 51.79081908255427,
+      &quot;periods&quot;: [
+        &quot;1991-2020&quot;
+      ],
+      &quot;source_datasets&quot;: [
+        &quot;JMA 2020 normals, surface station&quot;
+      ]
+    },
+    &quot;shinkansen_access&quot;: {
+      &quot;city_count&quot;: 100,
+      &quot;missing_distance_count&quot;: 0,
+      &quot;median_km&quot;: 13.106771023711355,
+      &quot;p95_km&quot;: 156.1795584627074,
+      &quot;max_km&quot;: 658.9749255568479,
+      &quot;nearest_station_unique_count&quot;: 50,
+      &quot;source_station_catalog_count&quot;: 92,
+      &quot;station_in_municipality_status&quot;: [
+        &quot;not_spatially_joined&quot;
+      ],
+      &quot;source_datasets&quot;: [
+        &quot;MLIT National Land Numerical Information N02-20&quot;
+      ]
+    }
+  }
+}</pre></td></tr></tbody></table></section>
+<section><h2>Phase 3の境界</h2><ul>
+<li>気候はJMA 1991-2020平年値を最近傍観測所へ対応付けた値です。</li>
+<li>新幹線アクセスはMLIT N02-20の最近傍駅までのHaversine直線距離です。所要時間ではありません。</li>
+<li>住居費、災害、自然はcoverage・定義・集約方法が未確定のためランキングへ追加していません。</li>
+<li>数値、順位、フィルタ、証拠はpandas / NetworkXで計算し、LLMは意図理解・説明だけに限定しています。</li>
+</ul></section>
+<section><h2>証跡</h2><ul>
+<li><a href="../data/processed/phase3_processing_report.json">phase3_processing_report.json</a></li>
+<li><a href="../data/processed/phase3_feature_catalog.json">phase3_feature_catalog.json</a></li>
+<li><a href="../data/provenance/phase3_sources.yml">phase3_sources.yml</a></li>
+<li><a href="../data/provenance/phase3_download_manifest.json">phase3_download_manifest.json</a></li>
+<li><a href="phase3_implementation_report.html">Phase 3実装・検証報告書</a></li>
+</ul></section>
+</main></body></html>

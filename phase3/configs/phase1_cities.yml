@@ -1,0 +1,86 @@
+phase: 1
+name: hiroshima_20
+description: >-
+  Phase 1 seed fixed by the project requirements. OD diagnostics may propose
+  replacements, but this file must not be changed without review.
+cities:
+  - municipality_id: R34100
+    municipality_code: "34100"
+    prefecture: 広島県
+    name: 広島市
+  - municipality_id: R34202
+    municipality_code: "34202"
+    prefecture: 広島県
+    name: 呉市
+  - municipality_id: R34212
+    municipality_code: "34212"
+    prefecture: 広島県
+    name: 東広島市
+  - municipality_id: R34213
+    municipality_code: "34213"
+    prefecture: 広島県
+    name: 廿日市市
+  - municipality_id: R34211
+    municipality_code: "34211"
+    prefecture: 広島県
+    name: 大竹市
+  - municipality_id: R34204
+    municipality_code: "34204"
+    prefecture: 広島県
+    name: 三原市
+  - municipality_id: R34205
+    municipality_code: "34205"
+    prefecture: 広島県
+    name: 尾道市
+  - municipality_id: R34207
+    municipality_code: "34207"
+    prefecture: 広島県
+    name: 福山市
+  - municipality_id: R34214
+    municipality_code: "34214"
+    prefecture: 広島県
+    name: 安芸高田市
+  - municipality_id: R35208
+    municipality_code: "35208"
+    prefecture: 山口県
+    name: 岩国市
+  - municipality_id: R35215
+    municipality_code: "35215"
+    prefecture: 山口県
+    name: 周南市
+  - municipality_id: R35203
+    municipality_code: "35203"
+    prefecture: 山口県
+    name: 山口市
+  - municipality_id: R33100
+    municipality_code: "33100"
+    prefecture: 岡山県
+    name: 岡山市
+  - municipality_id: R33202
+    municipality_code: "33202"
+    prefecture: 岡山県
+    name: 倉敷市
+  - municipality_id: R33205
+    municipality_code: "33205"
+    prefecture: 岡山県
+    name: 笠岡市
+  - municipality_id: R32201
+    municipality_code: "32201"
+    prefecture: 島根県
+    name: 松江市
+  - municipality_id: R32202
+    municipality_code: "32202"
+    prefecture: 島根県
+    name: 浜田市
+  - municipality_id: R38201
+    municipality_code: "38201"
+    prefecture: 愛媛県
+    name: 松山市
+  - municipality_id: R38202
+    municipality_code: "38202"
+    prefecture: 愛媛県
+    name: 今治市
+  - municipality_id: R37201
+    municipality_code: "37201"
+    prefecture: 香川県
+    name: 高松市

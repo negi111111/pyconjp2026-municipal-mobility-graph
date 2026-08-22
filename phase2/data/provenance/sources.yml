@@ -1,0 +1,239 @@
+schema_version: 1
+phase: 1
+scope: hiroshima_20
+retrieval:
+  retrieved_at: null
+  retrieved_at_note: >-
+    Runtime retrieval timestamps, file sizes, source URLs, and SHA-256 digests are
+    recorded by scripts/download_data.py in data/provenance/download_manifest.json.
+  manifest: data/provenance/download_manifest.json
+
+datasets:
+  - dataset: SSDSE-A-2026
+    purpose: Municipality attributes for the fixed Phase 1 seed
+    provider: National Statistics Center, Japan
+    source_url: https://www.nstac.go.jp/use/literacy/ssdse/
+    download_url: https://www.nstac.go.jp/files/SSDSE-A-2026.csv
+    definitions_url: https://www.nstac.go.jp/files/kaisetsu-A-2026.pdf
+    edition: "2026-06-30 publication"
+    raw_path: data/raw/SSDSE-A-2026.csv
+    retrieved_at: null
+    license:
+      name: >-
+        National Statistics Center site terms, conforming to the Government
+        Standard Terms of Use 2.0 and compatible with CC BY 4.0
+      url: https://www.nstac.go.jp/info/site-policy/
+      spdx_id: null
+    redistribution:
+      raw: allowed_with_attribution
+      processed: allowed_with_attribution_and_processing_notice
+      note: Do not treat logos or other excluded site content as part of the dataset.
+    attribution: >-
+      Source: National Statistics Center, SSDSE-Municipalities (SSDSE-A),
+      https://www.nstac.go.jp/use/literacy/ssdse/; processed by this project.
+    transformation:
+      - Select exactly the 20 municipality codes in configs/phase1_cities.yml.
+      - Preserve the source item code, item name, and reference year metadata.
+      - >-
+        The CSV has no machine-readable unit row. Use the official SSDSE explanation
+        document for source-unit definitions; derived feature units and denominators
+        are documented by the pipeline and similarity configuration.
+      - Convert numeric values explicitly and retain missing values as missing.
+      - >-
+        Build comparison features with documented per-capita, per-household, ratio,
+        log, standardization, and missing-value rules; never create a fixed
+        livability_score.
+    caveats:
+      - The file edition is fixed to SSDSE-A-2026 for reproducibility.
+      - Individual columns may refer to different statistical reference years.
+      - SSDSE aggregates source statistics; consult its data guide for definitions.
+
+  - dataset: "2020 Population Census, Table 3: place of work or school by residence"
+    purpose: Directed commuting and school OD between municipalities
+    provider: Statistics Bureau of Japan, distributed by e-Stat
+    source_url: >-
+      https://www.e-stat.go.jp/stat-search/files?cycle=0&layout=datalist&page=1&tclass1=000001136469&tclass2val=0&toukei=00200521&tstat=000001136464
+    database_url: https://www.e-stat.go.jp/stat-search/database?statdisp_id=0003454524
+    edition: "2020 Population Census"
+    raw_directory: data/raw/census_od
+    retrieved_at: null
+    files:
+      - prefecture: Shimane
+        stat_inf_id: "000032214257"
+        path: data/raw/census_od/table3_shimane.xlsx
+        download_url: >-
+          https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214257
+      - prefecture: Okayama
+        stat_inf_id: "000032214260"
+        path: data/raw/census_od/table3_okayama.xlsx
+        download_url: >-
+          https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214260
+      - prefecture: Hiroshima
+        stat_inf_id: "000032214263"
+        path: data/raw/census_od/table3_hiroshima.xlsx
+        download_url: >-
+          https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214263
+      - prefecture: Yamaguchi
+        stat_inf_id: "000032214266"
+        path: data/raw/census_od/table3_yamaguchi.xlsx
+        download_url: >-
+          https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214266
+      - prefecture: Kagawa
+        stat_inf_id: "000032214272"
+        path: data/raw/census_od/table3_kagawa.xlsx
+        download_url: >-
+          https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214272
+      - prefecture: Ehime
+        stat_inf_id: "000032214275"
+        path: data/raw/census_od/table3_ehime.xlsx
+        download_url: >-
+          https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214275
+    license:
+      name: >-
+        e-Stat Terms of Use, compatible with Creative Commons Attribution 4.0
+      url: https://www.e-stat.go.jp/terms-of-use
+      spdx_id: CC-BY-4.0
+    redistribution:
+      raw: allowed_with_attribution
+      processed: allowed_with_attribution_and_processing_notice
+      note: Numerical data and simple tables are also described as freely usable.
+    attribution: >-
+      Source: 2020 Population Census results, Statistics Bureau of Japan,
+      Government Statistics Portal Site (e-Stat); processed by this project.
+    field_semantics:
+      source: Municipality of usual residence
+      target: Municipality of workplace or school
+      commuters: "15+ employed persons (source field 11_15歳以上就業者)"
+      students: >-
+        School attendees including those under age 15 (source field
+        R1_（別掲）15歳未満通学者を含む通学者)
+      total: commuters + students
+      year: 2020
+    transformation:
+      - Parse each resident-prefecture workbook using municipality codes.
+      - Keep cross-prefecture destinations.
+      - Select source and target municipalities in the fixed 20-city seed.
+      - Exclude source-equals-target rows from the intercity graph.
+      - Store COMMUTES_TO and STUDIES_IN as separate directed relations.
+    caveats:
+      - >-
+        Self rows include genuine within-municipality activity and may also absorb
+        records whose workplace or school is unknown or outside Japan; they are not
+        used as intercity edges.
+      - >-
+        The Phase 1 graph is a 20-city induced subgraph. Flows to all other
+        municipalities are outside ranking, centrality, and community results.
+      - Designated-city and ward rows must not be double counted.
+
+  - dataset: "National Land Numerical Information P05-22"
+    purpose: Reproducible municipality representative points
+    provider: Ministry of Land, Infrastructure, Transport and Tourism, Japan
+    source_url: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P05-v3_0.html
+    download_url: https://nlftp.mlit.go.jp/ksj/gml/data/P05/P05-22/P05-22_GML.zip
+    edition: "2022-04 reference date, specification version 3.0"
+    raw_path: data/raw/geography/P05-22_GML.zip
+    retrieved_at: null
+    license:
+      name: Public Data License 1.0, subject to the dataset page and site notices
+      url: https://nlftp.mlit.go.jp/ksj/other/agreement.html
+      spdx_id: null
+    redistribution:
+      raw: allowed_with_attribution
+      processed: allowed_with_attribution_and_processing_notice
+      note: Retain the provider's limitations and any third-party-rights notices.
+    attribution: >-
+      Source: National Land Numerical Information (Municipal Offices and Public
+      Meeting Facilities, P05-22), MLIT; processed by this project.
+    representative_point_rule:
+      primary: >-
+        Select facility classification P05_002=1 (main city, ward, town, or village
+        office) matching the Phase 1 municipality.
+      designated_city_handling: >-
+        Match the named city hall rather than substituting a ward office; do not
+        aggregate or average ward-office coordinates.
+      ambiguity: >-
+        If there is no unique main office, stop processing and require an explicit,
+        documented mapping. Do not silently use a centroid or an LLM-generated point.
+    transformation:
+      - Select one auditable main-office point for each of the 20 municipalities.
+      - Preserve facility name, address, class, administrative code, and source edition.
+      - Convert JGD2011 latitude and longitude to numeric columns without geocoding.
+    caveats:
+      - The source reference date is April 2022, not the pipeline execution date.
+      - The provider warns that some facilities may be missing from the source material.
+      - The point represents an office, not a population-weighted city centre.
+
+  - dataset: "National Land Numerical Information C28-21 Airport Data"
+    purpose: Airport nodes and airport reference-point coordinates
+    provider: Ministry of Land, Infrastructure, Transport and Tourism, Japan
+    source_url: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-C28-2021.html
+    download_url: https://nlftp.mlit.go.jp/ksj/gml/data/C28/C28-21/C28-21_GML.zip
+    edition: "2021-12-31 snapshot"
+    raw_path: data/raw/airports/C28-21_GML.zip
+    retrieved_at: null
+    license:
+      name: >-
+        National Land Numerical Information legacy terms, dataset marked
+        commercial use permitted
+      url: https://nlftp.mlit.go.jp/ksj/other/agreement_02.html
+      spdx_id: null
+    redistribution:
+      raw: allowed_with_attribution_and_license_notice
+      processed: allowed_with_attribution_processing_notice_and_limitations
+      note: >-
+        The legacy terms explicitly include redistribution for datasets marked
+        commercial use permitted and require license and limitation inheritance.
+    attribution: >-
+      Source: National Land Numerical Information (Airport Data, C28-21), MLIT;
+      processed by this project.
+    transformation:
+      - Join airport records to C28 airport reference-point records.
+      - Keep airports marked in service and with scheduled service for Phase 1 access.
+      - Preserve airport type, service flag, source airport ID, and source edition.
+      - Join annual passenger values by reviewed normalized airport name.
+    caveats:
+      - Airport status and geometry are fixed at the 2021-12-31 snapshot.
+      - >-
+        Coordinates are the official C28 airport reference point, not necessarily a
+        passenger terminal entrance, station, or road-access point.
+      - National Land Numerical Information may contain spatial and temporal error.
+
+  - dataset: "2025 Airport Management Status Report"
+    purpose: Annual passenger counts used only as an airport-scale attribute
+    provider: Civil Aviation Bureau, Ministry of Land, Infrastructure, Transport and Tourism, Japan
+    source_url: https://www.mlit.go.jp/koku/15_bf_000185.html
+    download_url: https://www.mlit.go.jp/koku/content/002016480.xlsx
+    edition: "Reiwa 7 (2025) report workbook"
+    raw_path: data/raw/airports/airport_management_2025.xlsx
+    retrieved_at: null
+    license:
+      name: Public Data License 1.0, subject to MLIT site-specific notices
+      url: https://www.mlit.go.jp/link.html
+      spdx_id: null
+    redistribution:
+      raw: allowed_with_attribution
+      processed: allowed_with_attribution_and_processing_notice
+      note: Separately identified third-party content remains subject to its own rights.
+    attribution: >-
+      Source: Airport Management Status Report, Civil Aviation Bureau, MLIT;
+      processed by this project.
+    transformation:
+      - Extract the workbook's calendar-year passenger totals by airport.
+      - Preserve domestic, international, total, and the source reporting year.
+      - Join to C28 only after a one-to-one reviewed airport-name normalization.
+      - Derive a documented ordinal airport-scale class from annual passengers.
+    caveats:
+      - Passenger counts and the C28 airport geometry have different reference dates.
+      - Route counts are not derived from this workbook in Phase 1.
+
+excluded_from_phase1:
+  - dataset: Wikipedia
+    reason: Soft knowledge is not collected or stored as a Phase 1 fact.
+  - dataset: GraphRAG corpus
+    reason: Structured pandas and NetworkX execution is sufficient for Phase 1.
+  - dataset: Route counts
+    reason: No fixed, reviewed, reproducible source is included in the Phase 1 core.
+  - dataset: Road or rail travel time
+    reason: Straight-line distance is the auditable Phase 1 accessibility measure.
+  - dataset: LLM-generated municipality facts
+    reason: LLM knowledge may explain results but may not become a graph fact or score.

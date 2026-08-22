@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-08-21T09:30:29+00:00",
+  "status": "approved_by_user",
+  "candidate_count": 793,
+  "provisional_selected_count": 100,
+  "mandatory_anchor_count": 52,
+  "tokyo_ward_aggregation": "R13000 / 23 wards",
+  "od_diagnostics": {
+    "workbook_count": 47,
+    "scanned_rows": 3878900,
+    "positive_rows": 202997,
+    "metric": "all directed non-self Census commuters plus students",
+    "year": 2020
+  },
+  "selection_formula": "0.4*population_percentile + 0.3*od_percentile + 0.2*core_city + 0.1*airport_access_within_50km",
+  "output_csv": "data/processed/national_city_candidates.csv",
+  "output_markdown": "docs/city_selection.md",
+  "final_city_set_confirmed": true
+}

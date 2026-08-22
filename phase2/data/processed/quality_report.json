@@ -1,0 +1,134 @@
+{
+  "generated_at": "2026-08-21T11:31:46+00:00",
+  "overall_status": "pass",
+  "analysis_universe": {
+    "label": "national_municipalities_with_tokyo_ward_aggregation",
+    "count": 1719
+  },
+  "search_universe": {
+    "label": "approved_national_major_100",
+    "count": 100
+  },
+  "checks": [
+    {
+      "name": "analysis_municipality_coverage",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 1719,
+      "expected": ">= 1700 including Tokyo ward aggregation"
+    },
+    {
+      "name": "search_municipality_count",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 100,
+      "expected": 100
+    },
+    {
+      "name": "search_code_unique",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 100,
+      "expected": 100
+    },
+    {
+      "name": "flow_endpoint_integrity",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 1719,
+      "expected": "all endpoints in national analysis universe"
+    },
+    {
+      "name": "flow_no_self_loops",
+      "status": "pass",
+      "severity": "critical",
+      "observed": true,
+      "expected": true
+    },
+    {
+      "name": "flow_total_reconciliation",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "cross_prefecture_flows_retained",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 131338,
+      "expected": "> 0"
+    },
+    {
+      "name": "airport_access_coverage",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 100,
+      "expected": 100
+    },
+    {
+      "name": "graph_is_layered_multidigraph",
+      "status": "pass",
+      "severity": "critical",
+      "observed": {
+        "graph_type": "MultiDiGraph",
+        "directed": true,
+        "multigraph": true,
+        "node_count": 1853,
+        "edge_count": 232774,
+        "node_counts": {
+          "Airport": 87,
+          "Municipality": 1719,
+          "Prefecture": 47
+        },
+        "relation_counts": {
+          "ACCESS_TO": 100,
+          "COMMUTES_TO": 159301,
+          "IS_IN": 1719,
+          "STUDIES_IN": 71654
+        }
+      },
+      "expected": "directed MultiDiGraph"
+    },
+    {
+      "name": "search_flag_coverage",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 100,
+      "expected": 100
+    }
+  ],
+  "failed_check_count": 0,
+  "od_diagnostics": {
+    "workbook_count": 47,
+    "scanned_rows": 3878900,
+    "positive_rows_before_tokyo_aggregation": 202997,
+    "flow_rows_after_aggregation": 177274,
+    "cross_prefecture_rows": 131338,
+    "self_loops_excluded": true,
+    "year": 2020
+  },
+  "graph_facts": {
+    "graph_type": "MultiDiGraph",
+    "directed": true,
+    "multigraph": true,
+    "node_count": 1853,
+    "edge_count": 232774,
+    "node_counts": {
+      "Airport": 87,
+      "Municipality": 1719,
+      "Prefecture": 47
+    },
+    "relation_counts": {
+      "ACCESS_TO": 100,
+      "COMMUTES_TO": 159301,
+      "IS_IN": 1719,
+      "STUDIES_IN": 71654
+    }
+  },
+  "limitations": [
+    "Tokyo 23 wards are represented by synthetic municipality R13000.",
+    "National full-graph centrality is calculated on the analysis universe; displayed rankings are projected to 100 search cities.",
+    "Performance and memory benchmarks are deferred to a later Phase 2 gate."
+  ]
+}

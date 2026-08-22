@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-08-22T00:41:08+00:00",
+  "generator": "scripts/download_data.py",
+  "files": {
+    "ssdse": {
+      "path": "data/raw/SSDSE-A-2026.csv",
+      "url": "https://www.nstac.go.jp/files/SSDSE-A-2026.csv",
+      "status": "downloaded",
+      "bytes": 940365,
+      "sha256": "471ad23bd8f9a7cc01f0c684b9762934e855d2400e3a77608a12171018fc655a",
+      "expected_sha256": "471ad23bd8f9a7cc01f0c684b9762934e855d2400e3a77608a12171018fc655a",
+      "checksum_verified": true
+    },
+    "census_shimane": {
+      "path": "data/raw/census_od/table3_shimane.xlsx",
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214257",
+      "status": "downloaded",
+      "bytes": 2025242,
+      "sha256": "009ebb89b29310abd34eb4f794142f1b0084371976fbe0fcdcb6b52e0ff722b4",
+      "expected_sha256": "009ebb89b29310abd34eb4f794142f1b0084371976fbe0fcdcb6b52e0ff722b4",
+      "checksum_verified": true
+    },
+    "census_okayama": {
+      "path": "data/raw/census_od/table3_okayama.xlsx",
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214260",
+      "status": "downloaded",
+      "bytes": 3267716,
+      "sha256": "bfb427a41937f31c0ca54459ea78b586806efda808896eb68bc907b1ea164eae",
+      "expected_sha256": "bfb427a41937f31c0ca54459ea78b586806efda808896eb68bc907b1ea164eae",
+      "checksum_verified": true
+    },
+    "census_hiroshima": {
+      "path": "data/raw/census_od/table3_hiroshima.xlsx",
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214263",
+      "status": "downloaded",
+      "bytes": 3283447,
+      "sha256": "32cd55b6b7c93af403c7b0909e8838e4fbc0acc75495cf32ce03be83e8d75dc7",
+      "expected_sha256": "32cd55b6b7c93af403c7b0909e8838e4fbc0acc75495cf32ce03be83e8d75dc7",
+      "checksum_verified": true
+    },
+    "census_yamaguchi": {
+      "path": "data/raw/census_od/table3_yamaguchi.xlsx",
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214266",
+      "status": "downloaded",
+      "bytes": 2045850,
+      "sha256": "0fc5c7b48d4c1ebaf099b8b7afa5e6731e85a0ecd8415b585f5d098f468174f8",
+      "expected_sha256": "0fc5c7b48d4c1ebaf099b8b7afa5e6731e85a0ecd8415b585f5d098f468174f8",
+      "checksum_verified": true
+    },
+    "census_kagawa": {
+      "path": "data/raw/census_od/table3_kagawa.xlsx",
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214272",
+      "status": "downloaded",
+      "bytes": 1847156,
+      "sha256": "ad8257c82a80b1167a24f1b3ae9f9f3ba29a2120dbd53b7f8d470ebe2d9b2705",
+      "expected_sha256": "ad8257c82a80b1167a24f1b3ae9f9f3ba29a2120dbd53b7f8d470ebe2d9b2705",
+      "checksum_verified": true
+    },
+    "census_ehime": {
+      "path": "data/raw/census_od/table3_ehime.xlsx",
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000032214275",
+      "status": "downloaded",
+      "bytes": 2142775,
+      "sha256": "296f78dcd740938d442ecf7a8cc838b5eb0763b4941955205d41d30d0cef8ef4",
+      "expected_sha256": "296f78dcd740938d442ecf7a8cc838b5eb0763b4941955205d41d30d0cef8ef4",
+      "checksum_verified": true
+    },
+    "airports": {
+      "path": "data/raw/airports/C28-21_GML.zip",
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/data/C28/C28-21/C28-21_GML.zip",
+      "status": "downloaded",
+      "bytes": 713372,
+      "sha256": "07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35",
+      "expected_sha256": "07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35",
+      "checksum_verified": true
+    },
+    "airport_passengers": {
+      "path": "data/raw/airports/airport_management_2025.xlsx",
+      "url": "https://www.mlit.go.jp/koku/content/002016480.xlsx",
+      "status": "downloaded",
+      "bytes": 652689,
+      "sha256": "0cd693d9b7dcc8b4c279608f6bb21468ededc8013a62754a3530b46bd34e988e",
+      "expected_sha256": "0cd693d9b7dcc8b4c279608f6bb21468ededc8013a62754a3530b46bd34e988e",
+      "checksum_verified": true
+    },
+    "municipality_facilities": {
+      "path": "data/raw/geography/P05-22_GML.zip",
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P05/P05-22/P05-22_GML.zip",
+      "status": "downloaded",
+      "bytes": 8366402,
+      "sha256": "3056d3e0d02248143f1f2c9a5e62fd37717eb761a7257106b5d252415aef4cdc",
+      "expected_sha256": "3056d3e0d02248143f1f2c9a5e62fd37717eb761a7257106b5d252415aef4cdc",
+      "checksum_verified": true
+    }
+  }
+}

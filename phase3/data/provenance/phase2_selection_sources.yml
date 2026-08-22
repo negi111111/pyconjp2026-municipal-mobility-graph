@@ -1,0 +1,71 @@
+schema_version: 1
+phase: 2
+scope: provisional_national_city_selection
+status: approved_selection_input
+datasets:
+  - dataset: SSDSE-A-2026
+    purpose: National municipality-code, name, prefecture, and population candidate universe
+    provider: National Statistics Center, Japan
+    source_url: https://www.nstac.go.jp/use/literacy/ssdse/
+    download_url: https://www.nstac.go.jp/files/SSDSE-A-2026.csv
+    edition: "2026-06-30 publication"
+    transformation:
+      - Select municipality records whose name ends with 市 for the city candidate universe.
+      - Aggregate Tokyo's 23 wards into synthetic municipality code R13000 (東京都区部).
+      - Preserve source municipality codes and population values.
+    license:
+      name: Government Standard Terms of Use 2.0 compatible site terms
+      url: https://www.nstac.go.jp/info/site-policy/
+  - dataset: "2020 Population Census Table 3"
+    purpose: National OD diagnostic for provisional city selection
+    provider: Statistics Bureau of Japan / e-Stat
+    source_url: https://www.e-stat.go.jp/stat-search/database?statdisp_id=0003454524
+    edition: "2020 Population Census"
+    raw_directory: data/raw/census_od_national
+    manifest: data/provenance/national_selection_od_manifest.json
+    transformation:
+      - Download one residence-prefecture workbook for all 47 prefectures.
+      - Sum commuters and students for positive non-self directed municipality pairs.
+      - Aggregate Tokyo ward codes 13101-13123 to R13000 for the diagnostic.
+      - Use total incoming plus total outgoing flow as the provisional OD hub diagnostic.
+    license:
+      name: e-Stat Terms of Use, compatible with Creative Commons Attribution 4.0
+      url: https://www.e-stat.go.jp/terms-of-use
+  - dataset: National Land Numerical Information P05-22
+    purpose: Main municipal-office representative points for airport-distance diagnostic
+    provider: Ministry of Land, Infrastructure, Transport and Tourism, Japan
+    source_url: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P05-v3_0.html
+    download_url: https://nlftp.mlit.go.jp/ksj/gml/data/P05/P05-22/P05-22_GML.zip
+    edition: "2022-04 reference date"
+    transformation:
+      - Select facility classification P05_002=1 for candidate municipality codes.
+      - Skip the synthetic Tokyo entity until a reviewed representative point is defined.
+    license:
+      name: Public Data License 1.0
+      url: https://nlftp.mlit.go.jp/ksj/other/agreement.html
+  - dataset: National Land Numerical Information C28-21
+    purpose: Operating scheduled-service airport coordinates
+    provider: Ministry of Land, Infrastructure, Transport and Tourism, Japan
+    source_url: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-C28-2021.html
+    download_url: https://nlftp.mlit.go.jp/ksj/gml/data/C28/C28-21/C28-21_GML.zip
+    edition: "2021-12-31 snapshot"
+    transformation:
+      - Keep airports marked in service with scheduled-service code 1 or 2.
+      - Compute nearest-airport Haversine distance for candidates with a main-office point.
+      - Use 50km only as a transparent provisional selection aid, not a universal score.
+    license:
+      name: National Land Numerical Information legacy terms
+      url: https://nlftp.mlit.go.jp/ksj/other/agreement_02.html
+  - dataset: "Designated city role list"
+    purpose: Mandatory anchor role metadata
+    provider: Ministry of Internal Affairs and Communications, Japan
+    source_url: https://www.soumu.go.jp/main_sosiki/jichi_gyousei/bunken/shitei_toshi-01.html
+    transformation:
+      - Match official city names to the SSDSE municipality master.
+  - dataset: "Core city list"
+    purpose: Additional role metadata
+    provider: Ministry of Internal Affairs and Communications, Japan
+    source_url: https://www.soumu.go.jp/main_content/000885088.pdf
+    edition: "2023-04-01"
+    transformation:
+      - Match the reviewed city names to the SSDSE municipality master.

@@ -1,0 +1,197 @@
+{
+  "generated_at": "2026-08-21T10:57:52+00:00",
+  "overall_status": "pass",
+  "dataset_grain": {
+    "municipalities": "one row per fixed Phase 1 municipality",
+    "flow_edges": "one directed source-target municipality pair for Census 2020",
+    "airport_access": "one nearest scheduled-service airport per municipality"
+  },
+  "checks": [
+    {
+      "name": "municipality_count",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 20,
+      "expected": 20
+    },
+    {
+      "name": "municipality_id_unique",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 20,
+      "expected": 20
+    },
+    {
+      "name": "municipality_coordinates_complete",
+      "status": "pass",
+      "severity": "critical",
+      "observed": true,
+      "expected": true
+    },
+    {
+      "name": "main_office_rule",
+      "status": "pass",
+      "severity": "critical",
+      "observed": {
+        "1": 20
+      },
+      "expected": {
+        "1": 20
+      }
+    },
+    {
+      "name": "ssdse_metric_coverage",
+      "status": "pass",
+      "severity": "critical",
+      "observed": {
+        "min": 125,
+        "max": 125
+      },
+      "expected": {
+        "min": 125,
+        "max": 125
+      }
+    },
+    {
+      "name": "flow_endpoint_integrity",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 20,
+      "expected": "all endpoints in 20-city master"
+    },
+    {
+      "name": "flow_source_target_unique",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "flow_total_reconciliation",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "flow_no_self_loops",
+      "status": "pass",
+      "severity": "critical",
+      "observed": true,
+      "expected": true
+    },
+    {
+      "name": "cross_prefecture_flows_retained",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 265,
+      "expected": "> 0"
+    },
+    {
+      "name": "airport_passenger_join",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 0.9885057471264368,
+      "expected": ">= 0.9"
+    },
+    {
+      "name": "nearest_airport_coverage",
+      "status": "pass",
+      "severity": "critical",
+      "observed": 20,
+      "expected": 20
+    },
+    {
+      "name": "nearest_airport_rank",
+      "status": "pass",
+      "severity": "critical",
+      "observed": {
+        "1": 20
+      },
+      "expected": {
+        "1": 20
+      }
+    },
+    {
+      "name": "graph_node_layers",
+      "status": "pass",
+      "severity": "critical",
+      "observed": {
+        "Airport": 87,
+        "Municipality": 20,
+        "Prefecture": 6
+      },
+      "expected": {
+        "Municipality": 20,
+        "Prefecture": 6,
+        "Airport": 87
+      }
+    },
+    {
+      "name": "administrative_edges_not_flow_edges",
+      "status": "pass",
+      "severity": "critical",
+      "observed": {
+        "ACCESS_TO": 20,
+        "COMMUTES_TO": 342,
+        "IS_IN": 20,
+        "STUDIES_IN": 261
+      },
+      "expected": "20 IS_IN and 20 ACCESS_TO; flow relations separate"
+    }
+  ],
+  "failed_check_count": 0,
+  "flow_diagnostics": {
+    "scanned_rows": 282425,
+    "induced_positive_flow_rows": 351,
+    "commute_rows": 342,
+    "study_rows": 261,
+    "cross_prefecture_rows": 265,
+    "duplicate_source_target_rows": 0,
+    "total_reconciliation_failures": 0,
+    "total_reconciliation_examples": [],
+    "source_symbol_handling": {
+      "dash_as_zero": 11216
+    },
+    "self_loops_excluded": true,
+    "self_loop_reason": "Census footnote assigns unknown/foreign destinations to residence; self-loops are not reliable intercity movements.",
+    "seed_membership_review_candidate_count": 105
+  },
+  "airport_diagnostics": {
+    "operating_scheduled_airports": 87,
+    "passenger_match_count": 86,
+    "passenger_match_rate": 0.9885057471264368,
+    "unmatched_airports": [
+      "福岡空港（奈多地区）"
+    ],
+    "regular_service_code": {
+      "1": "jet scheduled service",
+      "2": "propeller scheduled service"
+    },
+    "passenger_total_definition": "MLIT calendar-year total; international subtotal includes transit passengers"
+  },
+  "graph_facts": {
+    "graph_type": "MultiDiGraph",
+    "directed": true,
+    "multigraph": true,
+    "node_count": 113,
+    "edge_count": 643,
+    "node_counts": {
+      "Airport": 87,
+      "Municipality": 20,
+      "Prefecture": 6
+    },
+    "relation_counts": {
+      "ACCESS_TO": 20,
+      "COMMUTES_TO": 342,
+      "IS_IN": 20,
+      "STUDIES_IN": 261
+    }
+  },
+  "limitations": [
+    "The 20-city flow graph is an induced subgraph and omits flows to outside cities.",
+    "Census self-loops are excluded because unknown/foreign destinations are allocated to residence.",
+    "Airport distance is straight-line Haversine distance, not road or rail travel time.",
+    "C28 airport coordinates are official reference points, not terminal entrances."
+  ]
+}

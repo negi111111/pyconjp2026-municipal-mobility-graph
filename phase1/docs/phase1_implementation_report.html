@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 1 実装報告書｜20都市の再現可能な基準経路</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      --ink: #1f2933;
+      --navy: #102a43;
+      --blue: #0b69a3;
+      --line: #d9e2ec;
+      --surface: #ffffff;
+      --muted: #52606d;
+      --green: #0b6b3a;
+      --green-bg: #d9f2e6;
+      --yellow-bg: #fff4cc;
+    }
+    * { box-sizing: border-box; }
+    body { background: #eef2f6; color: var(--ink); line-height: 1.7; margin: 0; }
+    main { margin: 0 auto; max-width: 1220px; padding: 1.5rem 1rem 4rem; }
+    header, .slide { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; margin: 1rem 0; padding: 1.5rem; }
+    header { background: linear-gradient(135deg, #102a43 0%, #0b69a3 100%); color: #fff; }
+    h1, h2, h3 { color: var(--navy); line-height: 1.35; margin-top: 0; }
+    header h1, header p { color: #fff; }
+    h1 { font-size: clamp(1.8rem, 4vw, 3.2rem); }
+    h2 { border-bottom: 2px solid #d9e2ec; padding-bottom: .55rem; }
+    h2 .slide-no { color: var(--blue); font-size: .8rem; letter-spacing: .08em; margin-right: .7rem; }
+    .kicker { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .lead { border-left: 5px solid #2f80ed; color: #243b53; font-size: 1.08rem; margin: .8rem 0 1.2rem; padding: .55rem .9rem; }
+    header .lead { border-left-color: #8bd3ff; color: #fff; }
+    .lead-label { font-size: .75rem; font-weight: 700; letter-spacing: .08em; }
+    .muted { color: var(--muted); }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+    .metric { background: #f6f9fc; border: 1px solid var(--line); border-radius: 10px; padding: .9rem; }
+    .metric strong { color: var(--blue); display: block; font-size: 1.6rem; line-height: 1.2; }
+    .metric span { color: var(--muted); font-size: .9rem; }
+    .status { background: var(--green-bg); border-radius: 999px; color: var(--green); display: inline-block; font-size: .8rem; font-weight: 700; padding: .1rem .55rem; }
+    table { border-collapse: collapse; margin: .7rem 0; width: 100%; }
+    th, td { border-bottom: 1px solid var(--line); padding: .6rem; text-align: left; vertical-align: top; }
+    th { background: #f0f4f8; color: #243b53; }
+    code { background: #f0f4f8; border-radius: 4px; padding: .1rem .3rem; }
+    a { color: var(--blue); }
+    .svg-wrap { background: #f8fbfe; border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; padding: .7rem; }
+    svg { display: block; min-width: 680px; width: 100%; }
+    .node { fill: #e7f3fb; stroke: #2f80ed; stroke-width: 2; }
+    .node-green { fill: #e8f7ef; stroke: #28a36a; stroke-width: 2; }
+    .node-yellow { fill: var(--yellow-bg); stroke: #e0b400; stroke-width: 2; }
+    .arrow { fill: none; marker-end: url(#arrow); stroke: #52606d; stroke-width: 2.5; }
+    .small { font-size: .88rem; }
+    .two-col { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); }
+    .callout { background: #f6f9fc; border-left: 4px solid #7b61ff; padding: .7rem 1rem; }
+    footer { color: var(--muted); font-size: .85rem; padding: .5rem; text-align: center; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="kicker">Mobility Knowledge Graph / Phase 1</p>
+    <h1>スライドタイトル：20都市でつくる再現可能な基準経路</h1>
+    <p class="lead"><span class="lead-label">リード｜</span>公的統計・人流・空港データを20都市へ正規化し、計算式と出典を追跡できる自然言語検索の基準経路を完成させた。</p>
+    <p>対象：広島周辺を中心とした固定20都市　／　状態：<span class="status">実装・受入完了</span></p>
+    <p class="muted">生成成果物：2026-08-21時点のPhase 1 processed data / Acceptance 7問</p>
+  </header>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 01</span>ゴールと対象範囲</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>Phase 1は都市数を広げる前に、データ取得から回答までを一つのディレクトリで再実行できる状態にすることを目的とした。</p>
+    <div class="grid">
+      <div class="metric"><strong>20都市</strong><span>固定seed。広島・山口・岡山・島根・愛媛・香川</span></div>
+      <div class="metric"><strong>6レイヤ</strong><span>自治体・都道府県・空港・通勤・通学・アクセス</span></div>
+      <div class="metric"><strong>7問</strong><span>人流、中心性、生活圏、類似度、空港、医療</span></div>
+      <div class="metric"><strong>0件</strong><span>LLMが生成したHard Facts</span></div>
+    </div>
+    <table>
+      <thead><tr><th>固定seedの地域</th><th>都市数</th><th>役割</th></tr></thead>
+      <tbody>
+        <tr><td>広島県</td><td>9</td><td>広島市を中心とする近隣都市群</td></tr>
+        <tr><td>山口県・岡山県</td><td>3 + 3</td><td>県境をまたぐ人流比較</td></tr>
+        <tr><td>島根県・愛媛県・香川県</td><td>2 + 2 + 1</td><td>中国・四国の広域比較</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 02</span>データから日本語回答まで</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>LLMに数値を計算させず、Plannerは意図を分解し、pandasとNetworkXが順位・距離・類似度を計算してEvidenceを返す。</p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 1080 185" role="img" aria-label="Phase 1の処理フロー">
+        <defs><marker id="arrow" markerHeight="8" markerWidth="8" orient="auto" refX="8" refY="4"><path d="M0,0 L8,4 L0,8 z" fill="#52606d"/></marker></defs>
+        <rect class="node" x="20" y="52" width="170" height="70" rx="12"/>
+        <rect class="node" x="235" y="52" width="170" height="70" rx="12"/>
+        <rect class="node-green" x="450" y="52" width="170" height="70" rx="12"/>
+        <rect class="node-green" x="665" y="52" width="170" height="70" rx="12"/>
+        <rect class="node-yellow" x="880" y="52" width="170" height="70" rx="12"/>
+        <path class="arrow" d="M190 87 H230"/><path class="arrow" d="M405 87 H445"/><path class="arrow" d="M620 87 H660"/><path class="arrow" d="M835 87 H875"/>
+        <g fill="#102a43" font-size="18" text-anchor="middle"><text x="105" y="82">公的データ</text><text x="105" y="106">固定版</text><text x="320" y="82">正規化</text><text x="320" y="106">自治体コード</text><text x="535" y="82">MultiDiGraph</text><text x="535" y="106">関係分離</text><text x="750" y="82">分析関数</text><text x="750" y="106">pandas / NX</text><text x="965" y="82">Structured</text><text x="965" y="106">Evidence</text></g>
+      </svg>
+    </div>
+    <div class="two-col">
+      <div class="callout"><strong>Hard Facts</strong><br>OD、距離、類似度、中心性、出典、単位、対象範囲を機械可読に保持。</div>
+      <div class="callout"><strong>Soft Knowledge</strong><br>LLMの説明や一般背景はHard Factsの外側に置き、順位へ戻さない。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 03</span>Knowledge Graphの構造</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>行政所属・通勤・通学・空港アクセスを別々の関係として保持し、人流分析へ行政関係や空港関係を混ぜない。</p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 1080 260" role="img" aria-label="Phase 1のグラフ層">
+        <defs><marker id="arrow2" markerHeight="8" markerWidth="8" orient="auto" refX="8" refY="4"><path d="M0,0 L8,4 L0,8 z" fill="#52606d"/></marker></defs>
+        <rect class="node-yellow" x="50" y="35" width="190" height="62" rx="12"/><text x="145" y="72" fill="#102a43" font-size="18" text-anchor="middle">Prefecture × 6</text>
+        <rect class="node" x="420" y="35" width="240" height="62" rx="12"/><text x="540" y="72" fill="#102a43" font-size="18" text-anchor="middle">Municipality × 20</text>
+        <rect class="node-green" x="840" y="35" width="190" height="62" rx="12"/><text x="935" y="72" fill="#102a43" font-size="18" text-anchor="middle">Airport × 87</text>
+        <path class="arrow" d="M240 66 H415"/><path class="arrow" d="M665 66 H835"/>
+        <text x="325" y="53" fill="#52606d" font-size="15" text-anchor="middle">IS_IN</text><text x="750" y="53" fill="#52606d" font-size="15" text-anchor="middle">ACCESS_TO</text>
+        <path class="arrow" d="M500 108 C420 185 310 185 240 125"/><path class="arrow" d="M580 108 C660 185 770 185 840 125"/>
+        <text x="365" y="206" fill="#0b69a3" font-size="17" text-anchor="middle">COMMUTES_TO</text><text x="715" y="206" fill="#0b69a3" font-size="17" text-anchor="middle">STUDIES_IN</text>
+      </svg>
+    </div>
+    <table>
+      <thead><tr><th>層</th><th>件数</th><th>分析上の扱い</th></tr></thead>
+      <tbody>
+        <tr><td>ノード</td><td>113</td><td>自治体20、都道府県6、空港87</td></tr>
+        <tr><td>エッジ</td><td>643</td><td>IS_IN 20 / ACCESS_TO 20 / COMMUTES_TO 342 / STUDIES_IN 261</td></tr>
+        <tr><td>流動分析</td><td>603 flow edges</td><td>COMMUTES_TO + STUDIES_INのみ。自都市ループは除外</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 04</span>7問Acceptanceで確認したこと</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>代表質問を結果だけでなく、計算式・対象集合・単位・未収録条件まで確認し、基準経路の完成度を機械的に判定した。</p>
+    <table>
+      <thead><tr><th>ID</th><th>質問ファミリー</th><th>結果例</th><th>確認した契約</th></tr></thead>
+      <tbody>
+        <tr><td>AC-1</td><td>双方向人流</td><td>廿日市市 34,135人</td><td>A→B + B→A、通勤＋通学</td></tr>
+        <tr><td>AC-2</td><td>人流ハブ</td><td>広島市 PageRank 1位</td><td>weighted degree / PageRank</td></tr>
+        <tr><td>AC-3</td><td>県境生活圏</td><td>コミュニティ4件</td><td>Louvain、県境横断</td></tr>
+        <tr><td>AC-4</td><td>都市類似度</td><td>岡山市 cosine 0.8570</td><td>SSDSE特徴量と変換メタデータ</td></tr>
+        <tr><td>AC-5</td><td>空港距離比較</td><td>岩国市 3.5 km</td><td>市役所→定期便空港の直線距離</td></tr>
+        <tr><td>AC-6</td><td>類似度＋空港</td><td>岡山市 0.8570 / 12.8 km</td><td>条件を独立計算</td></tr>
+        <tr><td>AC-7</td><td>医療類似度</td><td>岡山市 cosine 0.8376</td><td>カテゴリ特徴量を限定</td></tr>
+      </tbody>
+    </table>
+    <p><span class="status">7/7 PASS</span>　LLM接続経路でも同じHard Facts境界を検証済み。通常QueryはPlanner=<code>high</code>/4096、Response=<code>medium</code>/4096、比較考察は<code>xhigh</code>/8192。</p>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 05</span>品質・再現性・データ境界</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>処理済みデータの品質ゲート、公開データのSHA-256、ライセンス、変換規則を残し、同じ入力から同じEvidenceを再生成できる。</p>
+    <table>
+      <thead><tr><th>観点</th><th>実測・判断</th><th>証跡</th></tr></thead>
+      <tbody>
+        <tr><td>自治体</td><td>20件、ID一意、代表点20件</td><td><code>quality_report.json</code></td></tr>
+        <tr><td>SSDSE</td><td>125指標 × 20都市、欠損は比較行列内だけで処理</td><td><code>ssdse_metrics.parquet</code></td></tr>
+        <tr><td>OD</td><td>282,425行を走査、県境265行、整合差0</td><td><code>flow_diagnostics</code></td></tr>
+        <tr><td>空港</td><td>87空港、最寄り空港20件、旅客結合率98.85%</td><td><code>airport_diagnostics</code></td></tr>
+        <tr><td>LLM境界</td><td>数値・順位・グラフfactをLLMから受け取らない</td><td><code>provenance_boundary</code></td></tr>
+      </tbody>
+    </table>
+    <div class="callout">Phase 1で未収録：家賃、気候、自然、温泉、災害リスク、観光、鉄道所要時間。未収録条件は推測でランキングへ入れない。</div>
+  </section>
+
+  <section class="slide">
+    <h2><span class="slide-no">SLIDE 06</span>Phase 1の結論と次フェーズへの受け渡し</h2>
+    <p class="lead"><span class="lead-label">リード｜</span>Phase 1は「20都市の閉じた比較集合で、根拠付きQueryが再現できる」というゴールを満たし、全国化の入力契約を確定した。</p>
+    <div class="two-col">
+      <div>
+        <h3>完了</h3>
+        <ul>
+          <li>固定20都市と行政コードの正規化</li>
+          <li>OD・Graph・中心性・類似度・空港距離</li>
+          <li>オフライン / LLM Acceptance 7/7</li>
+          <li>pytest 46 passed、lint PASS</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Phase 2への入力</h3>
+        <ul>
+          <li>分析空間と検索空間を分離する</li>
+          <li>全国ODで中心性を計算してから100都市へ投影する</li>
+          <li>地域・人口・複合条件を明示的にPlannerへ追加する</li>
+        </ul>
+      </div>
+    </div>
+    <p><a href="phase1_acceptance.html">Phase 1 Acceptance HTML</a> ／ <a href="phase1_design.md">Phase 1設計書</a> ／ <a href="../data/processed/quality_report.json">品質JSON</a> ／ <a href="../data/processed/processing_report.json">処理JSON</a></p>
+  </section>
+
+  <footer>Phase 1 implementation report / Public structured data only / LLM is outside numerical analysis</footer>
+</main>
+</body>
+</html>

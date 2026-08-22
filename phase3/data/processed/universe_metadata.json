@@ -1,0 +1,10 @@
+{
+  "analysis_universe": "national_municipalities_with_tokyo_ward_aggregation",
+  "analysis_municipality_count": 1719,
+  "search_universe": "approved_national_major_100",
+  "search_municipality_count": 100,
+  "phase1_compatibility": "phase1/ remains independent and unchanged",
+  "synthetic_entities": {
+    "R13000": "東京都区部"
+  }
+}

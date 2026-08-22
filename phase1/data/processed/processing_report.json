@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-08-21T10:57:54+00:00",
+  "pipeline": "pipeline/06_prepare_phase1.py",
+  "phase": 1,
+  "seed_city_count": 20,
+  "outputs": {
+    "municipalities.parquet": {
+      "rows": 20,
+      "columns": 165
+    },
+    "ssdse_metrics.parquet": {
+      "rows": 2500,
+      "columns": 9
+    },
+    "commute_edges.parquet": {
+      "rows": 342,
+      "columns": 17
+    },
+    "study_edges.parquet": {
+      "rows": 261,
+      "columns": 17
+    },
+    "flow_edges.parquet": {
+      "rows": 351,
+      "columns": 17
+    },
+    "airports.parquet": {
+      "rows": 87,
+      "columns": 19
+    },
+    "airport_access.parquet": {
+      "rows": 20,
+      "columns": 13
+    }
+  },
+  "quality_report": "data/processed/quality_report.json",
+  "analysis_snapshot": "data/processed/phase1_analysis.json",
+  "wikipedia_used": false,
+  "graphrag_used": false,
+  "llm_generated_facts": false
+}

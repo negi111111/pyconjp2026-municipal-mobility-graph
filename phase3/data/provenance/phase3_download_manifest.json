@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-08-22T00:42:13+00:00",
+  "phase": 3,
+  "status": "reviewed_source_archives",
+  "files": [
+    {
+      "dataset_key": "jma_normal_surface",
+      "url": "https://www.data.jma.go.jp/obd/stats/data/mdrr/normal/2020/data/normal_surface.zip",
+      "path": "data/raw/climate/jma_normal_surface.zip",
+      "status": "downloaded",
+      "bytes": 21615988,
+      "sha256": "29bccfa59bd3d0c681dae51bbda54ee5b7beda82596bd924693decc14d939127",
+      "retrieved_at": "2026-08-22T00:42:12+00:00",
+      "checksum_verified": true
+    },
+    {
+      "dataset_key": "mlit_railway_n02_20",
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/data/N02/N02-20/N02-20_GML.zip",
+      "path": "data/raw/rail/N02-20_GML.zip",
+      "status": "downloaded",
+      "bytes": 8436695,
+      "sha256": "12fadde339dfbe3088e99dbd53da19447cd7c4bb8ba4af540e2a73c86a0458c7",
+      "retrieved_at": "2026-08-22T00:42:13+00:00",
+      "checksum_verified": true
+    }
+  ]
+}

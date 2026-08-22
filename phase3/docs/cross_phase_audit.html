@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 1-3 横断監査報告書</title>
+  <style>
+    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; }
+    body { background:#f4f6f8; color:#1f2933; margin:0; line-height:1.65; }
+    main { max-width:1240px; margin:0 auto; padding:2rem 1rem 4rem; }
+    header, section { background:#fff; border:1px solid #d9e2ec; border-radius:10px; margin:1rem 0; padding:1.25rem; }
+    h1,h2 { color:#102a43; margin-top:0; }
+    .status { background:#d9f2e6; border-radius:8px; color:#0b6b3a; font-weight:700; padding:.75rem 1rem; }
+    .pass { background:#d9f2e6; border-radius:999px; color:#0b6b3a; display:inline-block; font-size:.85rem; font-weight:700; padding:.1rem .55rem; }
+    table { border-collapse:collapse; margin:.75rem 0; width:100%; }
+    th,td { border-bottom:1px solid #d9e2ec; padding:.6rem; text-align:left; vertical-align:top; }
+    th { background:#f0f4f8; color:#243b53; }
+    code { background:#f0f4f8; border-radius:4px; padding:.1rem .3rem; }
+    a { color:#0b69a3; }
+    .muted { color:#52606d; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Phase 1-3 横断監査報告書</h1>
+    <p class="status">状態：横断監査完了・現行スナップショット合格</p>
+    <p class="muted">対象: <code>pyconjp2026-mobility-kg/phase1/</code>、<code>phase2/</code>、<code>phase3/</code></p>
+    <p class="muted">性能値は同一uv環境で各Phaseの処理済みデータをロードし、Queryを3回実行した中央値です。</p>
+  </header>
+
+  <section>
+    <h2>1. 横断結論</h2>
+    <ul>
+      <li>Phase 1、Phase 2、Phase 3は、それぞれのディレクトリで完結する独立実行単位を維持しています。</li>
+      <li>ルートにはREADME、LICENSE、.gitignore、.env、.env.exampleだけを共通ファイルとして残し、Phase内のLICENSE・.gitignore・.env.example・egg-infoは重複させていません。</li>
+      <li>3 Phaseの依存定義とuv.lockは一致し、旧GraphRAG/Wikipediaの実行経路・依存・専用資産はありません（非使用境界の記載は監査用に維持）。</li>
+      <li>Phase 1は7/7、Phase 2は10/10、Phase 3は6/6のオフラインAcceptanceとLLM Acceptanceを確認しました。</li>
+      <li>Phase 2/3はパイプラインが生成した全国中心性スナップショットをQueryExecutorで再利用するよう最適化しました。結果は従来のNetworkX再計算と一致しています。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. 構成・依存・衛生</h2>
+    <table>
+      <thead><tr><th>監査項目</th><th>結果</th><th>確認内容</th></tr></thead>
+      <tbody>
+        <tr><td>リポジトリルート</td><td><span class="pass">PASS</span></td><td>共通案内・ライセンス・ignore・環境テンプレートのみ。実行コードはPhase内。</td></tr>
+        <tr><td>Phase独立性</td><td><span class="pass">PASS</span></td><td>Phase 1を変更せず、Phase 2/3をコピー差分として保持。</td></tr>
+        <tr><td>依存定義</td><td><span class="pass">PASS</span></td><td>3 Phaseの<code>pyproject.toml</code>と<code>uv.lock</code>のSHA-1が一致。</td></tr>
+        <tr><td>不要資産</td><td><span class="pass">PASS</span></td><td>GraphRAG/Wikipedia旧資産、Phase内重複LICENSE/.gitignore/.env.example、egg-infoを除去。</td></tr>
+        <tr><td>秘密情報</td><td><span class="pass">PASS</span></td><td>ルート.envはignore対象。LLMテストはキーをログ・Evidenceへ出力しない。</td></tr>
+        <tr><td>raw入力</td><td><span class="pass">PASS</span></td><td>Phase 1〜3すべての<code>data/raw/</code>をルート.gitignoreで再生成物として扱う。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>3. 機能・受入・来歴</h2>
+    <table>
+      <thead><tr><th>Phase</th><th>分析/検索空間</th><th>テスト</th><th>Offline</th><th>LLM</th><th>lint</th></tr></thead>
+      <tbody>
+        <tr><td>Phase 1</td><td>20 / 20都市</td><td>46 passed</td><td><span class="pass">7/7 PASS</span></td><td><span class="pass">7/7 PASS</span></td><td><span class="pass">PASS</span></td></tr>
+        <tr><td>Phase 2</td><td>1,719 / 100都市</td><td>54 passed</td><td><span class="pass">10/10 PASS</span></td><td><span class="pass">10/10 PASS</span></td><td><span class="pass">PASS</span></td></tr>
+        <tr><td>Phase 3</td><td>1,719 / 100都市</td><td>59 passed</td><td><span class="pass">6/6 PASS</span></td><td><span class="pass">6/6 PASS</span></td><td><span class="pass">PASS</span></td></tr>
+      </tbody>
+    </table>
+    <p>
+      Phase 3のFeature Storeは700行、気候100都市、新幹線100都市、駅92件です。
+      JMAとMLITのアーカイブはSHA-256で検証し、特徴量へ取得時刻・source URL・license・
+      redistribution・地理粒度・単位・期間・欠損理由を保持しています。住居費・災害・自然は
+      未採用状態を明示し、推測で補完していません。
+    </p>
+  </section>
+
+  <section>
+    <h2>4. 性能・メモリ実測</h2>
+    <table>
+      <thead><tr><th>Phase</th><th>Load中央値</th><th>代表Query 1</th><th>代表Query 2</th><th>最大RSS</th></tr></thead>
+      <tbody>
+        <tr><td>Phase 1</td><td>約88 ms</td><td>類似度 約39 ms</td><td>双方向人流 約2.3 ms</td><td>約129 MB</td></tr>
+        <tr><td>Phase 2</td><td>約3,988 ms</td><td>類似度 約161 ms</td><td>中心性 約0.5 ms</td><td>約672 MB</td></tr>
+        <tr><td>Phase 3</td><td>約4,053 ms</td><td>気候＋類似度 約32.7 ms</td><td>空港＋新幹線 約215 ms</td><td>約680 MB</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Phase 2/3の中心性Queryは、以前の毎回PageRank再計算（約4.7秒）から、
+      <code>national_flow_metrics.parquet</code>の検証済みスナップショット再利用へ変更しました。
+      中心性4指標の値の最大絶対差は0、順位も全件一致しています。ロード時の約680MB RSSは
+      NetworkX全国MultiDiGraphを保持する設計によるため、現段階では閾値を勝手に設定して
+      変更せず、次の大規模化ゲートで監視します。
+    </p>
+  </section>
+
+  <section>
+    <h2>5. 反映した最適化と残課題</h2>
+    <ul>
+      <li>Phase 1のLLMアダプターがルート.envを読めるよう、Phase内.env→ルート.envの明示的フォールバックを統一しました。</li>
+      <li>Phase 2/3の全国中心性を処理済みParquetから再利用し、Queryごとの重いPageRank再計算を除去しました。</li>
+      <li>Phase 3の参照都市なしQuery、複合地域「中国・四国」、住居費未収録条件を明示的に回帰テストしました。</li>
+      <li>全国グラフの約680MB RSSは観測値として残しました。Graphを別実装へ置き換える変更は、Hard Facts契約と再現性を保った追加ベンチマーク後に判断します。</li>
+      <li>災害・自然・住居費の採用は、coverage・定義・ライセンス・集約方法を満たすデータが確認できた場合だけ次Phaseで行います。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. 証跡</h2>
+    <ul>
+      <li><a href="phase3_implementation_report.html">Phase 3実装・検証報告書</a></li>
+      <li><a href="phase3_acceptance.html">Phase 3 offline Acceptance</a> / <a href="phase3_acceptance_llm.html">LLM Acceptance</a></li>
+      <li><a href="../../phase2/docs/phase2_acceptance.html">Phase 2 offline Acceptance</a> / <a href="../../phase2/docs/phase2_acceptance_llm.html">LLM Acceptance</a></li>
+      <li><a href="../../phase1/docs/phase1_acceptance.html">Phase 1 offline/LLM Acceptance</a></li>
+      <li><a href="../data/processed/cross_phase_benchmark.json">横断ベンチマークJSON</a></li>
+      <li><a href="../data/provenance/phase3_sources.yml">Phase 3データ来歴</a></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

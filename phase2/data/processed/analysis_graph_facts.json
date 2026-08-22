@@ -1,0 +1,39 @@
+{
+  "full_analysis_graph": {
+    "graph_type": "MultiDiGraph",
+    "directed": true,
+    "multigraph": true,
+    "node_count": 1853,
+    "edge_count": 232774,
+    "node_counts": {
+      "Airport": 87,
+      "Municipality": 1719,
+      "Prefecture": 47
+    },
+    "relation_counts": {
+      "ACCESS_TO": 100,
+      "COMMUTES_TO": 159301,
+      "IS_IN": 1719,
+      "STUDIES_IN": 71654
+    }
+  },
+  "search_graph": {
+    "graph_type": "MultiDiGraph",
+    "directed": true,
+    "multigraph": true,
+    "node_count": 192,
+    "edge_count": 9296,
+    "node_counts": {
+      "Airport": 45,
+      "Municipality": 100,
+      "Prefecture": 47
+    },
+    "relation_counts": {
+      "ACCESS_TO": 100,
+      "COMMUTES_TO": 5576,
+      "IS_IN": 100,
+      "STUDIES_IN": 3520
+    }
+  },
+  "note": "knowledge_graph.json is the 100-city search projection; Parquet flow tables retain the national analysis universe."
+}

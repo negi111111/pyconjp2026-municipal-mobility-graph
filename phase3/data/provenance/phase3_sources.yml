@@ -1,0 +1,80 @@
+schema_version: 1
+phase: 3
+scope: approved_national_major_100
+retrieval:
+  manifest: data/provenance/phase3_download_manifest.json
+  checksum_policy: "Source archives are pinned by SHA-256 before feature preparation."
+
+datasets:
+  - dataset: JMA normal_surface
+    purpose: "1991-2020 climate normals mapped from the nearest usable surface station"
+    provider: Japan Meteorological Agency
+    source_url: https://www.data.jma.go.jp/obd/stats/data/mdrr/normal/
+    download_url: https://www.data.jma.go.jp/obd/stats/data/mdrr/normal/2020/data/normal_surface.zip
+    edition: "1991-2020 normals, current published revision"
+    raw_path: data/raw/climate/jma_normal_surface.zip
+    license:
+      name: "JMA public data terms; source notice and revision retained"
+      url: https://www.jma.go.jp/jma/kishou/info/coment.html
+      spdx_id: null
+    redistribution:
+      raw: "subject to JMA source terms"
+      processed: "allowed with attribution and transformation notice"
+    attribution: >-
+      Source: Japan Meteorological Agency, climate normals; nearest-station mapping
+      and feature extraction by this project.
+    geographic_granularity: weather_station
+    coverage:
+      search_cities: 100
+      municipality_mapping: nearest_station
+    transformation:
+      - "Read surface station metadata and monthly normal files from the pinned ZIP."
+      - "Choose the nearest station to each approved city's P05-22 representative point."
+      - "Retain the 1991-2020 period, units, station identity, and mapping distance."
+      - "Do not fill missing station values with prefectural or national averages."
+    caveats:
+      - "A station normal describes the mapped station, not a municipality-wide area average."
+      - "Nearest-station distance is a straight-line Haversine distance."
+
+  - dataset: "MLIT National Land Numerical Information N02-20"
+    purpose: "Nearest Shinkansen station and straight-line distance for approved cities"
+    provider: "Ministry of Land, Infrastructure, Transport and Tourism, Japan"
+    source_url: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-v2_3.html
+    download_url: https://nlftp.mlit.go.jp/ksj/gml/data/N02/N02-20/N02-20_GML.zip
+    edition: "N02-20, 2020"
+    raw_path: data/raw/rail/N02-20_GML.zip
+    license:
+      name: "MLIT National Land Numerical Information dataset terms"
+      url: https://nlftp.mlit.go.jp/ksj/other/agreement.html
+      spdx_id: null
+    redistribution:
+      raw: "subject to MLIT dataset terms"
+      processed: "allowed with attribution and transformation notice"
+    attribution: >-
+      Source: MLIT National Land Numerical Information N02-20; nearest-station
+      distance extraction by this project.
+    geographic_granularity: station
+    coverage:
+      search_cities: 100
+      station_count: 92
+      municipality_mapping: nearest_station
+    transformation:
+      - "Filter N02 station features whose line name contains 新幹線."
+      - "Use the representative coordinate of each station feature."
+      - "Choose the nearest station to each approved city's P05-22 representative point."
+      - "Calculate straight-line Haversine distance in kilometers."
+    caveats:
+      - "station_in_municipality is not asserted because polygon joining is not implemented."
+      - "Distance is not travel time, timetable availability, transfer count, or fare."
+
+not_adopted:
+  housing:
+    status: "not_adopted_coverage_unverified"
+    reason: "A single same-definition, non-missing rent table for all 100 cities was not verified."
+    candidate_url: https://www.e-stat.go.jp/stat-search?layout=datalist&metadata=1&data=1&toukei=00200522
+  disaster:
+    status: feasibility_deferred
+    reason: "A defensible city-wide area or population aggregation method is not yet fixed."
+  nature:
+    status: feasibility_deferred
+    reason: "A defensible city-wide aggregation and category definition is not yet fixed."

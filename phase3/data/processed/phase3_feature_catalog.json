@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-08-21T12:22:34+00:00",
+  "features": [
+    "climate.annual_mean_temperature",
+    "climate.annual_precipitation",
+    "climate.annual_snowfall",
+    "climate.annual_sunshine_hours",
+    "climate.august_mean_temperature",
+    "climate.january_mean_temperature",
+    "transport.nearest_shinkansen_distance"
+  ],
+  "climate_period": "1991-2020",
+  "rail_edition": "N02-20 (2020)",
+  "housing_status": "not_adopted_coverage_unverified",
+  "disaster_status": "feasibility_deferred",
+  "nature_status": "feasibility_deferred"
+}
