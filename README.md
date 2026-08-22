@@ -232,6 +232,12 @@ make run
 ```
 
 詳細は[visualizer/README.md](visualizer/README.md)を参照してください。
+リポジトリルートから起動する場合は、次の短縮コマンドも使用できます。
+
+```bash
+make install
+make run
+```
 
 ## 自然言語でできること
 
