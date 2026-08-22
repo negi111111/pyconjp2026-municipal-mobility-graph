@@ -18,6 +18,25 @@ GitHubから開いた利用者は、まずこのREADMEを読み、追試する�
 | [`visualizer/`](visualizer/) | Phase 1〜3を横断するローカル監査UI | Phase Evolution、Graph、同一Query比較、Node Inspector |
 | ルート直下の`README.md`、`LICENSE`、`.gitignore` | GitHubリポジトリの案内・共通管理 | フェーズ選択と運用ルールを確認する |
 
+## 目次
+
+- [Phaseの成長](#phaseの成長)
+- [データから回答までの構成](#データから回答までの構成)
+- [公開リポジトリを取得して再現する](#公開リポジトリを取得して再現する)
+- [クイックスタート](#クイックスタート)
+- [各PhaseでLLM Queryを試す](#各phaseでllm-queryを試す)
+- [Phase間の同一Query比較](#phase間の同一query比較)
+- [Phase 1〜3のローカル可視化UI](#phase-1〜3のローカル可視化ui)
+- [自然言語でできること](#自然言語でできること)
+- [データから回答まで](#データから回答まで)
+- [データソースとライセンス](#データソースとライセンス)
+- [主な生成物](#主な生成物)
+- [検証](#検証)
+- [重要な制限](#重要な制限)
+- [Phase 2](#phase-2)
+- [Phase 3](#phase-3)
+- [ライセンス](#ライセンス)
+
 ルート直下にはフェーズ固有の実行コードを置きません。各フェーズは前フェーズのコピーを
 独立実行単位として保持しています。フェーズ間の差分を確認するときは、比較対象の
 ディレクトリだけを実行し、完了済みの前フェーズを変更しません。
@@ -29,6 +48,32 @@ Phase 1の実装・検証状態は
 Phase 3の実装・検証状態は
 [実装・検証報告書](phase3/docs/phase3_implementation_report.html)、Phase 1〜3全体の
 監査結果は[横断監査報告書](phase3/docs/cross_phase_audit.html)で確認できます。
+
+## Phaseの成長
+
+```mermaid
+flowchart LR
+    P1["Phase 1<br/>広島周辺20都市<br/>基準経路"] -->
+    P2["Phase 2<br/>全国1,719自治体を分析<br/>承認100都市を検索"] -->
+    P3["Phase 3<br/>Graphを維持<br/>気候・新幹線Featureを追加"]
+```
+
+Phase 1→2は探索空間・分析空間・ODネットワークの拡張、Phase 2→3はGraphを壊さない
+Feature Store拡張です。
+
+## データから回答までの構成
+
+```mermaid
+flowchart LR
+    D["公開データ<br/>SSDSE / Census OD / 地理"] --> N["正規化<br/>自治体コード・単位"]
+    N --> G["Knowledge Graph<br/>NetworkX MultiDiGraph"]
+    G --> P["Planner<br/>Rule / Azure OpenAI"]
+    P --> E["Executor<br/>pandas / NetworkX"]
+    E --> H["Hard Facts<br/>順位・数値・距離"]
+    H --> R["Response<br/>日本語説明・Soft Knowledge"]
+```
+
+LLMは意図解釈と説明に限定し、ランキングや数値はStructured DataとPython計算から生成します。
 
 ## 公開リポジトリを取得して再現する
 
